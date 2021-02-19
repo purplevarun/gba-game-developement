@@ -20,7 +20,7 @@
 ;--------------------------------------------------------
 	.area _DATA
 _smilers::
-	.ds 16
+	.ds 64
 ;--------------------------------------------------------
 ; absolute external ram data
 ;--------------------------------------------------------
@@ -32,7 +32,7 @@ _smilers::
 	.area _GSINIT
 	.area _GSFINAL
 	.area _GSINIT
-;4smilers.c:26: unsigned char smilers[] =
+;4smiles.c:26: unsigned char smilers[] =
 	ld	hl, #_smilers
 	ld	(hl), #0x7e
 	ld	hl, #(_smilers + 0x0001)
@@ -46,13 +46,13 @@ _smilers::
 	ld	hl, #(_smilers + 0x0005)
 	ld	(hl), #0xa5
 	ld	hl, #(_smilers + 0x0006)
-	ld	(hl), #0x81
+	ld	(hl), #0xa5
 	ld	hl, #(_smilers + 0x0007)
-	ld	(hl), #0x81
+	ld	(hl), #0xa5
 	ld	hl, #(_smilers + 0x0008)
-	ld	(hl), #0xa5
+	ld	(hl), #0x81
 	ld	hl, #(_smilers + 0x0009)
-	ld	(hl), #0xa5
+	ld	(hl), #0x81
 	ld	hl, #(_smilers + 0x000a)
 	ld	(hl), #0x99
 	ld	hl, #(_smilers + 0x000b)
@@ -65,6 +65,102 @@ _smilers::
 	ld	(hl), #0x7e
 	ld	hl, #(_smilers + 0x000f)
 	ld	(hl), #0x7e
+	ld	hl, #(_smilers + 0x0010)
+	ld	(hl), #0x7e
+	ld	hl, #(_smilers + 0x0011)
+	ld	(hl), #0x7e
+	ld	hl, #(_smilers + 0x0012)
+	ld	(hl), #0x81
+	ld	hl, #(_smilers + 0x0013)
+	ld	(hl), #0x81
+	ld	hl, #(_smilers + 0x0014)
+	ld	(hl), #0xa5
+	ld	hl, #(_smilers + 0x0015)
+	ld	(hl), #0xa5
+	ld	hl, #(_smilers + 0x0016)
+	ld	(hl), #0x81
+	ld	hl, #(_smilers + 0x0017)
+	ld	(hl), #0x81
+	ld	hl, #(_smilers + 0x0018)
+	ld	(hl), #0x81
+	ld	hl, #(_smilers + 0x0019)
+	ld	(hl), #0x81
+	ld	hl, #(_smilers + 0x001a)
+	ld	(hl), #0xbd
+	ld	hl, #(_smilers + 0x001b)
+	ld	(hl), #0xbd
+	ld	hl, #(_smilers + 0x001c)
+	ld	(hl), #0x81
+	ld	hl, #(_smilers + 0x001d)
+	ld	(hl), #0x81
+	ld	hl, #(_smilers + 0x001e)
+	ld	(hl), #0x7e
+	ld	hl, #(_smilers + 0x001f)
+	ld	(hl), #0x7e
+	ld	hl, #(_smilers + 0x0020)
+	ld	(hl), #0xff
+	ld	hl, #(_smilers + 0x0021)
+	ld	(hl), #0xff
+	ld	hl, #(_smilers + 0x0022)
+	ld	(hl), #0xa5
+	ld	hl, #(_smilers + 0x0023)
+	ld	(hl), #0xa5
+	ld	hl, #(_smilers + 0x0024)
+	ld	(hl), #0xa5
+	ld	hl, #(_smilers + 0x0025)
+	ld	(hl), #0xa5
+	ld	hl, #(_smilers + 0x0026)
+	ld	(hl), #0x81
+	ld	hl, #(_smilers + 0x0027)
+	ld	(hl), #0x81
+	ld	hl, #(_smilers + 0x0028)
+	ld	(hl), #0xa5
+	ld	hl, #(_smilers + 0x0029)
+	ld	(hl), #0xa5
+	ld	hl, #(_smilers + 0x002a)
+	ld	(hl), #0xbd
+	ld	hl, #(_smilers + 0x002b)
+	ld	(hl), #0xbd
+	ld	hl, #(_smilers + 0x002c)
+	ld	(hl), #0x81
+	ld	hl, #(_smilers + 0x002d)
+	ld	(hl), #0x81
+	ld	hl, #(_smilers + 0x002e)
+	ld	(hl), #0xff
+	ld	hl, #(_smilers + 0x002f)
+	ld	(hl), #0xff
+	ld	hl, #(_smilers + 0x0030)
+	ld	(hl), #0xff
+	ld	hl, #(_smilers + 0x0031)
+	ld	(hl), #0xff
+	ld	hl, #(_smilers + 0x0032)
+	ld	(hl), #0xff
+	ld	hl, #(_smilers + 0x0033)
+	ld	(hl), #0x81
+	ld	hl, #(_smilers + 0x0034)
+	ld	(hl), #0xe7
+	ld	hl, #(_smilers + 0x0035)
+	ld	(hl), #0xa5
+	ld	hl, #(_smilers + 0x0036)
+	ld	(hl), #0xc3
+	ld	hl, #(_smilers + 0x0037)
+	ld	(hl), #0x81
+	ld	hl, #(_smilers + 0x0038)
+	ld	(hl), #0xdb
+	ld	hl, #(_smilers + 0x0039)
+	ld	(hl), #0x99
+	ld	hl, #(_smilers + 0x003a)
+	ld	(hl), #0xe7
+	ld	hl, #(_smilers + 0x003b)
+	ld	(hl), #0xa5
+	ld	hl, #(_smilers + 0x003c)
+	ld	(hl), #0xff
+	ld	hl, #(_smilers + 0x003d)
+	ld	(hl), #0x81
+	ld	hl, #(_smilers + 0x003e)
+	ld	(hl), #0xff
+	ld	hl, #(_smilers + 0x003f)
+	ld	(hl), #0xff
 ;--------------------------------------------------------
 ; Home
 ;--------------------------------------------------------
