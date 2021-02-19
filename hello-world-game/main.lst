@@ -101,22 +101,21 @@
                                     101 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1077: OAM_item_t * itm = &shadow_OAM[nb];
       00001E 21r00r00               102 	ld	hl, #_shadow_OAM
                                     103 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1078: itm->y=y, itm->x=x;
-      000021 3E 64                  104 	ld	a, #0x64
+      000021 3E 8C                  104 	ld	a, #0x8c
       000023 22                     105 	ld	(hl+), a
-      000024 36 64                  106 	ld	(hl), #0x64
+      000024 36 8C                  106 	ld	(hl), #0x8c
                                     107 ;main.c:11: SHOW_SPRITES;
       000026 F0r00                  108 	ldh	a, (_LCDC_REG+0)
       000028 F6 02                  109 	or	a, #0x02
       00002A E0r00                  110 	ldh	(_LCDC_REG+0),a
-                                    111 ;main.c:15: i+=10;
-                                    112 ;main.c:17: }
-      00002C C9                     113 	ret
-      00002D                        114 ___str_4:
-      00002D 68 65 6C 6C 6F 20 77   115 	.ascii "hello world"
+                                    111 ;main.c:17: }
+      00002C C9                     112 	ret
+      00002D                        113 ___str_4:
+      00002D 68 65 6C 6C 6F 20 77   114 	.ascii "hello world"
              6F 72 6C 64
-      000038 0A                     116 	.db 0x0a
-      000039 76 61 72 75 6E 20 6B   117 	.ascii "varun kedia"
+      000038 0A                     115 	.db 0x0a
+      000039 76 61 72 75 6E 20 6B   116 	.ascii "varun kedia"
              65 64 69 61
-      000044 00                     118 	.db 0x00
-                                    119 	.area _CODE
-                                    120 	.area _CABS (ABS)
+      000044 00                     117 	.db 0x00
+                                    118 	.area _CODE
+                                    119 	.area _CABS (ABS)

@@ -101,14 +101,13 @@ _main::
 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1077: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	hl, #_shadow_OAM
 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1078: itm->y=y, itm->x=x;
-	ld	a, #0x64
+	ld	a, #0x8c
 	ld	(hl+), a
-	ld	(hl), #0x64
+	ld	(hl), #0x8c
 ;main.c:11: SHOW_SPRITES;
 	ldh	a, (_LCDC_REG+0)
 	or	a, #0x02
 	ldh	(_LCDC_REG+0),a
-;main.c:15: i+=10;
 ;main.c:17: }
 	ret
 ___str_4:
