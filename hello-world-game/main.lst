@@ -42,7 +42,7 @@
                                      42 ; Function main
                                      43 ; ---------------------------------
       000000                         44 _main::
-                                     45 ;main.c:4: printf ("hello world.");
+                                     45 ;main.c:4: printf ("hello world.\nvarun kedia");
       000000 21r0Ar00                46 	ld	hl, #___str_0
       000003 E5                      47 	push	hl
       000004 CDr00r00                48 	call	_printf
@@ -52,6 +52,9 @@
       00000A                         52 ___str_0:
       00000A 68 65 6C 6C 6F 20 77    53 	.ascii "hello world."
              6F 72 6C 64 2E
-      000016 00                      54 	.db 0x00
-                                     55 	.area _CODE
-                                     56 	.area _CABS (ABS)
+      000016 0A                      54 	.db 0x0a
+      000017 76 61 72 75 6E 20 6B    55 	.ascii "varun kedia"
+             65 64 69 61
+      000022 00                      56 	.db 0x00
+                                     57 	.area _CODE
+                                     58 	.area _CABS (ABS)

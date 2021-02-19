@@ -1,5 +1,5 @@
 #include <gb/gb.h>
 #include <stdio.h>
 void main () {
-    printf ("hello world.");
+    printf ("hello world.\nvarun kedia");
 }

@@ -42,7 +42,7 @@
 ; Function main
 ; ---------------------------------
 _main::
-;main.c:4: printf ("hello world.");
+;main.c:4: printf ("hello world.\nvarun kedia");
 	ld	hl, #___str_0
 	push	hl
 	call	_printf
@@ -51,6 +51,8 @@ _main::
 	ret
 ___str_0:
 	.ascii "hello world."
+	.db 0x0a
+	.ascii "varun kedia"
 	.db 0x00
 	.area _CODE
 	.area _CABS (ABS)
