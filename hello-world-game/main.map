@@ -73,10 +73,10 @@ Area                       Addr        Size        Decimal Bytes (Attributes)
      00000005  l__HEADER |    00000006  l__HEADER |    00000007  l__HEADER
      00000008  l__HEADER |    00000010  l__DATA   |    0000002C  l__HEADER
      00000033  l__HEADER |    00000043  l__BSS    |    00000064  l__GSINIT
-     0000007E  l__HEADER |    00000086  l__HOME   |    000000A0  l__CODE  
-     00000200  s__CODE   |    000002A0  s__HOME   |    00000326  s__BASE  
-     0000075B  l__BASE   |    00000A81  s__CODE_0 |    00000A81  s__GSINIT
-     00000A81  s__LIT    |    00000AE5  s__GSFINA |    0000C000  _shadow_O
+     0000007E  l__HEADER |    00000086  l__HOME   |    0000009D  l__CODE  
+     00000200  s__CODE   |    0000029D  s__HOME   |    00000323  s__BASE  
+     0000075B  l__BASE   |    00000A7E  s__CODE_0 |    00000A7E  s__GSINIT
+     00000A7E  s__LIT    |    00000AE2  s__GSFINA |    0000C000  _shadow_O
      0000C0A0  s__DATA   |    0000C0B0  s__BSS    |    0000C0F3  s__HEAP  
      0000E000  .STACK    |    0000FF80  .refresh_
 ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
@@ -84,12 +84,12 @@ Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_CODE                  00000200    000000A0 =         160. bytes (REL,CON)
+_CODE                  00000200    0000009D =         157. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
-     00000200  _main     |    00000261  _putchar  |    0000026A  _setchar 
-     00000273  _gotoxy   |    0000027E  _posx     |    0000028F  _posy    
+     00000200  _main     |    0000025E  _putchar  |    00000267  _setchar 
+     00000270  _gotoxy   |    0000027B  _posx     |    0000028C  _posy    
 ASxxxx Linker V03.00 + NoICE + sdld,  page 4.
 Hexadecimal  [32-Bits]
 
@@ -255,50 +255,50 @@ Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_HOME                  000002A0    00000086 =         134. bytes (REL,CON)
+_HOME                  0000029D    00000086 =         134. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
-     000002A0  .remove_V |    000002A3  .remove_i |    000002C0  .add_VBL 
-     000002C3  .add_int  |    000002CE  .wait_vbl |    000002CE  _wait_vbl
-     000002DD  .display_ |    000002DD  _display_ |    000002F4  _remove_V
-     000002FF  _add_VBL  |    0000030A  _puts    
+     0000029D  .remove_V |    000002A0  .remove_i |    000002BD  .add_VBL 
+     000002C0  .add_int  |    000002CB  .wait_vbl |    000002CB  _wait_vbl
+     000002DA  .display_ |    000002DA  _display_ |    000002F1  _remove_V
+     000002FC  _add_VBL  |    00000307  _puts    
 ASxxxx Linker V03.00 + NoICE + sdld,  page 22.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_BASE                  00000326    0000075B =        1883. bytes (REL,CON)
+_BASE                  00000323    0000075B =        1883. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
-     00000326  _set_bkg_ |    00000326  _set_win_ |    0000032E  _set_spri
-     0000035E  .delay    |    00000398  _delay    |    000003A1  _font_loa
-     000003A8  font_copy |    000003DE  font_copy |    0000042D  font_load
-     00000475  font_copy |    000004BD  font_set  |    000004CA  .put_char
-     000004E2  .out_char |    000004E8  .del_char |    0000053E  _font_loa
-     0000054C  _font_set |    0000055B  _font_ini |    0000057B  .cls     
-     0000057B  _cls      |    000005AD  .cr_curs  |    000005C2  .adv_curs
-     0000061E  .tmode    |    00000647  .tmode_ou |    00000657  _color   
-     00000666  .drawing_ |    00000671  .drawing_ |    000006AD  _add_LCD 
-     000006B8  .add_LCD  |    000006BE  _remove_L |    000006C9  .remove_L
-     000006CF  _font_ibm
+     00000323  _set_bkg_ |    00000323  _set_win_ |    0000032B  _set_spri
+     0000035B  .delay    |    00000395  _delay    |    0000039E  _font_loa
+     000003A5  font_copy |    000003DB  font_copy |    0000042A  font_load
+     00000472  font_copy |    000004BA  font_set  |    000004C7  .put_char
+     000004DF  .out_char |    000004E5  .del_char |    0000053B  _font_loa
+     00000549  _font_set |    00000558  _font_ini |    00000578  .cls     
+     00000578  _cls      |    000005AA  .cr_curs  |    000005BF  .adv_curs
+     0000061B  .tmode    |    00000644  .tmode_ou |    00000654  _color   
+     00000663  .drawing_ |    0000066E  .drawing_ |    000006AA  _add_LCD 
+     000006B5  .add_LCD  |    000006BB  _remove_L |    000006C6  .remove_L
+     000006CC  _font_ibm
 ASxxxx Linker V03.00 + NoICE + sdld,  page 23.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_GSINIT                00000A81    00000064 =         100. bytes (REL,CON)
+_GSINIT                00000A7E    00000064 =         100. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
-     00000A81  gsinit   
+     00000A7E  gsinit   
 ASxxxx Linker V03.00 + NoICE + sdld,  page 24.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_GSFINAL               00000AE5    00000001 =           1. bytes (REL,CON)
+_GSFINAL               00000AE2    00000001 =           1. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    

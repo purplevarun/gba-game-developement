@@ -80,61 +80,64 @@
                                      80 ; Function main
                                      81 ; ---------------------------------
       000000                         82 _main::
-                                     83 ;main.c:5: printf ("hello world\n");
-      000000 21r49r00                84 	ld	hl, #___str_1
+                                     83 ;main.c:7: printf ("varun kedia\n");
+      000000 21r46r00                84 	ld	hl, #___str_4
       000003 E5                      85 	push	hl
       000004 CDr00r00                86 	call	_puts
       000007 E8 02                   87 	add	sp, #2
-                                     88 ;main.c:6: printf ("varun kedia\n");
-      000009 21r55r00                89 	ld	hl, #___str_3
+                                     88 ;main.c:8: set_sprite_data (0,2,smileFace1);
+      000009 21r00r00                89 	ld	hl, #_smileFace1
       00000C E5                      90 	push	hl
-      00000D CDr00r00                91 	call	_puts
-      000010 E8 02                   92 	add	sp, #2
-                                     93 ;main.c:7: set_sprite_data (0,2,smileFace1);
-      000012 21r00r00                94 	ld	hl, #_smileFace1
-      000015 E5                      95 	push	hl
-      000016 3E 02                   96 	ld	a, #0x02
-      000018 F5                      97 	push	af
-      000019 33                      98 	inc	sp
-      00001A AF                      99 	xor	a, a
-      00001B F5                     100 	push	af
-      00001C 33                     101 	inc	sp
-      00001D CDr00r00               102 	call	_set_sprite_data
-      000020 E8 04                  103 	add	sp, #4
-                                    104 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1004: shadow_OAM[nb].tile=tile;
-      000022 21r02r00               105 	ld	hl, #(_shadow_OAM + 0x0002)
-      000025 36 00                  106 	ld	(hl), #0x00
-                                    107 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1077: OAM_item_t * itm = &shadow_OAM[nb];
-      000027 21r00r00               108 	ld	hl, #_shadow_OAM
-                                    109 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1078: itm->y=y, itm->x=x;
-      00002A 3E 4E                  110 	ld	a, #0x4e
-      00002C 22                     111 	ld	(hl+), a
-      00002D 36 58                  112 	ld	(hl), #0x58
-                                    113 ;main.c:10: SHOW_SPRITES;
-      00002F F0r00                  114 	ldh	a, (_LCDC_REG+0)
-      000031 F6 02                  115 	or	a, #0x02
-      000033 E0r00                  116 	ldh	(_LCDC_REG+0),a
-                                    117 ;main.c:11: while (1) {
-      000035                        118 00102$:
-                                    119 ;main.c:12: printf ("hello world\n");
-      000035 21r49r00               120 	ld	hl, #___str_1
-      000038 E5                     121 	push	hl
-      000039 CDr00r00               122 	call	_puts
-      00003C E8 02                  123 	add	sp, #2
-                                    124 ;main.c:13: delay(1000);
-      00003E 21 E8 03               125 	ld	hl, #0x03e8
-      000041 E5                     126 	push	hl
-      000042 CDr00r00               127 	call	_delay
-      000045 E8 02                  128 	add	sp, #2
-                                    129 ;main.c:15: }
-      000047 18 EC                  130 	jr	00102$
-      000049                        131 ___str_1:
-      000049 68 65 6C 6C 6F 20 77   132 	.ascii "hello world"
+      00000D 3E 02                   91 	ld	a, #0x02
+      00000F F5                      92 	push	af
+      000010 33                      93 	inc	sp
+      000011 AF                      94 	xor	a, a
+      000012 F5                      95 	push	af
+      000013 33                      96 	inc	sp
+      000014 CDr00r00                97 	call	_set_sprite_data
+      000017 E8 04                   98 	add	sp, #4
+                                     99 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1004: shadow_OAM[nb].tile=tile;
+      000019 21r02r00               100 	ld	hl, #(_shadow_OAM + 0x0002)
+      00001C 36 00                  101 	ld	(hl), #0x00
+                                    102 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1077: OAM_item_t * itm = &shadow_OAM[nb];
+      00001E 21r00r00               103 	ld	hl, #_shadow_OAM
+                                    104 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1078: itm->y=y, itm->x=x;
+      000021 3E 4E                  105 	ld	a, #0x4e
+      000023 22                     106 	ld	(hl+), a
+      000024 36 58                  107 	ld	(hl), #0x58
+                                    108 ;main.c:11: SHOW_SPRITES;
+      000026 F0r00                  109 	ldh	a, (_LCDC_REG+0)
+      000028 F6 02                  110 	or	a, #0x02
+      00002A E0r00                  111 	ldh	(_LCDC_REG+0),a
+                                    112 ;main.c:12: while (1) {
+      00002C 01 00 00               113 	ld	bc, #0x0000
+      00002F                        114 00102$:
+                                    115 ;main.c:13: move_sprite(0,10+i,10+i);
+      00002F 79                     116 	ld	a, c
+      000030 C6 0A                  117 	add	a, #0x0a
+                                    118 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1077: OAM_item_t * itm = &shadow_OAM[nb];
+                                    119 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1078: itm->y=y, itm->x=x;
+      000032 5F                     120 	ld	e, a
+      000033 21r00r00               121 	ld	hl, #_shadow_OAM
+      000036 22                     122 	ld	(hl+), a
+      000037 73                     123 	ld	(hl), e
+                                    124 ;main.c:14: delay(1000);
+      000038 C5                     125 	push	bc
+      000039 21 E8 03               126 	ld	hl, #0x03e8
+      00003C E5                     127 	push	hl
+      00003D CDr00r00               128 	call	_delay
+      000040 E8 02                  129 	add	sp, #2
+      000042 C1                     130 	pop	bc
+                                    131 ;main.c:15: i++;
+      000043 03                     132 	inc	bc
+                                    133 ;main.c:17: }
+      000044 18 E9                  134 	jr	00102$
+      000046                        135 ___str_4:
+      000046 68 65 6C 6C 6F 20 77   136 	.ascii "hello world"
              6F 72 6C 64
-      000054 00                     133 	.db 0x00
-      000055                        134 ___str_3:
-      000055 76 61 72 75 6E 20 6B   135 	.ascii "varun kedia"
+      000051 0A                     137 	.db 0x0a
+      000052 76 61 72 75 6E 20 6B   138 	.ascii "varun kedia"
              65 64 69 61
-      000060 00                     136 	.db 0x00
-                                    137 	.area _CODE
-                                    138 	.area _CABS (ABS)
+      00005D 00                     139 	.db 0x00
+                                    140 	.area _CODE
+                                    141 	.area _CABS (ABS)

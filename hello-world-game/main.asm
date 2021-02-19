@@ -80,17 +80,12 @@ _smileFace1::
 ; Function main
 ; ---------------------------------
 _main::
-;main.c:5: printf ("hello world\n");
-	ld	hl, #___str_1
+;main.c:7: printf ("varun kedia\n");
+	ld	hl, #___str_4
 	push	hl
 	call	_puts
 	add	sp, #2
-;main.c:6: printf ("varun kedia\n");
-	ld	hl, #___str_3
-	push	hl
-	call	_puts
-	add	sp, #2
-;main.c:7: set_sprite_data (0,2,smileFace1);
+;main.c:8: set_sprite_data (0,2,smileFace1);
 	ld	hl, #_smileFace1
 	push	hl
 	ld	a, #0x02
@@ -110,28 +105,36 @@ _main::
 	ld	a, #0x4e
 	ld	(hl+), a
 	ld	(hl), #0x58
-;main.c:10: SHOW_SPRITES;
+;main.c:11: SHOW_SPRITES;
 	ldh	a, (_LCDC_REG+0)
 	or	a, #0x02
 	ldh	(_LCDC_REG+0),a
-;main.c:11: while (1) {
+;main.c:12: while (1) {
+	ld	bc, #0x0000
 00102$:
-;main.c:12: printf ("hello world\n");
-	ld	hl, #___str_1
-	push	hl
-	call	_puts
-	add	sp, #2
-;main.c:13: delay(1000);
+;main.c:13: move_sprite(0,10+i,10+i);
+	ld	a, c
+	add	a, #0x0a
+;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1077: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1078: itm->y=y, itm->x=x;
+	ld	e, a
+	ld	hl, #_shadow_OAM
+	ld	(hl+), a
+	ld	(hl), e
+;main.c:14: delay(1000);
+	push	bc
 	ld	hl, #0x03e8
 	push	hl
 	call	_delay
 	add	sp, #2
-;main.c:15: }
+	pop	bc
+;main.c:15: i++;
+	inc	bc
+;main.c:17: }
 	jr	00102$
-___str_1:
+___str_4:
 	.ascii "hello world"
-	.db 0x00
-___str_3:
+	.db 0x0a
 	.ascii "varun kedia"
 	.db 0x00
 	.area _CODE
