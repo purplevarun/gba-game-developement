@@ -11,6 +11,7 @@
 	.globl _main
 	.globl _puts
 	.globl _set_sprite_data
+	.globl _delay
 	.globl _smileFace1
 ;--------------------------------------------------------
 ; special function registers
@@ -79,8 +80,13 @@ _smileFace1::
 ; Function main
 ; ---------------------------------
 _main::
+;main.c:5: printf ("hello world\n");
+	ld	hl, #___str_1
+	push	hl
+	call	_puts
+	add	sp, #2
 ;main.c:6: printf ("varun kedia\n");
-	ld	hl, #___str_4
+	ld	hl, #___str_3
 	push	hl
 	call	_puts
 	add	sp, #2
@@ -108,11 +114,24 @@ _main::
 	ldh	a, (_LCDC_REG+0)
 	or	a, #0x02
 	ldh	(_LCDC_REG+0),a
-;main.c:11: }
-	ret
-___str_4:
+;main.c:11: while (1) {
+00102$:
+;main.c:12: printf ("hello world\n");
+	ld	hl, #___str_1
+	push	hl
+	call	_puts
+	add	sp, #2
+;main.c:13: delay(1000);
+	ld	hl, #0x03e8
+	push	hl
+	call	_delay
+	add	sp, #2
+;main.c:15: }
+	jr	00102$
+___str_1:
 	.ascii "hello world"
-	.db 0x0a
+	.db 0x00
+___str_3:
 	.ascii "varun kedia"
 	.db 0x00
 	.area _CODE

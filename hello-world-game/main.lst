@@ -11,111 +11,130 @@
                                      11 	.globl _main
                                      12 	.globl _puts
                                      13 	.globl _set_sprite_data
-                                     14 	.globl _smileFace1
-                                     15 ;--------------------------------------------------------
-                                     16 ; special function registers
-                                     17 ;--------------------------------------------------------
+                                     14 	.globl _delay
+                                     15 	.globl _smileFace1
+                                     16 ;--------------------------------------------------------
+                                     17 ; special function registers
                                      18 ;--------------------------------------------------------
-                                     19 ; ram data
-                                     20 ;--------------------------------------------------------
-                                     21 	.area _DATA
-      000000                         22 _smileFace1::
-      000000                         23 	.ds 16
-                                     24 ;--------------------------------------------------------
-                                     25 ; absolute external ram data
-                                     26 ;--------------------------------------------------------
-                                     27 	.area _DABS (ABS)
-                                     28 ;--------------------------------------------------------
-                                     29 ; global & static initialisations
-                                     30 ;--------------------------------------------------------
-                                     31 	.area _HOME
-                                     32 	.area _GSINIT
-                                     33 	.area _GSFINAL
-                                     34 	.area _GSINIT
-                                     35 ;smile.c:26: unsigned char smileFace1[] =
-      000000 21r00r00                36 	ld	hl, #_smileFace1
-      000003 36 7E                   37 	ld	(hl), #0x7e
-      000005 21r01r00                38 	ld	hl, #(_smileFace1 + 0x0001)
-      000008 36 7E                   39 	ld	(hl), #0x7e
-      00000A 21r02r00                40 	ld	hl, #(_smileFace1 + 0x0002)
-      00000D 36 FF                   41 	ld	(hl), #0xff
-      00000F 21r03r00                42 	ld	hl, #(_smileFace1 + 0x0003)
-      000012 36 81                   43 	ld	(hl), #0x81
-      000014 21r04r00                44 	ld	hl, #(_smileFace1 + 0x0004)
-      000017 36 FF                   45 	ld	(hl), #0xff
-      000019 21r05r00                46 	ld	hl, #(_smileFace1 + 0x0005)
-      00001C 36 A5                   47 	ld	(hl), #0xa5
-      00001E 21r06r00                48 	ld	hl, #(_smileFace1 + 0x0006)
-      000021 36 FF                   49 	ld	(hl), #0xff
-      000023 21r07r00                50 	ld	hl, #(_smileFace1 + 0x0007)
-      000026 36 81                   51 	ld	(hl), #0x81
-      000028 21r08r00                52 	ld	hl, #(_smileFace1 + 0x0008)
-      00002B 36 FF                   53 	ld	(hl), #0xff
-      00002D 21r09r00                54 	ld	hl, #(_smileFace1 + 0x0009)
-      000030 36 A5                   55 	ld	(hl), #0xa5
-      000032 21r0Ar00                56 	ld	hl, #(_smileFace1 + 0x000a)
-      000035 36 FF                   57 	ld	(hl), #0xff
-      000037 21r0Br00                58 	ld	hl, #(_smileFace1 + 0x000b)
-      00003A 36 BD                   59 	ld	(hl), #0xbd
-      00003C 21r0Cr00                60 	ld	hl, #(_smileFace1 + 0x000c)
-      00003F 36 FF                   61 	ld	(hl), #0xff
-      000041 21r0Dr00                62 	ld	hl, #(_smileFace1 + 0x000d)
-      000044 36 81                   63 	ld	(hl), #0x81
-      000046 21r0Er00                64 	ld	hl, #(_smileFace1 + 0x000e)
-      000049 36 7E                   65 	ld	(hl), #0x7e
-      00004B 21r0Fr00                66 	ld	hl, #(_smileFace1 + 0x000f)
-      00004E 36 7E                   67 	ld	(hl), #0x7e
-                                     68 ;--------------------------------------------------------
-                                     69 ; Home
-                                     70 ;--------------------------------------------------------
-                                     71 	.area _HOME
+                                     19 ;--------------------------------------------------------
+                                     20 ; ram data
+                                     21 ;--------------------------------------------------------
+                                     22 	.area _DATA
+      000000                         23 _smileFace1::
+      000000                         24 	.ds 16
+                                     25 ;--------------------------------------------------------
+                                     26 ; absolute external ram data
+                                     27 ;--------------------------------------------------------
+                                     28 	.area _DABS (ABS)
+                                     29 ;--------------------------------------------------------
+                                     30 ; global & static initialisations
+                                     31 ;--------------------------------------------------------
+                                     32 	.area _HOME
+                                     33 	.area _GSINIT
+                                     34 	.area _GSFINAL
+                                     35 	.area _GSINIT
+                                     36 ;smile.c:26: unsigned char smileFace1[] =
+      000000 21r00r00                37 	ld	hl, #_smileFace1
+      000003 36 7E                   38 	ld	(hl), #0x7e
+      000005 21r01r00                39 	ld	hl, #(_smileFace1 + 0x0001)
+      000008 36 7E                   40 	ld	(hl), #0x7e
+      00000A 21r02r00                41 	ld	hl, #(_smileFace1 + 0x0002)
+      00000D 36 FF                   42 	ld	(hl), #0xff
+      00000F 21r03r00                43 	ld	hl, #(_smileFace1 + 0x0003)
+      000012 36 81                   44 	ld	(hl), #0x81
+      000014 21r04r00                45 	ld	hl, #(_smileFace1 + 0x0004)
+      000017 36 FF                   46 	ld	(hl), #0xff
+      000019 21r05r00                47 	ld	hl, #(_smileFace1 + 0x0005)
+      00001C 36 A5                   48 	ld	(hl), #0xa5
+      00001E 21r06r00                49 	ld	hl, #(_smileFace1 + 0x0006)
+      000021 36 FF                   50 	ld	(hl), #0xff
+      000023 21r07r00                51 	ld	hl, #(_smileFace1 + 0x0007)
+      000026 36 81                   52 	ld	(hl), #0x81
+      000028 21r08r00                53 	ld	hl, #(_smileFace1 + 0x0008)
+      00002B 36 FF                   54 	ld	(hl), #0xff
+      00002D 21r09r00                55 	ld	hl, #(_smileFace1 + 0x0009)
+      000030 36 A5                   56 	ld	(hl), #0xa5
+      000032 21r0Ar00                57 	ld	hl, #(_smileFace1 + 0x000a)
+      000035 36 FF                   58 	ld	(hl), #0xff
+      000037 21r0Br00                59 	ld	hl, #(_smileFace1 + 0x000b)
+      00003A 36 BD                   60 	ld	(hl), #0xbd
+      00003C 21r0Cr00                61 	ld	hl, #(_smileFace1 + 0x000c)
+      00003F 36 FF                   62 	ld	(hl), #0xff
+      000041 21r0Dr00                63 	ld	hl, #(_smileFace1 + 0x000d)
+      000044 36 81                   64 	ld	(hl), #0x81
+      000046 21r0Er00                65 	ld	hl, #(_smileFace1 + 0x000e)
+      000049 36 7E                   66 	ld	(hl), #0x7e
+      00004B 21r0Fr00                67 	ld	hl, #(_smileFace1 + 0x000f)
+      00004E 36 7E                   68 	ld	(hl), #0x7e
+                                     69 ;--------------------------------------------------------
+                                     70 ; Home
+                                     71 ;--------------------------------------------------------
                                      72 	.area _HOME
-                                     73 ;--------------------------------------------------------
-                                     74 ; code
-                                     75 ;--------------------------------------------------------
-                                     76 	.area _CODE
-                                     77 ;main.c:4: void main () {
-                                     78 ;	---------------------------------
-                                     79 ; Function main
-                                     80 ; ---------------------------------
-      000000                         81 _main::
-                                     82 ;main.c:6: printf ("varun kedia\n");
-      000000 21r2Dr00                83 	ld	hl, #___str_4
-      000003 E5                      84 	push	hl
-      000004 CDr00r00                85 	call	_puts
-      000007 E8 02                   86 	add	sp, #2
-                                     87 ;main.c:7: set_sprite_data (0,2,smileFace1);
-      000009 21r00r00                88 	ld	hl, #_smileFace1
-      00000C E5                      89 	push	hl
-      00000D 3E 02                   90 	ld	a, #0x02
-      00000F F5                      91 	push	af
-      000010 33                      92 	inc	sp
-      000011 AF                      93 	xor	a, a
-      000012 F5                      94 	push	af
-      000013 33                      95 	inc	sp
-      000014 CDr00r00                96 	call	_set_sprite_data
-      000017 E8 04                   97 	add	sp, #4
-                                     98 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1004: shadow_OAM[nb].tile=tile;
-      000019 21r02r00                99 	ld	hl, #(_shadow_OAM + 0x0002)
-      00001C 36 00                  100 	ld	(hl), #0x00
-                                    101 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1077: OAM_item_t * itm = &shadow_OAM[nb];
-      00001E 21r00r00               102 	ld	hl, #_shadow_OAM
-                                    103 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1078: itm->y=y, itm->x=x;
-      000021 3E 4E                  104 	ld	a, #0x4e
-      000023 22                     105 	ld	(hl+), a
-      000024 36 58                  106 	ld	(hl), #0x58
-                                    107 ;main.c:10: SHOW_SPRITES;
-      000026 F0r00                  108 	ldh	a, (_LCDC_REG+0)
-      000028 F6 02                  109 	or	a, #0x02
-      00002A E0r00                  110 	ldh	(_LCDC_REG+0),a
-                                    111 ;main.c:11: }
-      00002C C9                     112 	ret
-      00002D                        113 ___str_4:
-      00002D 68 65 6C 6C 6F 20 77   114 	.ascii "hello world"
+                                     73 	.area _HOME
+                                     74 ;--------------------------------------------------------
+                                     75 ; code
+                                     76 ;--------------------------------------------------------
+                                     77 	.area _CODE
+                                     78 ;main.c:4: void main () {
+                                     79 ;	---------------------------------
+                                     80 ; Function main
+                                     81 ; ---------------------------------
+      000000                         82 _main::
+                                     83 ;main.c:5: printf ("hello world\n");
+      000000 21r49r00                84 	ld	hl, #___str_1
+      000003 E5                      85 	push	hl
+      000004 CDr00r00                86 	call	_puts
+      000007 E8 02                   87 	add	sp, #2
+                                     88 ;main.c:6: printf ("varun kedia\n");
+      000009 21r55r00                89 	ld	hl, #___str_3
+      00000C E5                      90 	push	hl
+      00000D CDr00r00                91 	call	_puts
+      000010 E8 02                   92 	add	sp, #2
+                                     93 ;main.c:7: set_sprite_data (0,2,smileFace1);
+      000012 21r00r00                94 	ld	hl, #_smileFace1
+      000015 E5                      95 	push	hl
+      000016 3E 02                   96 	ld	a, #0x02
+      000018 F5                      97 	push	af
+      000019 33                      98 	inc	sp
+      00001A AF                      99 	xor	a, a
+      00001B F5                     100 	push	af
+      00001C 33                     101 	inc	sp
+      00001D CDr00r00               102 	call	_set_sprite_data
+      000020 E8 04                  103 	add	sp, #4
+                                    104 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1004: shadow_OAM[nb].tile=tile;
+      000022 21r02r00               105 	ld	hl, #(_shadow_OAM + 0x0002)
+      000025 36 00                  106 	ld	(hl), #0x00
+                                    107 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1077: OAM_item_t * itm = &shadow_OAM[nb];
+      000027 21r00r00               108 	ld	hl, #_shadow_OAM
+                                    109 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1078: itm->y=y, itm->x=x;
+      00002A 3E 4E                  110 	ld	a, #0x4e
+      00002C 22                     111 	ld	(hl+), a
+      00002D 36 58                  112 	ld	(hl), #0x58
+                                    113 ;main.c:10: SHOW_SPRITES;
+      00002F F0r00                  114 	ldh	a, (_LCDC_REG+0)
+      000031 F6 02                  115 	or	a, #0x02
+      000033 E0r00                  116 	ldh	(_LCDC_REG+0),a
+                                    117 ;main.c:11: while (1) {
+      000035                        118 00102$:
+                                    119 ;main.c:12: printf ("hello world\n");
+      000035 21r49r00               120 	ld	hl, #___str_1
+      000038 E5                     121 	push	hl
+      000039 CDr00r00               122 	call	_puts
+      00003C E8 02                  123 	add	sp, #2
+                                    124 ;main.c:13: delay(1000);
+      00003E 21 E8 03               125 	ld	hl, #0x03e8
+      000041 E5                     126 	push	hl
+      000042 CDr00r00               127 	call	_delay
+      000045 E8 02                  128 	add	sp, #2
+                                    129 ;main.c:15: }
+      000047 18 EC                  130 	jr	00102$
+      000049                        131 ___str_1:
+      000049 68 65 6C 6C 6F 20 77   132 	.ascii "hello world"
              6F 72 6C 64
-      000038 0A                     115 	.db 0x0a
-      000039 76 61 72 75 6E 20 6B   116 	.ascii "varun kedia"
+      000054 00                     133 	.db 0x00
+      000055                        134 ___str_3:
+      000055 76 61 72 75 6E 20 6B   135 	.ascii "varun kedia"
              65 64 69 61
-      000044 00                     117 	.db 0x00
-                                    118 	.area _CODE
-                                    119 	.area _CABS (ABS)
+      000060 00                     136 	.db 0x00
+                                    137 	.area _CODE
+                                    138 	.area _CABS (ABS)
