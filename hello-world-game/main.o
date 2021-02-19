@@ -1,11 +1,12 @@
 XL3
-H 7 areas 5 global symbols
+H 7 areas 6 global symbols
 M main
 O -mgbz80
 S _set_sprite_data Ref000000
 S .__.ABS. Def000000
 S _shadow_OAM Ref000000
-A _CODE size 16 flags 0 addr 0
+S _LCDC_REG Ref000000
+A _CODE size 24 flags 0 addr 0
 S _main Def000000
 A _DATA size 10 flags 0 addr 0
 S _smileFace1 Def000000
@@ -36,5 +37,9 @@ T 00 00 00
 R 00 00 00 00
 T 00 00 00 21 00 00 E5 3E 02 F5 33 AF F5 33 CD
 R 00 00 00 00 00 04 01 00
-T 0C 00 00 00 00 E8 04 21 02 00 36 00 C9
-R 00 00 00 00 02 03 00 00 02 08 02 00
+T 0C 00 00 00 00 E8 04 21 02 00 36 00 21 00 00 3E
+R 00 00 00 00 02 03 00 00 02 08 02 00 02 0D 02 00
+T 19 00 00 4E 22 36 58 F0 00 00 00 F6 02 E0
+R 00 00 00 00 0B 08 03 00
+T 22 00 00 00 00 00 C9
+R 00 00 00 00 0B 03 03 00

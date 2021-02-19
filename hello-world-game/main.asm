@@ -92,8 +92,17 @@ _main::
 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1004: shadow_OAM[nb].tile=tile;
 	ld	hl, #(_shadow_OAM + 0x0002)
 	ld	(hl), #0x00
-;main.c:6: set_sprite_tile (0,0);
-;main.c:7: }
+;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1077: OAM_item_t * itm = &shadow_OAM[nb];
+	ld	hl, #_shadow_OAM
+;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1078: itm->y=y, itm->x=x;
+	ld	a, #0x4e
+	ld	(hl+), a
+	ld	(hl), #0x58
+;main.c:8: SHOW_SPRITES;
+	ldh	a, (_LCDC_REG+0)
+	or	a, #0x02
+	ldh	(_LCDC_REG+0),a
+;main.c:9: }
 	ret
 	.area _CODE
 	.area _CABS (ABS)
