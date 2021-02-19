@@ -8,4 +8,8 @@ void main () {
     set_sprite_tile (0,0);
     move_sprite(0, 88, 78);
     SHOW_SPRITES;
+    while (1) {
+        printf ("hello world\n");
+        delay(1000);
+    }
 }
