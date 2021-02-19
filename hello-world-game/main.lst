@@ -42,19 +42,17 @@
                                      42 ; Function main
                                      43 ; ---------------------------------
       000000                         44 _main::
-                                     45 ;main.c:4: printf ("hello world.\nvarun kedia");
-      000000 21r0Ar00                46 	ld	hl, #___str_0
+                                     45 ;main.c:4: printf ("%d",10);
+      000000 21 0A 00                46 	ld	hl, #0x000a
       000003 E5                      47 	push	hl
-      000004 CDr00r00                48 	call	_printf
-      000007 E8 02                   49 	add	sp, #2
-                                     50 ;main.c:5: }
-      000009 C9                      51 	ret
-      00000A                         52 ___str_0:
-      00000A 68 65 6C 6C 6F 20 77    53 	.ascii "hello world."
-             6F 72 6C 64 2E
-      000016 0A                      54 	.db 0x0a
-      000017 76 61 72 75 6E 20 6B    55 	.ascii "varun kedia"
-             65 64 69 61
-      000022 00                      56 	.db 0x00
+      000004 21r0Er00                48 	ld	hl, #___str_0
+      000007 E5                      49 	push	hl
+      000008 CDr00r00                50 	call	_printf
+      00000B E8 04                   51 	add	sp, #4
+                                     52 ;main.c:5: }
+      00000D C9                      53 	ret
+      00000E                         54 ___str_0:
+      00000E 25 64                   55 	.ascii "%d"
+      000010 00                      56 	.db 0x00
                                      57 	.area _CODE
                                      58 	.area _CABS (ABS)

@@ -4,7 +4,7 @@ M main
 O -mgbz80
 S .__.ABS. Def000000
 S _printf Ref000000
-A _CODE size 23 flags 0 addr 0
+A _CODE size 11 flags 0 addr 0
 S _main Def000000
 A _DATA size 0 flags 0 addr 0
 A _DABS size 0 flags 8 addr 0
@@ -14,11 +14,11 @@ A _GSFINAL size 0 flags 0 addr 0
 A _CABS size 0 flags 8 addr 0
 T 00 00 00
 R 00 00 00 00
-T 00 00 00 21 0A 00 E5 CD 00 00 E8 02 C9
-R 00 00 00 00 00 04 00 00 02 08 01 00
-T 0A 00 00
+T 00 00 00 21 0A 00 E5 21 0E 00 E5 CD 00 00 E8 04
+R 00 00 00 00 00 08 00 00 02 0C 01 00
+T 0D 00 00 C9
 R 00 00 00 00
-T 0A 00 00 68 65 6C 6C 6F 20 77 6F 72 6C 64 2E 0A
+T 0E 00 00
 R 00 00 00 00
-T 17 00 00 76 61 72 75 6E 20 6B 65 64 69 61 00
+T 0E 00 00 25 64 00
 R 00 00 00 00

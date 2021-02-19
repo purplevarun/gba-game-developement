@@ -7,7 +7,7 @@ Symbol Table
     .__.ABS.                                                    =  000000 G
     .__.CPU.                                                    =  000000 L
     .__.H$L.                                                    =  000000 L
-  0 ___str_0                                                       00000A R
+  0 ___str_0                                                       00000E R
   0 _main                                                          000000 GR
     _printf                                                        ****** GX
 
@@ -17,7 +17,7 @@ Hexadecimal [24-Bits]
 
 Area Table
 
-   0 _CODE                                      size     23   flags    0
+   0 _CODE                                      size     11   flags    0
    1 _DATA                                      size      0   flags    0
    2 _DABS                                      size      0   flags    8
    3 _HOME                                      size      0   flags    0
