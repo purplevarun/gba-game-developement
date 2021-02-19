@@ -74,17 +74,17 @@
                                      74 ; code
                                      75 ;--------------------------------------------------------
                                      76 	.area _CODE
-                                     77 ;main.c:4: void main () {
+                                     77 ;main.c:6: void main () {
                                      78 ;	---------------------------------
                                      79 ; Function main
                                      80 ; ---------------------------------
       000000                         81 _main::
-                                     82 ;main.c:7: printf ("varun kedia\n");
+                                     82 ;main.c:9: printf ("varun kedia\n");
       000000 21r2Dr00                83 	ld	hl, #___str_4
       000003 E5                      84 	push	hl
       000004 CDr00r00                85 	call	_puts
       000007 E8 02                   86 	add	sp, #2
-                                     87 ;main.c:8: set_sprite_data (0,2,smileFace1);
+                                     87 ;main.c:10: set_sprite_data (0,2,smileFace1);
       000009 21r00r00                88 	ld	hl, #_smileFace1
       00000C E5                      89 	push	hl
       00000D 3E 02                   90 	ld	a, #0x02
@@ -104,11 +104,11 @@
       000021 36 98                  104 	ld	(hl), #0x98
       000023 23                     105 	inc	hl
       000024 36 A0                  106 	ld	(hl), #0xa0
-                                    107 ;main.c:11: SHOW_SPRITES;
+                                    107 ;main.c:13: SHOW_SPRITES;
       000026 F0r00                  108 	ldh	a, (_LCDC_REG+0)
       000028 F6 02                  109 	or	a, #0x02
       00002A E0r00                  110 	ldh	(_LCDC_REG+0),a
-                                    111 ;main.c:17: }
+                                    111 ;main.c:19: }
       00002C C9                     112 	ret
       00002D                        113 ___str_4:
       00002D 68 65 6C 6C 6F 20 77   114 	.ascii "hello world"
