@@ -1,0 +1,153 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 4.0.7 #12016 (MINGW64)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module main
+                                      6 	.optsdcc -mgbz80
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _main
+                                     12 	.globl _set_sprite_data
+                                     13 	.globl _delay
+                                     14 	.globl _smilers
+                                     15 ;--------------------------------------------------------
+                                     16 ; special function registers
+                                     17 ;--------------------------------------------------------
+                                     18 ;--------------------------------------------------------
+                                     19 ; ram data
+                                     20 ;--------------------------------------------------------
+                                     21 	.area _DATA
+      000000                         22 _smilers::
+      000000                         23 	.ds 16
+                                     24 ;--------------------------------------------------------
+                                     25 ; absolute external ram data
+                                     26 ;--------------------------------------------------------
+                                     27 	.area _DABS (ABS)
+                                     28 ;--------------------------------------------------------
+                                     29 ; global & static initialisations
+                                     30 ;--------------------------------------------------------
+                                     31 	.area _HOME
+                                     32 	.area _GSINIT
+                                     33 	.area _GSFINAL
+                                     34 	.area _GSINIT
+                                     35 ;4smilers.c:26: unsigned char smilers[] =
+      000000 21r00r00                36 	ld	hl, #_smilers
+      000003 36 7E                   37 	ld	(hl), #0x7e
+      000005 21r01r00                38 	ld	hl, #(_smilers + 0x0001)
+      000008 36 7E                   39 	ld	(hl), #0x7e
+      00000A 21r02r00                40 	ld	hl, #(_smilers + 0x0002)
+      00000D 36 81                   41 	ld	(hl), #0x81
+      00000F 21r03r00                42 	ld	hl, #(_smilers + 0x0003)
+      000012 36 81                   43 	ld	(hl), #0x81
+      000014 21r04r00                44 	ld	hl, #(_smilers + 0x0004)
+      000017 36 A5                   45 	ld	(hl), #0xa5
+      000019 21r05r00                46 	ld	hl, #(_smilers + 0x0005)
+      00001C 36 A5                   47 	ld	(hl), #0xa5
+      00001E 21r06r00                48 	ld	hl, #(_smilers + 0x0006)
+      000021 36 81                   49 	ld	(hl), #0x81
+      000023 21r07r00                50 	ld	hl, #(_smilers + 0x0007)
+      000026 36 81                   51 	ld	(hl), #0x81
+      000028 21r08r00                52 	ld	hl, #(_smilers + 0x0008)
+      00002B 36 A5                   53 	ld	(hl), #0xa5
+      00002D 21r09r00                54 	ld	hl, #(_smilers + 0x0009)
+      000030 36 A5                   55 	ld	(hl), #0xa5
+      000032 21r0Ar00                56 	ld	hl, #(_smilers + 0x000a)
+      000035 36 99                   57 	ld	(hl), #0x99
+      000037 21r0Br00                58 	ld	hl, #(_smilers + 0x000b)
+      00003A 36 99                   59 	ld	(hl), #0x99
+      00003C 21r0Cr00                60 	ld	hl, #(_smilers + 0x000c)
+      00003F 36 81                   61 	ld	(hl), #0x81
+      000041 21r0Dr00                62 	ld	hl, #(_smilers + 0x000d)
+      000044 36 81                   63 	ld	(hl), #0x81
+      000046 21r0Er00                64 	ld	hl, #(_smilers + 0x000e)
+      000049 36 7E                   65 	ld	(hl), #0x7e
+      00004B 21r0Fr00                66 	ld	hl, #(_smilers + 0x000f)
+      00004E 36 7E                   67 	ld	(hl), #0x7e
+                                     68 ;--------------------------------------------------------
+                                     69 ; Home
+                                     70 ;--------------------------------------------------------
+                                     71 	.area _HOME
+                                     72 	.area _HOME
+                                     73 ;--------------------------------------------------------
+                                     74 ; code
+                                     75 ;--------------------------------------------------------
+                                     76 	.area _CODE
+                                     77 ;main.c:4: void main () {
+                                     78 ;	---------------------------------
+                                     79 ; Function main
+                                     80 ; ---------------------------------
+      000000                         81 _main::
+      000000 3B                      82 	dec	sp
+                                     83 ;main.c:5: int i = 0;
+      000001 01 00 00                84 	ld	bc, #0x0000
+                                     85 ;main.c:6: set_sprite_data(0,2,smilers);
+      000004 21r00r00                86 	ld	hl, #_smilers
+      000007 E5                      87 	push	hl
+      000008 3E 02                   88 	ld	a, #0x02
+      00000A F5                      89 	push	af
+      00000B 33                      90 	inc	sp
+      00000C AF                      91 	xor	a, a
+      00000D F5                      92 	push	af
+      00000E 33                      93 	inc	sp
+      00000F CDr00r00                94 	call	_set_sprite_data
+      000012 E8 04                   95 	add	sp, #4
+                                     96 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1004: shadow_OAM[nb].tile=tile;
+      000014 21r02r00                97 	ld	hl, #(_shadow_OAM + 0x0002)
+      000017 36 00                   98 	ld	(hl), #0x00
+                                     99 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1077: OAM_item_t * itm = &shadow_OAM[nb];
+      000019 21r00r00               100 	ld	hl, #_shadow_OAM
+                                    101 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1078: itm->y=y, itm->x=x;
+      00001C 3E 64                  102 	ld	a, #0x64
+      00001E 22                     103 	ld	(hl+), a
+      00001F 36 64                  104 	ld	(hl), #0x64
+                                    105 ;main.c:9: SHOW_SPRITES;
+      000021 F0r00                  106 	ldh	a, (_LCDC_REG+0)
+      000023 F6 02                  107 	or	a, #0x02
+      000025 E0r00                  108 	ldh	(_LCDC_REG+0),a
+                                    109 ;main.c:10: while (1) {
+      000027                        110 00104$:
+                                    111 ;main.c:11: if (i>3)i=0;
+      000027 58                     112 	ld	e, b
+      000028 16 00                  113 	ld	d, #0x00
+      00002A 3E 03                  114 	ld	a, #0x03
+      00002C B9                     115 	cp	a, c
+      00002D 3E 00                  116 	ld	a, #0x00
+      00002F 98                     117 	sbc	a, b
+      000030 CB 7B                  118 	bit	7, e
+      000032 28 07                  119 	jr	Z, 00121$
+      000034 CB 7A                  120 	bit	7, d
+      000036 20 08                  121 	jr	NZ, 00122$
+      000038 BF                     122 	cp	a, a
+      000039 18 05                  123 	jr	00122$
+      00003B                        124 00121$:
+      00003B CB 7A                  125 	bit	7, d
+      00003D 28 01                  126 	jr	Z, 00122$
+      00003F 37                     127 	scf
+      000040                        128 00122$:
+      000040 30 03                  129 	jr	NC, 00102$
+      000042 01 00 00               130 	ld	bc, #0x0000
+      000045                        131 00102$:
+                                    132 ;main.c:12: set_sprite_tile(0,i++);
+      000045 59                     133 	ld	e, c
+      000046 03                     134 	inc	bc
+      000047 F8 00                  135 	ldhl	sp,	#0
+      000049 73                     136 	ld	(hl), e
+                                    137 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1004: shadow_OAM[nb].tile=tile;
+      00004A 11r02r00               138 	ld	de, #(_shadow_OAM + 0x0002)
+      00004D 7E                     139 	ld	a, (hl)
+      00004E 12                     140 	ld	(de), a
+                                    141 ;main.c:13: delay (1000);
+      00004F C5                     142 	push	bc
+      000050 21 E8 03               143 	ld	hl, #0x03e8
+      000053 E5                     144 	push	hl
+      000054 CDr00r00               145 	call	_delay
+      000057 E8 02                  146 	add	sp, #2
+      000059 C1                     147 	pop	bc
+      00005A 18 CB                  148 	jr	00104$
+                                    149 ;main.c:15: }
+      00005C 33                     150 	inc	sp
+      00005D C9                     151 	ret
+                                    152 	.area _CODE
+                                    153 	.area _CABS (ABS)
