@@ -10,184 +10,192 @@
                                      10 ;--------------------------------------------------------
                                      11 	.globl _main
                                      12 	.globl _set_sprite_data
-                                     13 	.globl _smileFace1
-                                     14 ;--------------------------------------------------------
-                                     15 ; special function registers
-                                     16 ;--------------------------------------------------------
+                                     13 	.globl _delay
+                                     14 	.globl _smileFace1
+                                     15 ;--------------------------------------------------------
+                                     16 ; special function registers
                                      17 ;--------------------------------------------------------
-                                     18 ; ram data
-                                     19 ;--------------------------------------------------------
-                                     20 	.area _DATA
-      000000                         21 _smileFace1::
-      000000                         22 	.ds 16
-                                     23 ;--------------------------------------------------------
-                                     24 ; absolute external ram data
-                                     25 ;--------------------------------------------------------
-                                     26 	.area _DABS (ABS)
-                                     27 ;--------------------------------------------------------
-                                     28 ; global & static initialisations
-                                     29 ;--------------------------------------------------------
-                                     30 	.area _HOME
-                                     31 	.area _GSINIT
-                                     32 	.area _GSFINAL
-                                     33 	.area _GSINIT
-                                     34 ;smile.c:26: unsigned char smileFace1[] =
-      000000 21r00r00                35 	ld	hl, #_smileFace1
-      000003 36 7E                   36 	ld	(hl), #0x7e
-      000005 21r01r00                37 	ld	hl, #(_smileFace1 + 0x0001)
-      000008 36 7E                   38 	ld	(hl), #0x7e
-      00000A 21r02r00                39 	ld	hl, #(_smileFace1 + 0x0002)
-      00000D 36 FF                   40 	ld	(hl), #0xff
-      00000F 21r03r00                41 	ld	hl, #(_smileFace1 + 0x0003)
-      000012 36 81                   42 	ld	(hl), #0x81
-      000014 21r04r00                43 	ld	hl, #(_smileFace1 + 0x0004)
-      000017 36 FF                   44 	ld	(hl), #0xff
-      000019 21r05r00                45 	ld	hl, #(_smileFace1 + 0x0005)
-      00001C 36 A5                   46 	ld	(hl), #0xa5
-      00001E 21r06r00                47 	ld	hl, #(_smileFace1 + 0x0006)
-      000021 36 FF                   48 	ld	(hl), #0xff
-      000023 21r07r00                49 	ld	hl, #(_smileFace1 + 0x0007)
-      000026 36 81                   50 	ld	(hl), #0x81
-      000028 21r08r00                51 	ld	hl, #(_smileFace1 + 0x0008)
-      00002B 36 FF                   52 	ld	(hl), #0xff
-      00002D 21r09r00                53 	ld	hl, #(_smileFace1 + 0x0009)
-      000030 36 A5                   54 	ld	(hl), #0xa5
-      000032 21r0Ar00                55 	ld	hl, #(_smileFace1 + 0x000a)
-      000035 36 FF                   56 	ld	(hl), #0xff
-      000037 21r0Br00                57 	ld	hl, #(_smileFace1 + 0x000b)
-      00003A 36 BD                   58 	ld	(hl), #0xbd
-      00003C 21r0Cr00                59 	ld	hl, #(_smileFace1 + 0x000c)
-      00003F 36 FF                   60 	ld	(hl), #0xff
-      000041 21r0Dr00                61 	ld	hl, #(_smileFace1 + 0x000d)
-      000044 36 81                   62 	ld	(hl), #0x81
-      000046 21r0Er00                63 	ld	hl, #(_smileFace1 + 0x000e)
-      000049 36 7E                   64 	ld	(hl), #0x7e
-      00004B 21r0Fr00                65 	ld	hl, #(_smileFace1 + 0x000f)
-      00004E 36 7E                   66 	ld	(hl), #0x7e
-                                     67 ;--------------------------------------------------------
-                                     68 ; Home
-                                     69 ;--------------------------------------------------------
-                                     70 	.area _HOME
+                                     18 ;--------------------------------------------------------
+                                     19 ; ram data
+                                     20 ;--------------------------------------------------------
+                                     21 	.area _DATA
+      000000                         22 _smileFace1::
+      000000                         23 	.ds 16
+                                     24 ;--------------------------------------------------------
+                                     25 ; absolute external ram data
+                                     26 ;--------------------------------------------------------
+                                     27 	.area _DABS (ABS)
+                                     28 ;--------------------------------------------------------
+                                     29 ; global & static initialisations
+                                     30 ;--------------------------------------------------------
+                                     31 	.area _HOME
+                                     32 	.area _GSINIT
+                                     33 	.area _GSFINAL
+                                     34 	.area _GSINIT
+                                     35 ;smile.c:26: unsigned char smileFace1[] =
+      000000 21r00r00                36 	ld	hl, #_smileFace1
+      000003 36 7E                   37 	ld	(hl), #0x7e
+      000005 21r01r00                38 	ld	hl, #(_smileFace1 + 0x0001)
+      000008 36 7E                   39 	ld	(hl), #0x7e
+      00000A 21r02r00                40 	ld	hl, #(_smileFace1 + 0x0002)
+      00000D 36 FF                   41 	ld	(hl), #0xff
+      00000F 21r03r00                42 	ld	hl, #(_smileFace1 + 0x0003)
+      000012 36 81                   43 	ld	(hl), #0x81
+      000014 21r04r00                44 	ld	hl, #(_smileFace1 + 0x0004)
+      000017 36 FF                   45 	ld	(hl), #0xff
+      000019 21r05r00                46 	ld	hl, #(_smileFace1 + 0x0005)
+      00001C 36 A5                   47 	ld	(hl), #0xa5
+      00001E 21r06r00                48 	ld	hl, #(_smileFace1 + 0x0006)
+      000021 36 FF                   49 	ld	(hl), #0xff
+      000023 21r07r00                50 	ld	hl, #(_smileFace1 + 0x0007)
+      000026 36 81                   51 	ld	(hl), #0x81
+      000028 21r08r00                52 	ld	hl, #(_smileFace1 + 0x0008)
+      00002B 36 FF                   53 	ld	(hl), #0xff
+      00002D 21r09r00                54 	ld	hl, #(_smileFace1 + 0x0009)
+      000030 36 A5                   55 	ld	(hl), #0xa5
+      000032 21r0Ar00                56 	ld	hl, #(_smileFace1 + 0x000a)
+      000035 36 FF                   57 	ld	(hl), #0xff
+      000037 21r0Br00                58 	ld	hl, #(_smileFace1 + 0x000b)
+      00003A 36 BD                   59 	ld	(hl), #0xbd
+      00003C 21r0Cr00                60 	ld	hl, #(_smileFace1 + 0x000c)
+      00003F 36 FF                   61 	ld	(hl), #0xff
+      000041 21r0Dr00                62 	ld	hl, #(_smileFace1 + 0x000d)
+      000044 36 81                   63 	ld	(hl), #0x81
+      000046 21r0Er00                64 	ld	hl, #(_smileFace1 + 0x000e)
+      000049 36 7E                   65 	ld	(hl), #0x7e
+      00004B 21r0Fr00                66 	ld	hl, #(_smileFace1 + 0x000f)
+      00004E 36 7E                   67 	ld	(hl), #0x7e
+                                     68 ;--------------------------------------------------------
+                                     69 ; Home
+                                     70 ;--------------------------------------------------------
                                      71 	.area _HOME
-                                     72 ;--------------------------------------------------------
-                                     73 ; code
-                                     74 ;--------------------------------------------------------
-                                     75 	.area _CODE
-                                     76 ;main.c:8: void main () {
-                                     77 ;	---------------------------------
-                                     78 ; Function main
-                                     79 ; ---------------------------------
-      000000                         80 _main::
-      000000 E8 FE                   81 	add	sp, #-2
-                                     82 ;main.c:9: int i = start_X, j = start_Y;
-      000002 01 08 00                83 	ld	bc, #0x0008
-      000005 F8 00                   84 	ldhl	sp,	#0
-      000007 36 10                   85 	ld	(hl), #0x10
-      000009 AF                      86 	xor	a, a
-      00000A 23                      87 	inc	hl
-      00000B 77                      88 	ld	(hl), a
-                                     89 ;main.c:12: set_sprite_data (0,2,smileFace1);
-      00000C 21r00r00                90 	ld	hl, #_smileFace1
-      00000F E5                      91 	push	hl
-      000010 3E 02                   92 	ld	a, #0x02
-      000012 F5                      93 	push	af
-      000013 33                      94 	inc	sp
-      000014 AF                      95 	xor	a, a
-      000015 F5                      96 	push	af
-      000016 33                      97 	inc	sp
-      000017 CDr00r00                98 	call	_set_sprite_data
-      00001A E8 04                   99 	add	sp, #4
-                                    100 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1004: shadow_OAM[nb].tile=tile;
-      00001C 21r02r00               101 	ld	hl, #(_shadow_OAM + 0x0002)
-      00001F 36 00                  102 	ld	(hl), #0x00
-                                    103 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1077: OAM_item_t * itm = &shadow_OAM[nb];
-      000021 21r00r00               104 	ld	hl, #_shadow_OAM
-                                    105 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1078: itm->y=y, itm->x=x;
-      000024 3E 10                  106 	ld	a, #0x10
-      000026 22                     107 	ld	(hl+), a
-      000027 36 08                  108 	ld	(hl), #0x08
-                                    109 ;main.c:15: SHOW_SPRITES;
-      000029 F0r00                  110 	ldh	a, (_LCDC_REG+0)
-      00002B F6 02                  111 	or	a, #0x02
-      00002D E0r00                  112 	ldh	(_LCDC_REG+0),a
-                                    113 ;main.c:16: while (1) {
-      00002F                        114 00105$:
-                                    115 ;main.c:17: if (i>end_X || j > end_Y){
-      00002F 58                     116 	ld	e, b
-      000030 16 00                  117 	ld	d, #0x00
-      000032 3E A0                  118 	ld	a, #0xa0
-      000034 B9                     119 	cp	a, c
-      000035 3E 00                  120 	ld	a, #0x00
-      000037 98                     121 	sbc	a, b
-      000038 CB 7B                  122 	bit	7, e
-      00003A 28 07                  123 	jr	Z, 00122$
-      00003C CB 7A                  124 	bit	7, d
-      00003E 20 08                  125 	jr	NZ, 00123$
-      000040 BF                     126 	cp	a, a
-      000041 18 05                  127 	jr	00123$
-      000043                        128 00122$:
-      000043 CB 7A                  129 	bit	7, d
-      000045 28 01                  130 	jr	Z, 00123$
-      000047 37                     131 	scf
-      000048                        132 00123$:
-      000048 38 1E                  133 	jr	C, 00101$
-      00004A F8 00                  134 	ldhl	sp,	#0
-      00004C 3E 98                  135 	ld	a, #0x98
-      00004E 96                     136 	sub	a, (hl)
-      00004F 23                     137 	inc	hl
-      000050 3E 00                  138 	ld	a, #0x00
-      000052 9E                     139 	sbc	a, (hl)
-      000053 3E 00                  140 	ld	a, #0x00
-      000055 57                     141 	ld	d, a
-      000056 CB 7E                  142 	bit	7, (hl)
-      000058 28 07                  143 	jr	Z, 00124$
-      00005A CB 7A                  144 	bit	7, d
-      00005C 20 08                  145 	jr	NZ, 00125$
-      00005E BF                     146 	cp	a, a
-      00005F 18 05                  147 	jr	00125$
-      000061                        148 00124$:
-      000061 CB 7A                  149 	bit	7, d
-      000063 28 01                  150 	jr	Z, 00125$
-      000065 37                     151 	scf
-      000066                        152 00125$:
-      000066 30 0A                  153 	jr	NC, 00102$
-      000068                        154 00101$:
-                                    155 ;main.c:18: i = start_X;
-      000068 01 08 00               156 	ld	bc, #0x0008
-                                    157 ;main.c:19: j = start_Y;
-      00006B F8 00                  158 	ldhl	sp,	#0
-      00006D 36 10                  159 	ld	(hl), #0x10
-      00006F AF                     160 	xor	a, a
-      000070 23                     161 	inc	hl
-      000071 77                     162 	ld	(hl), a
-      000072                        163 00102$:
-                                    164 ;main.c:21: move_sprite (0, i,j);
-      000072 F8 00                  165 	ldhl	sp,	#0
-      000074 56                     166 	ld	d, (hl)
-      000075 59                     167 	ld	e, c
-                                    168 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1077: OAM_item_t * itm = &shadow_OAM[nb];
-      000076 21r00r00               169 	ld	hl, #_shadow_OAM
-                                    170 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1078: itm->y=y, itm->x=x;
-      000079 7A                     171 	ld	a, d
-      00007A 22                     172 	ld	(hl+), a
-      00007B 73                     173 	ld	(hl), e
-                                    174 ;main.c:22: i+=10;
-      00007C 21 0A 00               175 	ld	hl, #0x000a
-      00007F 09                     176 	add	hl, bc
-      000080 4D                     177 	ld	c, l
-      000081 44                     178 	ld	b, h
-                                    179 ;main.c:23: j+=10;
-                                    180 ;c
-      000082 D1                     181 	pop	de
-      000083 D5                     182 	push	de
-      000084 21 0A 00               183 	ld	hl, #0x000a
-      000087 19                     184 	add	hl, de
-      000088 33                     185 	inc	sp
-      000089 33                     186 	inc	sp
-      00008A E5                     187 	push	hl
-      00008B 18 A2                  188 	jr	00105$
-                                    189 ;main.c:25: }
-      00008D E8 02                  190 	add	sp, #2
-      00008F C9                     191 	ret
-                                    192 	.area _CODE
-                                    193 	.area _CABS (ABS)
+                                     72 	.area _HOME
+                                     73 ;--------------------------------------------------------
+                                     74 ; code
+                                     75 ;--------------------------------------------------------
+                                     76 	.area _CODE
+                                     77 ;main.c:8: void main () {
+                                     78 ;	---------------------------------
+                                     79 ; Function main
+                                     80 ; ---------------------------------
+      000000                         81 _main::
+      000000 E8 FE                   82 	add	sp, #-2
+                                     83 ;main.c:9: int i = start_X, j = start_Y;
+      000002 01 08 00                84 	ld	bc, #0x0008
+      000005 F8 00                   85 	ldhl	sp,	#0
+      000007 36 10                   86 	ld	(hl), #0x10
+      000009 AF                      87 	xor	a, a
+      00000A 23                      88 	inc	hl
+      00000B 77                      89 	ld	(hl), a
+                                     90 ;main.c:12: set_sprite_data (0,2,smileFace1);
+      00000C 21r00r00                91 	ld	hl, #_smileFace1
+      00000F E5                      92 	push	hl
+      000010 3E 02                   93 	ld	a, #0x02
+      000012 F5                      94 	push	af
+      000013 33                      95 	inc	sp
+      000014 AF                      96 	xor	a, a
+      000015 F5                      97 	push	af
+      000016 33                      98 	inc	sp
+      000017 CDr00r00                99 	call	_set_sprite_data
+      00001A E8 04                  100 	add	sp, #4
+                                    101 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1004: shadow_OAM[nb].tile=tile;
+      00001C 21r02r00               102 	ld	hl, #(_shadow_OAM + 0x0002)
+      00001F 36 00                  103 	ld	(hl), #0x00
+                                    104 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1077: OAM_item_t * itm = &shadow_OAM[nb];
+      000021 21r00r00               105 	ld	hl, #_shadow_OAM
+                                    106 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1078: itm->y=y, itm->x=x;
+      000024 3E 10                  107 	ld	a, #0x10
+      000026 22                     108 	ld	(hl+), a
+      000027 36 08                  109 	ld	(hl), #0x08
+                                    110 ;main.c:15: SHOW_SPRITES;
+      000029 F0r00                  111 	ldh	a, (_LCDC_REG+0)
+      00002B F6 02                  112 	or	a, #0x02
+      00002D E0r00                  113 	ldh	(_LCDC_REG+0),a
+                                    114 ;main.c:16: while (1) {
+      00002F                        115 00105$:
+                                    116 ;main.c:17: if (i>end_X || j > end_Y){
+      00002F 58                     117 	ld	e, b
+      000030 16 00                  118 	ld	d, #0x00
+      000032 3E A0                  119 	ld	a, #0xa0
+      000034 B9                     120 	cp	a, c
+      000035 3E 00                  121 	ld	a, #0x00
+      000037 98                     122 	sbc	a, b
+      000038 CB 7B                  123 	bit	7, e
+      00003A 28 07                  124 	jr	Z, 00122$
+      00003C CB 7A                  125 	bit	7, d
+      00003E 20 08                  126 	jr	NZ, 00123$
+      000040 BF                     127 	cp	a, a
+      000041 18 05                  128 	jr	00123$
+      000043                        129 00122$:
+      000043 CB 7A                  130 	bit	7, d
+      000045 28 01                  131 	jr	Z, 00123$
+      000047 37                     132 	scf
+      000048                        133 00123$:
+      000048 38 1E                  134 	jr	C, 00101$
+      00004A F8 00                  135 	ldhl	sp,	#0
+      00004C 3E 98                  136 	ld	a, #0x98
+      00004E 96                     137 	sub	a, (hl)
+      00004F 23                     138 	inc	hl
+      000050 3E 00                  139 	ld	a, #0x00
+      000052 9E                     140 	sbc	a, (hl)
+      000053 3E 00                  141 	ld	a, #0x00
+      000055 57                     142 	ld	d, a
+      000056 CB 7E                  143 	bit	7, (hl)
+      000058 28 07                  144 	jr	Z, 00124$
+      00005A CB 7A                  145 	bit	7, d
+      00005C 20 08                  146 	jr	NZ, 00125$
+      00005E BF                     147 	cp	a, a
+      00005F 18 05                  148 	jr	00125$
+      000061                        149 00124$:
+      000061 CB 7A                  150 	bit	7, d
+      000063 28 01                  151 	jr	Z, 00125$
+      000065 37                     152 	scf
+      000066                        153 00125$:
+      000066 30 0A                  154 	jr	NC, 00102$
+      000068                        155 00101$:
+                                    156 ;main.c:18: i = start_X;
+      000068 01 08 00               157 	ld	bc, #0x0008
+                                    158 ;main.c:19: j = start_Y;
+      00006B F8 00                  159 	ldhl	sp,	#0
+      00006D 36 10                  160 	ld	(hl), #0x10
+      00006F AF                     161 	xor	a, a
+      000070 23                     162 	inc	hl
+      000071 77                     163 	ld	(hl), a
+      000072                        164 00102$:
+                                    165 ;main.c:21: move_sprite (0, i,j);
+      000072 F8 00                  166 	ldhl	sp,	#0
+      000074 56                     167 	ld	d, (hl)
+      000075 59                     168 	ld	e, c
+                                    169 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1077: OAM_item_t * itm = &shadow_OAM[nb];
+      000076 21r00r00               170 	ld	hl, #_shadow_OAM
+                                    171 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1078: itm->y=y, itm->x=x;
+      000079 7A                     172 	ld	a, d
+      00007A 22                     173 	ld	(hl+), a
+      00007B 73                     174 	ld	(hl), e
+                                    175 ;main.c:22: i+=10;
+      00007C 21 0A 00               176 	ld	hl, #0x000a
+      00007F 09                     177 	add	hl, bc
+      000080 4D                     178 	ld	c, l
+      000081 44                     179 	ld	b, h
+                                    180 ;main.c:23: j+=10;
+                                    181 ;c
+      000082 D1                     182 	pop	de
+      000083 D5                     183 	push	de
+      000084 21 0A 00               184 	ld	hl, #0x000a
+      000087 19                     185 	add	hl, de
+      000088 33                     186 	inc	sp
+      000089 33                     187 	inc	sp
+      00008A E5                     188 	push	hl
+                                    189 ;main.c:24: delay(500);
+      00008B C5                     190 	push	bc
+      00008C 21 F4 01               191 	ld	hl, #0x01f4
+      00008F E5                     192 	push	hl
+      000090 CDr00r00               193 	call	_delay
+      000093 E8 02                  194 	add	sp, #2
+      000095 C1                     195 	pop	bc
+      000096 18 97                  196 	jr	00105$
+                                    197 ;main.c:26: }
+      000098 E8 02                  198 	add	sp, #2
+      00009A C9                     199 	ret
+                                    200 	.area _CODE
+                                    201 	.area _CABS (ABS)

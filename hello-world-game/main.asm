@@ -10,6 +10,7 @@
 ;--------------------------------------------------------
 	.globl _main
 	.globl _set_sprite_data
+	.globl _delay
 	.globl _smileFace1
 ;--------------------------------------------------------
 ; special function registers
@@ -185,8 +186,15 @@ _main::
 	inc	sp
 	inc	sp
 	push	hl
+;main.c:24: delay(500);
+	push	bc
+	ld	hl, #0x01f4
+	push	hl
+	call	_delay
+	add	sp, #2
+	pop	bc
 	jr	00105$
-;main.c:25: }
+;main.c:26: }
 	add	sp, #2
 	ret
 	.area _CODE

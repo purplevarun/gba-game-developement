@@ -21,5 +21,6 @@ void main () {
         move_sprite (0, i,j);
         i+=10;
         j+=10;
+        delay(500);
     }
 }
