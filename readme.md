@@ -7,5 +7,5 @@
     <img src="hello-world-game\image1-1.png" width=45% alt="screenshot-1-1">
 </li>
 <li>
-    
+    <p>Smily Sprite can now move along the principle diagonal with a delay of 1000ms. -- 19th feb 2021 07:23 PM</p>
 </li>
