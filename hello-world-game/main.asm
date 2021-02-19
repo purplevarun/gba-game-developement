@@ -9,7 +9,6 @@
 ; Public variables in this module
 ;--------------------------------------------------------
 	.globl _main
-	.globl _puts
 	.globl _set_sprite_data
 	.globl _smileFace1
 ;--------------------------------------------------------
@@ -79,11 +78,6 @@ _smileFace1::
 ; Function main
 ; ---------------------------------
 _main::
-;main.c:9: printf ("varun kedia\n");
-	ld	hl, #___str_4
-	push	hl
-	call	_puts
-	add	sp, #2
 ;main.c:10: set_sprite_data (0,2,smileFace1);
 	ld	hl, #_smileFace1
 	push	hl
@@ -101,19 +95,14 @@ _main::
 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1077: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	hl, #_shadow_OAM
 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1078: itm->y=y, itm->x=x;
-	ld	(hl), #0x98
-	inc	hl
-	ld	(hl), #0xa0
+	ld	a, #0x10
+	ld	(hl+), a
+	ld	(hl), #0x08
 ;main.c:13: SHOW_SPRITES;
 	ldh	a, (_LCDC_REG+0)
 	or	a, #0x02
 	ldh	(_LCDC_REG+0),a
 ;main.c:19: }
 	ret
-___str_4:
-	.ascii "hello world"
-	.db 0x0a
-	.ascii "varun kedia"
-	.db 0x00
 	.area _CODE
 	.area _CABS (ABS)

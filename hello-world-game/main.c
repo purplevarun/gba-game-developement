@@ -1,19 +1,25 @@
 #include <gb/gb.h>
 #include <stdio.h>
 #include "smile.c"
-#define limit_X 160
-#define limit_Y 152
+#define start_X 8
+#define start_Y 16
+#define end_X 160
+#define end_Y 152
 void main () {
-    int i = 0;
-    printf ("hello world\n");
-    printf ("varun kedia\n");
+    int i = start_X, j = start_Y;
+    // printf ("hello world\n");
+    // printf ("varun kedia\n");
     set_sprite_data (0,2,smileFace1);
     set_sprite_tile (0,0);
-    move_sprite(0, limit_X, limit_Y);
+    move_sprite(0, i, j);
     SHOW_SPRITES;
-    // while (0) {
-    //     move_sprite(0,10+i,10+i);
-    //     delay(1000);
-    //     i+=10;
-    // }
+    while (1) {
+        if (i>end_X || j > end_Y){
+            i = start_X;
+            j = start_Y;
+        }
+        move_sprite (0, i,j);
+        i+=10;
+        j+=10;
+    }
 }
