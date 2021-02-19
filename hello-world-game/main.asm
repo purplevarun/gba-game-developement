@@ -11,7 +11,6 @@
 	.globl _main
 	.globl _puts
 	.globl _set_sprite_data
-	.globl _delay
 	.globl _smileFace1
 ;--------------------------------------------------------
 ; special function registers
@@ -102,36 +101,16 @@ _main::
 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1077: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	hl, #_shadow_OAM
 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1078: itm->y=y, itm->x=x;
-	ld	a, #0x4e
+	ld	a, #0x64
 	ld	(hl+), a
-	ld	(hl), #0x58
+	ld	(hl), #0x64
 ;main.c:11: SHOW_SPRITES;
 	ldh	a, (_LCDC_REG+0)
 	or	a, #0x02
 	ldh	(_LCDC_REG+0),a
-;main.c:12: while (1) {
-	ld	bc, #0x0000
-00102$:
-;main.c:13: move_sprite(0,10+i,10+i);
-	ld	a, c
-	add	a, #0x0a
-;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1077: OAM_item_t * itm = &shadow_OAM[nb];
-;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1078: itm->y=y, itm->x=x;
-	ld	e, a
-	ld	hl, #_shadow_OAM
-	ld	(hl+), a
-	ld	(hl), e
-;main.c:14: delay(1000);
-	push	bc
-	ld	hl, #0x03e8
-	push	hl
-	call	_delay
-	add	sp, #2
-	pop	bc
-;main.c:15: i++;
-	inc	bc
+;main.c:15: i+=10;
 ;main.c:17: }
-	jr	00102$
+	ret
 ___str_4:
 	.ascii "hello world"
 	.db 0x0a

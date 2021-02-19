@@ -7,11 +7,11 @@ void main () {
     printf ("varun kedia\n");
     set_sprite_data (0,2,smileFace1);
     set_sprite_tile (0,0);
-    move_sprite(0, 88, 78);
+    move_sprite(0, 100, 100);
     SHOW_SPRITES;
-    while (1) {
-        move_sprite(0,10+i,10+i);
-        delay(1000);
-        i++;
-    }
+    // while (0) {
+    //     move_sprite(0,10+i,10+i);
+    //     delay(1000);
+    //     i+=10;
+    // }
 }
