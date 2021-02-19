@@ -101,9 +101,9 @@
                                     101 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1077: OAM_item_t * itm = &shadow_OAM[nb];
       00001E 21r00r00               102 	ld	hl, #_shadow_OAM
                                     103 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1078: itm->y=y, itm->x=x;
-      000021 3E 8C                  104 	ld	a, #0x8c
+      000021 3E 96                  104 	ld	a, #0x96
       000023 22                     105 	ld	(hl+), a
-      000024 36 8C                  106 	ld	(hl), #0x8c
+      000024 36 96                  106 	ld	(hl), #0x96
                                     107 ;main.c:11: SHOW_SPRITES;
       000026 F0r00                  108 	ldh	a, (_LCDC_REG+0)
       000028 F6 02                  109 	or	a, #0x02
