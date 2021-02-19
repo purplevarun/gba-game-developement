@@ -9,6 +9,7 @@
 ; Public variables in this module
 ;--------------------------------------------------------
 	.globl _main
+	.globl _puts
 	.globl _set_sprite_data
 	.globl _smileFace1
 ;--------------------------------------------------------
@@ -78,7 +79,12 @@ _smileFace1::
 ; Function main
 ; ---------------------------------
 _main::
-;main.c:5: set_sprite_data (0,2,smileFace1);
+;main.c:6: printf ("varun kedia\n");
+	ld	hl, #___str_4
+	push	hl
+	call	_puts
+	add	sp, #2
+;main.c:7: set_sprite_data (0,2,smileFace1);
 	ld	hl, #_smileFace1
 	push	hl
 	ld	a, #0x02
@@ -98,11 +104,16 @@ _main::
 	ld	a, #0x4e
 	ld	(hl+), a
 	ld	(hl), #0x58
-;main.c:8: SHOW_SPRITES;
+;main.c:10: SHOW_SPRITES;
 	ldh	a, (_LCDC_REG+0)
 	or	a, #0x02
 	ldh	(_LCDC_REG+0),a
-;main.c:9: }
+;main.c:11: }
 	ret
+___str_4:
+	.ascii "hello world"
+	.db 0x0a
+	.ascii "varun kedia"
+	.db 0x00
 	.area _CODE
 	.area _CABS (ABS)
