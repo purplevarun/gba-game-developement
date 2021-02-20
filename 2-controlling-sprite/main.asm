@@ -10,7 +10,6 @@
 ;--------------------------------------------------------
 	.globl _main
 	.globl _set_sprite_data
-	.globl _delay
 	.globl _smilers
 ;--------------------------------------------------------
 ; special function registers
@@ -239,9 +238,6 @@ _smilers::
 ; Function main
 ; ---------------------------------
 _main::
-	dec	sp
-;main.c:5: int i = 0;
-	ld	bc, #0x0000
 ;main.c:6: set_sprite_data(0,2,smilers);
 	ld	hl, #_smilers
 	push	hl
@@ -255,7 +251,7 @@ _main::
 	add	sp, #4
 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1004: shadow_OAM[nb].tile=tile;
 	ld	hl, #(_shadow_OAM + 0x0002)
-	ld	(hl), #0x00
+	ld	(hl), #0x02
 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1077: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	hl, #_shadow_OAM
 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1078: itm->y=y, itm->x=x;
@@ -266,48 +262,7 @@ _main::
 	ldh	a, (_LCDC_REG+0)
 	or	a, #0x02
 	ldh	(_LCDC_REG+0),a
-;main.c:10: while (1) {
-00104$:
-;main.c:11: if (i>2)i=0;
-	ld	e, b
-	ld	d, #0x00
-	ld	a, #0x02
-	cp	a, c
-	ld	a, #0x00
-	sbc	a, b
-	bit	7, e
-	jr	Z, 00121$
-	bit	7, d
-	jr	NZ, 00122$
-	cp	a, a
-	jr	00122$
-00121$:
-	bit	7, d
-	jr	Z, 00122$
-	scf
-00122$:
-	jr	NC, 00102$
-	ld	bc, #0x0000
-00102$:
-;main.c:12: set_sprite_tile(0,i++);
-	ld	e, c
-	inc	bc
-	ldhl	sp,	#0
-	ld	(hl), e
-;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1004: shadow_OAM[nb].tile=tile;
-	ld	de, #(_shadow_OAM + 0x0002)
-	ld	a, (hl)
-	ld	(de), a
-;main.c:13: delay (1000);
-	push	bc
-	ld	hl, #0x03e8
-	push	hl
-	call	_delay
-	add	sp, #2
-	pop	bc
-	jr	00104$
 ;main.c:15: }
-	inc	sp
 	ret
 	.area _CODE
 	.area _CABS (ABS)
