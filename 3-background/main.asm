@@ -11,6 +11,7 @@
 	.globl _main
 	.globl _set_bkg_tiles
 	.globl _set_bkg_data
+	.globl _delay
 	.globl _bg1
 	.globl _TileLabels
 ;--------------------------------------------------------
@@ -1779,7 +1780,18 @@ _main::
 	ldh	a, (_LCDC_REG+0)
 	or	a, #0x80
 	ldh	(_LCDC_REG+0),a
-;main.c:10: }
-	ret
+;main.c:10: while (1) {
+00102$:
+;c:/users/purpl/desktop/gbdk/include/gb/gb.h:775: SCX_REG+=x, SCY_REG+=y;
+	ldh	a, (_SCX_REG+0)
+	inc	a
+	ldh	(_SCX_REG+0),a
+;main.c:12: delay (100);
+	ld	hl, #0x0064
+	push	hl
+	call	_delay
+	add	sp, #2
+;main.c:14: }
+	jr	00102$
 	.area _CODE
 	.area _CABS (ABS)
