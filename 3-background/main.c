@@ -7,4 +7,8 @@ void main () {
     set_bkg_tiles(0,0,40,18,bg1);
     SHOW_BKG;
     DISPLAY_ON;
+    while (1) {
+        scroll_bkg(1,0);
+        delay (100);
+    }
 }
