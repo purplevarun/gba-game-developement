@@ -8,7 +8,7 @@ void main () {
     move_sprite(0,100,100);
     SHOW_SPRITES;
     while (1) {
-        if (i>3)i=0;
+        if (i>1)i=0;
         set_sprite_tile(0,i++);
         delay (1000);
     }

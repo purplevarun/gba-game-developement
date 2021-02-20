@@ -204,10 +204,10 @@ _main::
 	ldh	(_LCDC_REG+0),a
 ;main.c:10: while (1) {
 00104$:
-;main.c:11: if (i>3)i=0;
+;main.c:11: if (i>1)i=0;
 	ld	e, b
 	ld	d, #0x00
-	ld	a, #0x03
+	ld	a, #0x01
 	cp	a, c
 	ld	a, #0x00
 	sbc	a, b
