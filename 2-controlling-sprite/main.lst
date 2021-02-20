@@ -11,258 +11,294 @@
                                      11 	.globl _main
                                      12 	.globl _set_sprite_data
                                      13 	.globl _smilers
-                                     14 ;--------------------------------------------------------
-                                     15 ; special function registers
-                                     16 ;--------------------------------------------------------
+                                     14 	.globl _newsmile
+                                     15 ;--------------------------------------------------------
+                                     16 ; special function registers
                                      17 ;--------------------------------------------------------
-                                     18 ; ram data
-                                     19 ;--------------------------------------------------------
-                                     20 	.area _DATA
-      000000                         21 _smilers::
-      000000                         22 	.ds 96
-                                     23 ;--------------------------------------------------------
-                                     24 ; absolute external ram data
-                                     25 ;--------------------------------------------------------
-                                     26 	.area _DABS (ABS)
-                                     27 ;--------------------------------------------------------
-                                     28 ; global & static initialisations
-                                     29 ;--------------------------------------------------------
-                                     30 	.area _HOME
-                                     31 	.area _GSINIT
-                                     32 	.area _GSFINAL
-                                     33 	.area _GSINIT
-                                     34 ;4smiles.c:26: unsigned char smilers[] =
-      000000 21r00r00                35 	ld	hl, #_smilers
-      000003 36 7E                   36 	ld	(hl), #0x7e
-      000005 21r01r00                37 	ld	hl, #(_smilers + 0x0001)
-      000008 36 7E                   38 	ld	(hl), #0x7e
-      00000A 21r02r00                39 	ld	hl, #(_smilers + 0x0002)
-      00000D 36 81                   40 	ld	(hl), #0x81
-      00000F 21r03r00                41 	ld	hl, #(_smilers + 0x0003)
-      000012 36 81                   42 	ld	(hl), #0x81
-      000014 21r04r00                43 	ld	hl, #(_smilers + 0x0004)
-      000017 36 A5                   44 	ld	(hl), #0xa5
-      000019 21r05r00                45 	ld	hl, #(_smilers + 0x0005)
-      00001C 36 A5                   46 	ld	(hl), #0xa5
-      00001E 21r06r00                47 	ld	hl, #(_smilers + 0x0006)
-      000021 36 81                   48 	ld	(hl), #0x81
-      000023 21r07r00                49 	ld	hl, #(_smilers + 0x0007)
-      000026 36 81                   50 	ld	(hl), #0x81
-      000028 21r08r00                51 	ld	hl, #(_smilers + 0x0008)
-      00002B 36 81                   52 	ld	(hl), #0x81
-      00002D 21r09r00                53 	ld	hl, #(_smilers + 0x0009)
-      000030 36 81                   54 	ld	(hl), #0x81
-      000032 21r0Ar00                55 	ld	hl, #(_smilers + 0x000a)
-      000035 36 99                   56 	ld	(hl), #0x99
-      000037 21r0Br00                57 	ld	hl, #(_smilers + 0x000b)
-      00003A 36 99                   58 	ld	(hl), #0x99
-      00003C 21r0Cr00                59 	ld	hl, #(_smilers + 0x000c)
-      00003F 36 81                   60 	ld	(hl), #0x81
-      000041 21r0Dr00                61 	ld	hl, #(_smilers + 0x000d)
-      000044 36 81                   62 	ld	(hl), #0x81
-      000046 21r0Er00                63 	ld	hl, #(_smilers + 0x000e)
-      000049 36 7E                   64 	ld	(hl), #0x7e
-      00004B 21r0Fr00                65 	ld	hl, #(_smilers + 0x000f)
-      00004E 36 7E                   66 	ld	(hl), #0x7e
-      000050 21r10r00                67 	ld	hl, #(_smilers + 0x0010)
-      000053 36 7E                   68 	ld	(hl), #0x7e
-      000055 21r11r00                69 	ld	hl, #(_smilers + 0x0011)
-      000058 36 7E                   70 	ld	(hl), #0x7e
-      00005A 21r12r00                71 	ld	hl, #(_smilers + 0x0012)
-      00005D 36 A5                   72 	ld	(hl), #0xa5
-      00005F 21r13r00                73 	ld	hl, #(_smilers + 0x0013)
-      000062 36 A5                   74 	ld	(hl), #0xa5
-      000064 21r14r00                75 	ld	hl, #(_smilers + 0x0014)
-      000067 36 A5                   76 	ld	(hl), #0xa5
-      000069 21r15r00                77 	ld	hl, #(_smilers + 0x0015)
-      00006C 36 A5                   78 	ld	(hl), #0xa5
-      00006E 21r16r00                79 	ld	hl, #(_smilers + 0x0016)
-      000071 36 81                   80 	ld	(hl), #0x81
-      000073 21r17r00                81 	ld	hl, #(_smilers + 0x0017)
-      000076 36 81                   82 	ld	(hl), #0x81
-      000078 21r18r00                83 	ld	hl, #(_smilers + 0x0018)
-      00007B 36 BD                   84 	ld	(hl), #0xbd
-      00007D 21r19r00                85 	ld	hl, #(_smilers + 0x0019)
-      000080 36 BD                   86 	ld	(hl), #0xbd
-      000082 21r1Ar00                87 	ld	hl, #(_smilers + 0x001a)
-      000085 36 BD                   88 	ld	(hl), #0xbd
-      000087 21r1Br00                89 	ld	hl, #(_smilers + 0x001b)
-      00008A 36 BD                   90 	ld	(hl), #0xbd
-      00008C 21r1Cr00                91 	ld	hl, #(_smilers + 0x001c)
-      00008F 36 81                   92 	ld	(hl), #0x81
-      000091 21r1Dr00                93 	ld	hl, #(_smilers + 0x001d)
-      000094 36 81                   94 	ld	(hl), #0x81
-      000096 21r1Er00                95 	ld	hl, #(_smilers + 0x001e)
-      000099 36 7E                   96 	ld	(hl), #0x7e
-      00009B 21r1Fr00                97 	ld	hl, #(_smilers + 0x001f)
-      00009E 36 7E                   98 	ld	(hl), #0x7e
-      0000A0 21r20r00                99 	ld	hl, #(_smilers + 0x0020)
-      0000A3 36 7E                  100 	ld	(hl), #0x7e
-      0000A5 21r21r00               101 	ld	hl, #(_smilers + 0x0021)
-      0000A8 36 7E                  102 	ld	(hl), #0x7e
-      0000AA 21r22r00               103 	ld	hl, #(_smilers + 0x0022)
-      0000AD 36 81                  104 	ld	(hl), #0x81
-      0000AF 21r23r00               105 	ld	hl, #(_smilers + 0x0023)
-      0000B2 36 A5                  106 	ld	(hl), #0xa5
-      0000B4 21r24r00               107 	ld	hl, #(_smilers + 0x0024)
-      0000B7 36 81                  108 	ld	(hl), #0x81
-      0000B9 21r25r00               109 	ld	hl, #(_smilers + 0x0025)
-      0000BC 36 A5                  110 	ld	(hl), #0xa5
-      0000BE 21r26r00               111 	ld	hl, #(_smilers + 0x0026)
-      0000C1 36 81                  112 	ld	(hl), #0x81
-      0000C3 21r27r00               113 	ld	hl, #(_smilers + 0x0027)
-      0000C6 36 81                  114 	ld	(hl), #0x81
-      0000C8 21r28r00               115 	ld	hl, #(_smilers + 0x0028)
-      0000CB 36 81                  116 	ld	(hl), #0x81
-      0000CD 21r29r00               117 	ld	hl, #(_smilers + 0x0029)
-      0000D0 36 A5                  118 	ld	(hl), #0xa5
-      0000D2 21r2Ar00               119 	ld	hl, #(_smilers + 0x002a)
-      0000D5 36 81                  120 	ld	(hl), #0x81
-      0000D7 21r2Br00               121 	ld	hl, #(_smilers + 0x002b)
-      0000DA 36 99                  122 	ld	(hl), #0x99
-      0000DC 21r2Cr00               123 	ld	hl, #(_smilers + 0x002c)
-      0000DF 36 81                  124 	ld	(hl), #0x81
-      0000E1 21r2Dr00               125 	ld	hl, #(_smilers + 0x002d)
-      0000E4 36 81                  126 	ld	(hl), #0x81
-      0000E6 21r2Er00               127 	ld	hl, #(_smilers + 0x002e)
-      0000E9 36 7E                  128 	ld	(hl), #0x7e
-      0000EB 21r2Fr00               129 	ld	hl, #(_smilers + 0x002f)
-      0000EE 36 7E                  130 	ld	(hl), #0x7e
-      0000F0 21r30r00               131 	ld	hl, #(_smilers + 0x0030)
-      0000F3 36 00                  132 	ld	(hl), #0x00
-      0000F5 21r31r00               133 	ld	hl, #(_smilers + 0x0031)
-      0000F8 36 00                  134 	ld	(hl), #0x00
-      0000FA 21r32r00               135 	ld	hl, #(_smilers + 0x0032)
-      0000FD 36 00                  136 	ld	(hl), #0x00
-      0000FF 21r33r00               137 	ld	hl, #(_smilers + 0x0033)
-      000102 36 00                  138 	ld	(hl), #0x00
-      000104 21r34r00               139 	ld	hl, #(_smilers + 0x0034)
-      000107 36 00                  140 	ld	(hl), #0x00
-      000109 21r35r00               141 	ld	hl, #(_smilers + 0x0035)
-      00010C 36 00                  142 	ld	(hl), #0x00
-      00010E 21r36r00               143 	ld	hl, #(_smilers + 0x0036)
-      000111 36 00                  144 	ld	(hl), #0x00
-      000113 21r37r00               145 	ld	hl, #(_smilers + 0x0037)
-      000116 36 00                  146 	ld	(hl), #0x00
-      000118 21r38r00               147 	ld	hl, #(_smilers + 0x0038)
-      00011B 36 00                  148 	ld	(hl), #0x00
-      00011D 21r39r00               149 	ld	hl, #(_smilers + 0x0039)
-      000120 36 00                  150 	ld	(hl), #0x00
-      000122 21r3Ar00               151 	ld	hl, #(_smilers + 0x003a)
-      000125 36 00                  152 	ld	(hl), #0x00
-      000127 21r3Br00               153 	ld	hl, #(_smilers + 0x003b)
-      00012A 36 00                  154 	ld	(hl), #0x00
-      00012C 21r3Cr00               155 	ld	hl, #(_smilers + 0x003c)
-      00012F 36 00                  156 	ld	(hl), #0x00
-      000131 21r3Dr00               157 	ld	hl, #(_smilers + 0x003d)
-      000134 36 00                  158 	ld	(hl), #0x00
-      000136 21r3Er00               159 	ld	hl, #(_smilers + 0x003e)
-      000139 36 00                  160 	ld	(hl), #0x00
-      00013B 21r3Fr00               161 	ld	hl, #(_smilers + 0x003f)
-      00013E 36 00                  162 	ld	(hl), #0x00
-      000140 21r40r00               163 	ld	hl, #(_smilers + 0x0040)
-      000143 36 00                  164 	ld	(hl), #0x00
-      000145 21r41r00               165 	ld	hl, #(_smilers + 0x0041)
-      000148 36 00                  166 	ld	(hl), #0x00
-      00014A 21r42r00               167 	ld	hl, #(_smilers + 0x0042)
-      00014D 36 00                  168 	ld	(hl), #0x00
-      00014F 21r43r00               169 	ld	hl, #(_smilers + 0x0043)
-      000152 36 00                  170 	ld	(hl), #0x00
-      000154 21r44r00               171 	ld	hl, #(_smilers + 0x0044)
-      000157 36 00                  172 	ld	(hl), #0x00
-      000159 21r45r00               173 	ld	hl, #(_smilers + 0x0045)
-      00015C 36 00                  174 	ld	(hl), #0x00
-      00015E 21r46r00               175 	ld	hl, #(_smilers + 0x0046)
-      000161 36 00                  176 	ld	(hl), #0x00
-      000163 21r47r00               177 	ld	hl, #(_smilers + 0x0047)
-      000166 36 00                  178 	ld	(hl), #0x00
-      000168 21r48r00               179 	ld	hl, #(_smilers + 0x0048)
-      00016B 36 00                  180 	ld	(hl), #0x00
-      00016D 21r49r00               181 	ld	hl, #(_smilers + 0x0049)
-      000170 36 00                  182 	ld	(hl), #0x00
-      000172 21r4Ar00               183 	ld	hl, #(_smilers + 0x004a)
-      000175 36 00                  184 	ld	(hl), #0x00
-      000177 21r4Br00               185 	ld	hl, #(_smilers + 0x004b)
-      00017A 36 00                  186 	ld	(hl), #0x00
-      00017C 21r4Cr00               187 	ld	hl, #(_smilers + 0x004c)
-      00017F 36 00                  188 	ld	(hl), #0x00
-      000181 21r4Dr00               189 	ld	hl, #(_smilers + 0x004d)
-      000184 36 00                  190 	ld	(hl), #0x00
-      000186 21r4Er00               191 	ld	hl, #(_smilers + 0x004e)
-      000189 36 00                  192 	ld	(hl), #0x00
-      00018B 21r4Fr00               193 	ld	hl, #(_smilers + 0x004f)
-      00018E 36 00                  194 	ld	(hl), #0x00
-      000190 21r50r00               195 	ld	hl, #(_smilers + 0x0050)
-      000193 36 00                  196 	ld	(hl), #0x00
-      000195 21r51r00               197 	ld	hl, #(_smilers + 0x0051)
-      000198 36 00                  198 	ld	(hl), #0x00
-      00019A 21r52r00               199 	ld	hl, #(_smilers + 0x0052)
-      00019D 36 00                  200 	ld	(hl), #0x00
-      00019F 21r53r00               201 	ld	hl, #(_smilers + 0x0053)
-      0001A2 36 00                  202 	ld	(hl), #0x00
-      0001A4 21r54r00               203 	ld	hl, #(_smilers + 0x0054)
-      0001A7 36 00                  204 	ld	(hl), #0x00
-      0001A9 21r55r00               205 	ld	hl, #(_smilers + 0x0055)
-      0001AC 36 00                  206 	ld	(hl), #0x00
-      0001AE 21r56r00               207 	ld	hl, #(_smilers + 0x0056)
-      0001B1 36 00                  208 	ld	(hl), #0x00
-      0001B3 21r57r00               209 	ld	hl, #(_smilers + 0x0057)
-      0001B6 36 00                  210 	ld	(hl), #0x00
-      0001B8 21r58r00               211 	ld	hl, #(_smilers + 0x0058)
-      0001BB 36 00                  212 	ld	(hl), #0x00
-      0001BD 21r59r00               213 	ld	hl, #(_smilers + 0x0059)
-      0001C0 36 00                  214 	ld	(hl), #0x00
-      0001C2 21r5Ar00               215 	ld	hl, #(_smilers + 0x005a)
-      0001C5 36 00                  216 	ld	(hl), #0x00
-      0001C7 21r5Br00               217 	ld	hl, #(_smilers + 0x005b)
-      0001CA 36 00                  218 	ld	(hl), #0x00
-      0001CC 21r5Cr00               219 	ld	hl, #(_smilers + 0x005c)
-      0001CF 36 00                  220 	ld	(hl), #0x00
-      0001D1 21r5Dr00               221 	ld	hl, #(_smilers + 0x005d)
-      0001D4 36 00                  222 	ld	(hl), #0x00
-      0001D6 21r5Er00               223 	ld	hl, #(_smilers + 0x005e)
-      0001D9 36 00                  224 	ld	(hl), #0x00
-      0001DB 21r5Fr00               225 	ld	hl, #(_smilers + 0x005f)
-      0001DE 36 00                  226 	ld	(hl), #0x00
-                                    227 ;--------------------------------------------------------
-                                    228 ; Home
-                                    229 ;--------------------------------------------------------
-                                    230 	.area _HOME
-                                    231 	.area _HOME
-                                    232 ;--------------------------------------------------------
-                                    233 ; code
-                                    234 ;--------------------------------------------------------
-                                    235 	.area _CODE
-                                    236 ;main.c:4: void main () {
-                                    237 ;	---------------------------------
-                                    238 ; Function main
-                                    239 ; ---------------------------------
-      000000                        240 _main::
-                                    241 ;main.c:6: set_sprite_data(0,2,smilers);
-      000000 21r00r00               242 	ld	hl, #_smilers
-      000003 E5                     243 	push	hl
-      000004 3E 02                  244 	ld	a, #0x02
-      000006 F5                     245 	push	af
-      000007 33                     246 	inc	sp
-      000008 AF                     247 	xor	a, a
-      000009 F5                     248 	push	af
-      00000A 33                     249 	inc	sp
-      00000B CDr00r00               250 	call	_set_sprite_data
-      00000E E8 04                  251 	add	sp, #4
-                                    252 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1004: shadow_OAM[nb].tile=tile;
-      000010 21r02r00               253 	ld	hl, #(_shadow_OAM + 0x0002)
-      000013 36 02                  254 	ld	(hl), #0x02
-                                    255 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1077: OAM_item_t * itm = &shadow_OAM[nb];
-      000015 21r00r00               256 	ld	hl, #_shadow_OAM
-                                    257 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1078: itm->y=y, itm->x=x;
-      000018 3E 64                  258 	ld	a, #0x64
-      00001A 22                     259 	ld	(hl+), a
-      00001B 36 64                  260 	ld	(hl), #0x64
-                                    261 ;main.c:9: SHOW_SPRITES;
-      00001D F0r00                  262 	ldh	a, (_LCDC_REG+0)
-      00001F F6 02                  263 	or	a, #0x02
-      000021 E0r00                  264 	ldh	(_LCDC_REG+0),a
-                                    265 ;main.c:15: }
-      000023 C9                     266 	ret
-                                    267 	.area _CODE
-                                    268 	.area _CABS (ABS)
+                                     18 ;--------------------------------------------------------
+                                     19 ; ram data
+                                     20 ;--------------------------------------------------------
+                                     21 	.area _DATA
+      000000                         22 _newsmile::
+      000000                         23 	.ds 16
+      000010                         24 _smilers::
+      000010                         25 	.ds 96
+                                     26 ;--------------------------------------------------------
+                                     27 ; absolute external ram data
+                                     28 ;--------------------------------------------------------
+                                     29 	.area _DABS (ABS)
+                                     30 ;--------------------------------------------------------
+                                     31 ; global & static initialisations
+                                     32 ;--------------------------------------------------------
+                                     33 	.area _HOME
+                                     34 	.area _GSINIT
+                                     35 	.area _GSFINAL
+                                     36 	.area _GSINIT
+                                     37 ;4smiles.c:26: unsigned char newsmile[] = {
+      000000 21r00r00                38 	ld	hl, #_newsmile
+      000003 36 7E                   39 	ld	(hl), #0x7e
+      000005 21r01r00                40 	ld	hl, #(_newsmile + 0x0001)
+      000008 36 7E                   41 	ld	(hl), #0x7e
+      00000A 21r02r00                42 	ld	hl, #(_newsmile + 0x0002)
+      00000D 36 81                   43 	ld	(hl), #0x81
+      00000F 21r03r00                44 	ld	hl, #(_newsmile + 0x0003)
+      000012 36 A5                   45 	ld	(hl), #0xa5
+      000014 21r04r00                46 	ld	hl, #(_newsmile + 0x0004)
+      000017 36 81                   47 	ld	(hl), #0x81
+      000019 21r05r00                48 	ld	hl, #(_newsmile + 0x0005)
+      00001C 36 A5                   49 	ld	(hl), #0xa5
+      00001E 21r06r00                50 	ld	hl, #(_newsmile + 0x0006)
+      000021 36 81                   51 	ld	(hl), #0x81
+      000023 21r07r00                52 	ld	hl, #(_newsmile + 0x0007)
+      000026 36 81                   53 	ld	(hl), #0x81
+      000028 21r08r00                54 	ld	hl, #(_newsmile + 0x0008)
+      00002B 36 81                   55 	ld	(hl), #0x81
+      00002D 21r09r00                56 	ld	hl, #(_newsmile + 0x0009)
+      000030 36 A5                   57 	ld	(hl), #0xa5
+      000032 21r0Ar00                58 	ld	hl, #(_newsmile + 0x000a)
+      000035 36 81                   59 	ld	(hl), #0x81
+      000037 21r0Br00                60 	ld	hl, #(_newsmile + 0x000b)
+      00003A 36 99                   61 	ld	(hl), #0x99
+      00003C 21r0Cr00                62 	ld	hl, #(_newsmile + 0x000c)
+      00003F 36 81                   63 	ld	(hl), #0x81
+      000041 21r0Dr00                64 	ld	hl, #(_newsmile + 0x000d)
+      000044 36 81                   65 	ld	(hl), #0x81
+      000046 21r0Er00                66 	ld	hl, #(_newsmile + 0x000e)
+      000049 36 7E                   67 	ld	(hl), #0x7e
+      00004B 21r0Fr00                68 	ld	hl, #(_newsmile + 0x000f)
+      00004E 36 7E                   69 	ld	(hl), #0x7e
+                                     70 ;4smiles.c:30: unsigned char smilers[] =
+      000050 21r10r00                71 	ld	hl, #_smilers
+      000053 36 7E                   72 	ld	(hl), #0x7e
+      000055 21r11r00                73 	ld	hl, #(_smilers + 0x0001)
+      000058 36 7E                   74 	ld	(hl), #0x7e
+      00005A 21r12r00                75 	ld	hl, #(_smilers + 0x0002)
+      00005D 36 81                   76 	ld	(hl), #0x81
+      00005F 21r13r00                77 	ld	hl, #(_smilers + 0x0003)
+      000062 36 81                   78 	ld	(hl), #0x81
+      000064 21r14r00                79 	ld	hl, #(_smilers + 0x0004)
+      000067 36 A5                   80 	ld	(hl), #0xa5
+      000069 21r15r00                81 	ld	hl, #(_smilers + 0x0005)
+      00006C 36 A5                   82 	ld	(hl), #0xa5
+      00006E 21r16r00                83 	ld	hl, #(_smilers + 0x0006)
+      000071 36 81                   84 	ld	(hl), #0x81
+      000073 21r17r00                85 	ld	hl, #(_smilers + 0x0007)
+      000076 36 81                   86 	ld	(hl), #0x81
+      000078 21r18r00                87 	ld	hl, #(_smilers + 0x0008)
+      00007B 36 81                   88 	ld	(hl), #0x81
+      00007D 21r19r00                89 	ld	hl, #(_smilers + 0x0009)
+      000080 36 81                   90 	ld	(hl), #0x81
+      000082 21r1Ar00                91 	ld	hl, #(_smilers + 0x000a)
+      000085 36 99                   92 	ld	(hl), #0x99
+      000087 21r1Br00                93 	ld	hl, #(_smilers + 0x000b)
+      00008A 36 99                   94 	ld	(hl), #0x99
+      00008C 21r1Cr00                95 	ld	hl, #(_smilers + 0x000c)
+      00008F 36 81                   96 	ld	(hl), #0x81
+      000091 21r1Dr00                97 	ld	hl, #(_smilers + 0x000d)
+      000094 36 81                   98 	ld	(hl), #0x81
+      000096 21r1Er00                99 	ld	hl, #(_smilers + 0x000e)
+      000099 36 7E                  100 	ld	(hl), #0x7e
+      00009B 21r1Fr00               101 	ld	hl, #(_smilers + 0x000f)
+      00009E 36 7E                  102 	ld	(hl), #0x7e
+      0000A0 21r20r00               103 	ld	hl, #(_smilers + 0x0010)
+      0000A3 36 7E                  104 	ld	(hl), #0x7e
+      0000A5 21r21r00               105 	ld	hl, #(_smilers + 0x0011)
+      0000A8 36 7E                  106 	ld	(hl), #0x7e
+      0000AA 21r22r00               107 	ld	hl, #(_smilers + 0x0012)
+      0000AD 36 A5                  108 	ld	(hl), #0xa5
+      0000AF 21r23r00               109 	ld	hl, #(_smilers + 0x0013)
+      0000B2 36 A5                  110 	ld	(hl), #0xa5
+      0000B4 21r24r00               111 	ld	hl, #(_smilers + 0x0014)
+      0000B7 36 A5                  112 	ld	(hl), #0xa5
+      0000B9 21r25r00               113 	ld	hl, #(_smilers + 0x0015)
+      0000BC 36 A5                  114 	ld	(hl), #0xa5
+      0000BE 21r26r00               115 	ld	hl, #(_smilers + 0x0016)
+      0000C1 36 81                  116 	ld	(hl), #0x81
+      0000C3 21r27r00               117 	ld	hl, #(_smilers + 0x0017)
+      0000C6 36 81                  118 	ld	(hl), #0x81
+      0000C8 21r28r00               119 	ld	hl, #(_smilers + 0x0018)
+      0000CB 36 BD                  120 	ld	(hl), #0xbd
+      0000CD 21r29r00               121 	ld	hl, #(_smilers + 0x0019)
+      0000D0 36 BD                  122 	ld	(hl), #0xbd
+      0000D2 21r2Ar00               123 	ld	hl, #(_smilers + 0x001a)
+      0000D5 36 BD                  124 	ld	(hl), #0xbd
+      0000D7 21r2Br00               125 	ld	hl, #(_smilers + 0x001b)
+      0000DA 36 BD                  126 	ld	(hl), #0xbd
+      0000DC 21r2Cr00               127 	ld	hl, #(_smilers + 0x001c)
+      0000DF 36 81                  128 	ld	(hl), #0x81
+      0000E1 21r2Dr00               129 	ld	hl, #(_smilers + 0x001d)
+      0000E4 36 81                  130 	ld	(hl), #0x81
+      0000E6 21r2Er00               131 	ld	hl, #(_smilers + 0x001e)
+      0000E9 36 7E                  132 	ld	(hl), #0x7e
+      0000EB 21r2Fr00               133 	ld	hl, #(_smilers + 0x001f)
+      0000EE 36 7E                  134 	ld	(hl), #0x7e
+      0000F0 21r30r00               135 	ld	hl, #(_smilers + 0x0020)
+      0000F3 36 7E                  136 	ld	(hl), #0x7e
+      0000F5 21r31r00               137 	ld	hl, #(_smilers + 0x0021)
+      0000F8 36 7E                  138 	ld	(hl), #0x7e
+      0000FA 21r32r00               139 	ld	hl, #(_smilers + 0x0022)
+      0000FD 36 81                  140 	ld	(hl), #0x81
+      0000FF 21r33r00               141 	ld	hl, #(_smilers + 0x0023)
+      000102 36 A5                  142 	ld	(hl), #0xa5
+      000104 21r34r00               143 	ld	hl, #(_smilers + 0x0024)
+      000107 36 81                  144 	ld	(hl), #0x81
+      000109 21r35r00               145 	ld	hl, #(_smilers + 0x0025)
+      00010C 36 A5                  146 	ld	(hl), #0xa5
+      00010E 21r36r00               147 	ld	hl, #(_smilers + 0x0026)
+      000111 36 81                  148 	ld	(hl), #0x81
+      000113 21r37r00               149 	ld	hl, #(_smilers + 0x0027)
+      000116 36 81                  150 	ld	(hl), #0x81
+      000118 21r38r00               151 	ld	hl, #(_smilers + 0x0028)
+      00011B 36 81                  152 	ld	(hl), #0x81
+      00011D 21r39r00               153 	ld	hl, #(_smilers + 0x0029)
+      000120 36 A5                  154 	ld	(hl), #0xa5
+      000122 21r3Ar00               155 	ld	hl, #(_smilers + 0x002a)
+      000125 36 81                  156 	ld	(hl), #0x81
+      000127 21r3Br00               157 	ld	hl, #(_smilers + 0x002b)
+      00012A 36 99                  158 	ld	(hl), #0x99
+      00012C 21r3Cr00               159 	ld	hl, #(_smilers + 0x002c)
+      00012F 36 81                  160 	ld	(hl), #0x81
+      000131 21r3Dr00               161 	ld	hl, #(_smilers + 0x002d)
+      000134 36 81                  162 	ld	(hl), #0x81
+      000136 21r3Er00               163 	ld	hl, #(_smilers + 0x002e)
+      000139 36 7E                  164 	ld	(hl), #0x7e
+      00013B 21r3Fr00               165 	ld	hl, #(_smilers + 0x002f)
+      00013E 36 7E                  166 	ld	(hl), #0x7e
+      000140 21r40r00               167 	ld	hl, #(_smilers + 0x0030)
+      000143 36 00                  168 	ld	(hl), #0x00
+      000145 21r41r00               169 	ld	hl, #(_smilers + 0x0031)
+      000148 36 00                  170 	ld	(hl), #0x00
+      00014A 21r42r00               171 	ld	hl, #(_smilers + 0x0032)
+      00014D 36 00                  172 	ld	(hl), #0x00
+      00014F 21r43r00               173 	ld	hl, #(_smilers + 0x0033)
+      000152 36 00                  174 	ld	(hl), #0x00
+      000154 21r44r00               175 	ld	hl, #(_smilers + 0x0034)
+      000157 36 00                  176 	ld	(hl), #0x00
+      000159 21r45r00               177 	ld	hl, #(_smilers + 0x0035)
+      00015C 36 00                  178 	ld	(hl), #0x00
+      00015E 21r46r00               179 	ld	hl, #(_smilers + 0x0036)
+      000161 36 00                  180 	ld	(hl), #0x00
+      000163 21r47r00               181 	ld	hl, #(_smilers + 0x0037)
+      000166 36 00                  182 	ld	(hl), #0x00
+      000168 21r48r00               183 	ld	hl, #(_smilers + 0x0038)
+      00016B 36 00                  184 	ld	(hl), #0x00
+      00016D 21r49r00               185 	ld	hl, #(_smilers + 0x0039)
+      000170 36 00                  186 	ld	(hl), #0x00
+      000172 21r4Ar00               187 	ld	hl, #(_smilers + 0x003a)
+      000175 36 00                  188 	ld	(hl), #0x00
+      000177 21r4Br00               189 	ld	hl, #(_smilers + 0x003b)
+      00017A 36 00                  190 	ld	(hl), #0x00
+      00017C 21r4Cr00               191 	ld	hl, #(_smilers + 0x003c)
+      00017F 36 00                  192 	ld	(hl), #0x00
+      000181 21r4Dr00               193 	ld	hl, #(_smilers + 0x003d)
+      000184 36 00                  194 	ld	(hl), #0x00
+      000186 21r4Er00               195 	ld	hl, #(_smilers + 0x003e)
+      000189 36 00                  196 	ld	(hl), #0x00
+      00018B 21r4Fr00               197 	ld	hl, #(_smilers + 0x003f)
+      00018E 36 00                  198 	ld	(hl), #0x00
+      000190 21r50r00               199 	ld	hl, #(_smilers + 0x0040)
+      000193 36 00                  200 	ld	(hl), #0x00
+      000195 21r51r00               201 	ld	hl, #(_smilers + 0x0041)
+      000198 36 00                  202 	ld	(hl), #0x00
+      00019A 21r52r00               203 	ld	hl, #(_smilers + 0x0042)
+      00019D 36 00                  204 	ld	(hl), #0x00
+      00019F 21r53r00               205 	ld	hl, #(_smilers + 0x0043)
+      0001A2 36 00                  206 	ld	(hl), #0x00
+      0001A4 21r54r00               207 	ld	hl, #(_smilers + 0x0044)
+      0001A7 36 00                  208 	ld	(hl), #0x00
+      0001A9 21r55r00               209 	ld	hl, #(_smilers + 0x0045)
+      0001AC 36 00                  210 	ld	(hl), #0x00
+      0001AE 21r56r00               211 	ld	hl, #(_smilers + 0x0046)
+      0001B1 36 00                  212 	ld	(hl), #0x00
+      0001B3 21r57r00               213 	ld	hl, #(_smilers + 0x0047)
+      0001B6 36 00                  214 	ld	(hl), #0x00
+      0001B8 21r58r00               215 	ld	hl, #(_smilers + 0x0048)
+      0001BB 36 00                  216 	ld	(hl), #0x00
+      0001BD 21r59r00               217 	ld	hl, #(_smilers + 0x0049)
+      0001C0 36 00                  218 	ld	(hl), #0x00
+      0001C2 21r5Ar00               219 	ld	hl, #(_smilers + 0x004a)
+      0001C5 36 00                  220 	ld	(hl), #0x00
+      0001C7 21r5Br00               221 	ld	hl, #(_smilers + 0x004b)
+      0001CA 36 00                  222 	ld	(hl), #0x00
+      0001CC 21r5Cr00               223 	ld	hl, #(_smilers + 0x004c)
+      0001CF 36 00                  224 	ld	(hl), #0x00
+      0001D1 21r5Dr00               225 	ld	hl, #(_smilers + 0x004d)
+      0001D4 36 00                  226 	ld	(hl), #0x00
+      0001D6 21r5Er00               227 	ld	hl, #(_smilers + 0x004e)
+      0001D9 36 00                  228 	ld	(hl), #0x00
+      0001DB 21r5Fr00               229 	ld	hl, #(_smilers + 0x004f)
+      0001DE 36 00                  230 	ld	(hl), #0x00
+      0001E0 21r60r00               231 	ld	hl, #(_smilers + 0x0050)
+      0001E3 36 00                  232 	ld	(hl), #0x00
+      0001E5 21r61r00               233 	ld	hl, #(_smilers + 0x0051)
+      0001E8 36 00                  234 	ld	(hl), #0x00
+      0001EA 21r62r00               235 	ld	hl, #(_smilers + 0x0052)
+      0001ED 36 00                  236 	ld	(hl), #0x00
+      0001EF 21r63r00               237 	ld	hl, #(_smilers + 0x0053)
+      0001F2 36 00                  238 	ld	(hl), #0x00
+      0001F4 21r64r00               239 	ld	hl, #(_smilers + 0x0054)
+      0001F7 36 00                  240 	ld	(hl), #0x00
+      0001F9 21r65r00               241 	ld	hl, #(_smilers + 0x0055)
+      0001FC 36 00                  242 	ld	(hl), #0x00
+      0001FE 21r66r00               243 	ld	hl, #(_smilers + 0x0056)
+      000201 36 00                  244 	ld	(hl), #0x00
+      000203 21r67r00               245 	ld	hl, #(_smilers + 0x0057)
+      000206 36 00                  246 	ld	(hl), #0x00
+      000208 21r68r00               247 	ld	hl, #(_smilers + 0x0058)
+      00020B 36 00                  248 	ld	(hl), #0x00
+      00020D 21r69r00               249 	ld	hl, #(_smilers + 0x0059)
+      000210 36 00                  250 	ld	(hl), #0x00
+      000212 21r6Ar00               251 	ld	hl, #(_smilers + 0x005a)
+      000215 36 00                  252 	ld	(hl), #0x00
+      000217 21r6Br00               253 	ld	hl, #(_smilers + 0x005b)
+      00021A 36 00                  254 	ld	(hl), #0x00
+      00021C 21r6Cr00               255 	ld	hl, #(_smilers + 0x005c)
+      00021F 36 00                  256 	ld	(hl), #0x00
+      000221 21r6Dr00               257 	ld	hl, #(_smilers + 0x005d)
+      000224 36 00                  258 	ld	(hl), #0x00
+      000226 21r6Er00               259 	ld	hl, #(_smilers + 0x005e)
+      000229 36 00                  260 	ld	(hl), #0x00
+      00022B 21r6Fr00               261 	ld	hl, #(_smilers + 0x005f)
+      00022E 36 00                  262 	ld	(hl), #0x00
+                                    263 ;--------------------------------------------------------
+                                    264 ; Home
+                                    265 ;--------------------------------------------------------
+                                    266 	.area _HOME
+                                    267 	.area _HOME
+                                    268 ;--------------------------------------------------------
+                                    269 ; code
+                                    270 ;--------------------------------------------------------
+                                    271 	.area _CODE
+                                    272 ;main.c:4: void main () {
+                                    273 ;	---------------------------------
+                                    274 ; Function main
+                                    275 ; ---------------------------------
+      000000                        276 _main::
+                                    277 ;main.c:6: set_sprite_data(0,2,newsmile);
+      000000 21r00r00               278 	ld	hl, #_newsmile
+      000003 E5                     279 	push	hl
+      000004 3E 02                  280 	ld	a, #0x02
+      000006 F5                     281 	push	af
+      000007 33                     282 	inc	sp
+      000008 AF                     283 	xor	a, a
+      000009 F5                     284 	push	af
+      00000A 33                     285 	inc	sp
+      00000B CDr00r00               286 	call	_set_sprite_data
+      00000E E8 04                  287 	add	sp, #4
+                                    288 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1004: shadow_OAM[nb].tile=tile;
+      000010 21r02r00               289 	ld	hl, #(_shadow_OAM + 0x0002)
+      000013 36 00                  290 	ld	(hl), #0x00
+                                    291 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1077: OAM_item_t * itm = &shadow_OAM[nb];
+      000015 21r00r00               292 	ld	hl, #_shadow_OAM
+                                    293 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1078: itm->y=y, itm->x=x;
+      000018 3E 64                  294 	ld	a, #0x64
+      00001A 22                     295 	ld	(hl+), a
+      00001B 36 64                  296 	ld	(hl), #0x64
+                                    297 ;main.c:9: SHOW_SPRITES;
+      00001D F0r00                  298 	ldh	a, (_LCDC_REG+0)
+      00001F F6 02                  299 	or	a, #0x02
+      000021 E0r00                  300 	ldh	(_LCDC_REG+0),a
+                                    301 ;main.c:15: }
+      000023 C9                     302 	ret
+                                    303 	.area _CODE
+                                    304 	.area _CABS (ABS)

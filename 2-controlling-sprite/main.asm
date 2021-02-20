@@ -11,6 +11,7 @@
 	.globl _main
 	.globl _set_sprite_data
 	.globl _smilers
+	.globl _newsmile
 ;--------------------------------------------------------
 ; special function registers
 ;--------------------------------------------------------
@@ -18,6 +19,8 @@
 ; ram data
 ;--------------------------------------------------------
 	.area _DATA
+_newsmile::
+	.ds 16
 _smilers::
 	.ds 96
 ;--------------------------------------------------------
@@ -31,7 +34,40 @@ _smilers::
 	.area _GSINIT
 	.area _GSFINAL
 	.area _GSINIT
-;4smiles.c:26: unsigned char smilers[] =
+;4smiles.c:26: unsigned char newsmile[] = {
+	ld	hl, #_newsmile
+	ld	(hl), #0x7e
+	ld	hl, #(_newsmile + 0x0001)
+	ld	(hl), #0x7e
+	ld	hl, #(_newsmile + 0x0002)
+	ld	(hl), #0x81
+	ld	hl, #(_newsmile + 0x0003)
+	ld	(hl), #0xa5
+	ld	hl, #(_newsmile + 0x0004)
+	ld	(hl), #0x81
+	ld	hl, #(_newsmile + 0x0005)
+	ld	(hl), #0xa5
+	ld	hl, #(_newsmile + 0x0006)
+	ld	(hl), #0x81
+	ld	hl, #(_newsmile + 0x0007)
+	ld	(hl), #0x81
+	ld	hl, #(_newsmile + 0x0008)
+	ld	(hl), #0x81
+	ld	hl, #(_newsmile + 0x0009)
+	ld	(hl), #0xa5
+	ld	hl, #(_newsmile + 0x000a)
+	ld	(hl), #0x81
+	ld	hl, #(_newsmile + 0x000b)
+	ld	(hl), #0x99
+	ld	hl, #(_newsmile + 0x000c)
+	ld	(hl), #0x81
+	ld	hl, #(_newsmile + 0x000d)
+	ld	(hl), #0x81
+	ld	hl, #(_newsmile + 0x000e)
+	ld	(hl), #0x7e
+	ld	hl, #(_newsmile + 0x000f)
+	ld	(hl), #0x7e
+;4smiles.c:30: unsigned char smilers[] =
 	ld	hl, #_smilers
 	ld	(hl), #0x7e
 	ld	hl, #(_smilers + 0x0001)
@@ -238,8 +274,8 @@ _smilers::
 ; Function main
 ; ---------------------------------
 _main::
-;main.c:6: set_sprite_data(0,2,smilers);
-	ld	hl, #_smilers
+;main.c:6: set_sprite_data(0,2,newsmile);
+	ld	hl, #_newsmile
 	push	hl
 	ld	a, #0x02
 	push	af
@@ -251,7 +287,7 @@ _main::
 	add	sp, #4
 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1004: shadow_OAM[nb].tile=tile;
 	ld	hl, #(_shadow_OAM + 0x0002)
-	ld	(hl), #0x02
+	ld	(hl), #0x00
 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1077: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	hl, #_shadow_OAM
 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1078: itm->y=y, itm->x=x;
