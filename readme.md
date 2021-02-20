@@ -12,3 +12,6 @@
 <li>
     <p>Sprite can now move with keyboard in 4 directions.</p>
 </li>
+<li>
+    <p>Created background with scroll -- 20/02/2021 </p>
+</li>
