@@ -295,9 +295,9 @@ _main::
 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1077: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	hl, #_shadow_OAM
 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1078: itm->y=y, itm->x=x;
-	ld	a, #0x64
+	ld	a, #0x32
 	ld	(hl+), a
-	ld	(hl), #0x64
+	ld	(hl), #0x32
 ;main.c:9: SHOW_SPRITES;
 	ldh	a, (_LCDC_REG+0)
 	or	a, #0x02
@@ -312,16 +312,16 @@ _main::
 	ld	a, #0x00
 	sbc	a, b
 	bit	7, e
-	jr	Z, 00121$
-	bit	7, d
-	jr	NZ, 00122$
-	cp	a, a
-	jr	00122$
-00121$:
-	bit	7, d
 	jr	Z, 00122$
-	scf
+	bit	7, d
+	jr	NZ, 00123$
+	cp	a, a
+	jr	00123$
 00122$:
+	bit	7, d
+	jr	Z, 00123$
+	scf
+00123$:
 	jr	NC, 00102$
 	ld	bc, #0x0000
 00102$:
@@ -341,8 +341,18 @@ _main::
 	call	_delay
 	add	sp, #2
 	pop	bc
+;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1093: OAM_item_t * itm = &shadow_OAM[nb];
+	ld	de, #_shadow_OAM+0
+;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1094: itm->y+=y, itm->x+=x;
+	ld	a, (de)
+	ld	(de), a
+	inc	de
+	ld	a, (de)
+	add	a, #0x0a
+	ld	(de), a
+;main.c:14: scroll_sprite (0,10,0);
 	jr	00104$
-;main.c:15: }
+;main.c:16: }
 	inc	sp
 	ret
 	.area _CODE

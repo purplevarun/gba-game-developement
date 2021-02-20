@@ -295,9 +295,9 @@
                                     295 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1077: OAM_item_t * itm = &shadow_OAM[nb];
       000019 21r00r00               296 	ld	hl, #_shadow_OAM
                                     297 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1078: itm->y=y, itm->x=x;
-      00001C 3E 64                  298 	ld	a, #0x64
+      00001C 3E 32                  298 	ld	a, #0x32
       00001E 22                     299 	ld	(hl+), a
-      00001F 36 64                  300 	ld	(hl), #0x64
+      00001F 36 32                  300 	ld	(hl), #0x32
                                     301 ;main.c:9: SHOW_SPRITES;
       000021 F0r00                  302 	ldh	a, (_LCDC_REG+0)
       000023 F6 02                  303 	or	a, #0x02
@@ -312,16 +312,16 @@
       00002D 3E 00                  312 	ld	a, #0x00
       00002F 98                     313 	sbc	a, b
       000030 CB 7B                  314 	bit	7, e
-      000032 28 07                  315 	jr	Z, 00121$
+      000032 28 07                  315 	jr	Z, 00122$
       000034 CB 7A                  316 	bit	7, d
-      000036 20 08                  317 	jr	NZ, 00122$
+      000036 20 08                  317 	jr	NZ, 00123$
       000038 BF                     318 	cp	a, a
-      000039 18 05                  319 	jr	00122$
-      00003B                        320 00121$:
+      000039 18 05                  319 	jr	00123$
+      00003B                        320 00122$:
       00003B CB 7A                  321 	bit	7, d
-      00003D 28 01                  322 	jr	Z, 00122$
+      00003D 28 01                  322 	jr	Z, 00123$
       00003F 37                     323 	scf
-      000040                        324 00122$:
+      000040                        324 00123$:
       000040 30 03                  325 	jr	NC, 00102$
       000042 01 00 00               326 	ld	bc, #0x0000
       000045                        327 00102$:
@@ -341,9 +341,19 @@
       000054 CDr00r00               341 	call	_delay
       000057 E8 02                  342 	add	sp, #2
       000059 C1                     343 	pop	bc
-      00005A 18 CB                  344 	jr	00104$
-                                    345 ;main.c:15: }
-      00005C 33                     346 	inc	sp
-      00005D C9                     347 	ret
-                                    348 	.area _CODE
-                                    349 	.area _CABS (ABS)
+                                    344 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1093: OAM_item_t * itm = &shadow_OAM[nb];
+      00005A 11r00r00               345 	ld	de, #_shadow_OAM+0
+                                    346 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1094: itm->y+=y, itm->x+=x;
+      00005D 1A                     347 	ld	a, (de)
+      00005E 12                     348 	ld	(de), a
+      00005F 13                     349 	inc	de
+      000060 1A                     350 	ld	a, (de)
+      000061 C6 0A                  351 	add	a, #0x0a
+      000063 12                     352 	ld	(de), a
+                                    353 ;main.c:14: scroll_sprite (0,10,0);
+      000064 18 C1                  354 	jr	00104$
+                                    355 ;main.c:16: }
+      000066 33                     356 	inc	sp
+      000067 C9                     357 	ret
+                                    358 	.area _CODE
+                                    359 	.area _CABS (ABS)
