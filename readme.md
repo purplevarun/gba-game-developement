@@ -9,3 +9,6 @@
 <li>
     <p>Smily Sprite can now move along the principle diagonal with a delay of 1000ms. -- 19th feb 2021 07:23 PM</p>
 </li>
+<li>
+    <p>Sprite can now move with keyboard in 4 directions.</p>
+</li>

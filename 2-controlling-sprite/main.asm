@@ -10,6 +10,7 @@
 ;--------------------------------------------------------
 	.globl _main
 	.globl _set_sprite_data
+	.globl _joypad
 	.globl _delay
 	.globl _smilers
 	.globl _newsmile
@@ -275,9 +276,6 @@ _smilers::
 ; Function main
 ; ---------------------------------
 _main::
-	dec	sp
-;main.c:5: int i = 0;
-	ld	bc, #0x0000
 ;main.c:6: set_sprite_data(0,2,smilers);
 	ld	hl, #_smilers
 	push	hl
@@ -303,57 +301,78 @@ _main::
 	or	a, #0x02
 	ldh	(_LCDC_REG+0),a
 ;main.c:10: while (1) {
-00104$:
-;main.c:11: if (i>2)i=0;
-	ld	e, b
-	ld	d, #0x00
-	ld	a, #0x02
-	cp	a, c
-	ld	a, #0x00
-	sbc	a, b
-	bit	7, e
-	jr	Z, 00122$
-	bit	7, d
-	jr	NZ, 00123$
-	cp	a, a
-	jr	00123$
-00122$:
-	bit	7, d
-	jr	Z, 00123$
-	scf
-00123$:
-	jr	NC, 00102$
-	ld	bc, #0x0000
-00102$:
-;main.c:12: set_sprite_tile(0,i++);
-	ld	e, c
+00107$:
+;main.c:14: switch (joypad()) {
+	call	_joypad
+	ld	a, e
+	dec	a
+	jr	Z, 00102$
+	ld	a,e
+	cp	a,#0x02
+	jr	Z, 00101$
+	cp	a,#0x04
+	jr	Z, 00103$
+	sub	a, #0x08
+	jr	Z, 00104$
+	jr	00105$
+;main.c:15: case J_LEFT : scroll_sprite (0,-10,0); break;
+00101$:
+;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1093: OAM_item_t * itm = &shadow_OAM[nb];
+	ld	bc, #_shadow_OAM+0
+;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1094: itm->y+=y, itm->x+=x;
+	ld	a, (bc)
+	ld	(bc), a
 	inc	bc
-	ldhl	sp,	#0
-	ld	(hl), e
-;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1004: shadow_OAM[nb].tile=tile;
-	ld	de, #(_shadow_OAM + 0x0002)
-	ld	a, (hl)
-	ld	(de), a
-;main.c:13: delay (100);
-	push	bc
+	ld	a, (bc)
+	add	a, #0xf6
+	ld	(bc), a
+;main.c:15: case J_LEFT : scroll_sprite (0,-10,0); break;
+	jr	00105$
+;main.c:16: case J_RIGHT : scroll_sprite (0,10,0); break;
+00102$:
+;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1093: OAM_item_t * itm = &shadow_OAM[nb];
+	ld	bc, #_shadow_OAM
+;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1094: itm->y+=y, itm->x+=x;
+	ld	a, (bc)
+	ld	(bc), a
+	inc	bc
+	ld	a, (bc)
+	add	a, #0x0a
+	ld	(bc), a
+;main.c:16: case J_RIGHT : scroll_sprite (0,10,0); break;
+	jr	00105$
+;main.c:17: case J_UP : scroll_sprite (0,0,-10); break;
+00103$:
+;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1093: OAM_item_t * itm = &shadow_OAM[nb];
+	ld	bc, #_shadow_OAM
+;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1094: itm->y+=y, itm->x+=x;
+	ld	a, (bc)
+	add	a, #0xf6
+	ld	(bc), a
+	inc	bc
+	ld	a, (bc)
+	ld	(bc), a
+;main.c:17: case J_UP : scroll_sprite (0,0,-10); break;
+	jr	00105$
+;main.c:18: case J_DOWN : scroll_sprite (0,0,10); break;
+00104$:
+;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1093: OAM_item_t * itm = &shadow_OAM[nb];
+	ld	bc, #_shadow_OAM
+;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1094: itm->y+=y, itm->x+=x;
+	ld	a, (bc)
+	add	a, #0x0a
+	ld	(bc), a
+	inc	bc
+	ld	a, (bc)
+	ld	(bc), a
+;main.c:19: }
+00105$:
+;main.c:20: delay (100);
 	ld	hl, #0x0064
 	push	hl
 	call	_delay
 	add	sp, #2
-	pop	bc
-;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1093: OAM_item_t * itm = &shadow_OAM[nb];
-	ld	de, #_shadow_OAM+0
-;c:/users/purpl/desktop/gbdk/include/gb/gb.h:1094: itm->y+=y, itm->x+=x;
-	ld	a, (de)
-	ld	(de), a
-	inc	de
-	ld	a, (de)
-	add	a, #0x0a
-	ld	(de), a
-;main.c:14: scroll_sprite (0,10,0);
-	jr	00104$
-;main.c:16: }
-	inc	sp
-	ret
+;main.c:22: }
+	jr	00107$
 	.area _CODE
 	.area _CABS (ABS)
