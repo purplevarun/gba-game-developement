@@ -8,6 +8,7 @@ Symbol Table
     .__.CPU.                                                    =  000000 L
     .__.H$L.                                                    =  000000 L
     _LCDC_REG                                                      ****** GX
+    _delay                                                         ****** GX
   0 _main                                                          000000 GR
   1 _newsmile                                                      000000 GR
     _set_sprite_data                                               ****** GX
@@ -20,7 +21,7 @@ Hexadecimal [24-Bits]
 
 Area Table
 
-   0 _CODE                                      size     24   flags    0
+   0 _CODE                                      size     5E   flags    0
    1 _DATA                                      size     70   flags    0
    2 _DABS                                      size      0   flags    8
    3 _HOME                                      size      0   flags    0
