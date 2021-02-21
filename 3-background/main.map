@@ -72,10 +72,10 @@ Area                       Addr        Size        Decimal Bytes (Attributes)
      0000002C  l__HEADER |    00000033  l__HEADER |    0000003F  l__CODE  
      0000006A  l__HOME   |    0000007E  l__HEADER |    000000E5  l__BASE  
      00000200  s__CODE   |    0000023F  s__HOME   |    000002A9  s__BASE  
-     000002D8  l__DATA   |    0000038E  s__CODE_0 |    0000038E  s__GSINIT
-     0000038E  s__LIT    |    00000E38  l__GSINIT |    000011C6  s__GSFINA
-     0000C000  _shadow_O |    0000C0A0  s__DATA   |    0000C378  s__BSS   
-     0000C390  s__HEAP   |    0000E000  .STACK    |    0000FF80  .refresh_
+     00000340  l__DATA   |    0000038E  s__CODE_0 |    0000038E  s__GSINIT
+     0000038E  s__LIT    |    00001040  l__GSINIT |    000013CE  s__GSFINA
+     0000C000  _shadow_O |    0000C0A0  s__DATA   |    0000C3E0  s__BSS   
+     0000C3F8  s__HEAP   |    0000E000  .STACK    |    0000FF80  .refresh_
 ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
 Hexadecimal  [32-Bits]
 
@@ -276,7 +276,7 @@ Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_GSINIT                0000038E    00000E38 =        3640. bytes (REL,CON)
+_GSINIT                0000038E    00001040 =        4160. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
@@ -286,7 +286,7 @@ Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_GSFINAL               000011C6    00000001 =           1. bytes (REL,CON)
+_GSFINAL               000013CE    00000001 =           1. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
@@ -295,32 +295,32 @@ Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_DATA                  0000C0A0    000002D8 =         728. bytes (REL,CON)
+_DATA                  0000C0A0    00000340 =         832. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
-     0000C0A0  _TileLabe |    0000C120  _map1    
+     0000C0A0  _backgrou |    0000C110  _backgrou
 ASxxxx Linker V03.00 + NoICE + sdld,  page 26.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_BSS                   0000C378    00000018 =          24. bytes (REL,CON)
+_BSS                   0000C3E0    00000018 =          24. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
-     0000C378  __cpu     |    0000C379  .mode     |    0000C37A  .sys_time
-     0000C37A  _sys_time |    0000C37C  .int_0x40
+     0000C3E0  __cpu     |    0000C3E1  .mode     |    0000C3E2  .sys_time
+     0000C3E2  _sys_time |    0000C3E4  .int_0x40
 ASxxxx Linker V03.00 + NoICE + sdld,  page 27.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_HEAP                  0000C390    00000000 =           0. bytes (REL,CON)
+_HEAP                  0000C3F8    00000000 =           0. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
-     0000C390  _malloc_h
+     0000C3F8  _malloc_h
 ASxxxx Linker V03.00 + NoICE + sdld,  page 28.
 Hexadecimal  [32-Bits]
 
