@@ -1,6 +1,6 @@
 /*
 
- GBR_1.H
+ EXPORT.H
 
  Include File.
 
@@ -10,7 +10,7 @@
   Compression          : None.
   Counter              : None.
   Tile size            : 8 x 8
-  Tiles                : 0 to 7
+  Tiles                : 0 to 6
 
   Palette colors       : None.
   SGB Palette          : None.
@@ -24,8 +24,8 @@
 
 
 /* Bank of tiles. */
-#define TileLabelsBank 0
+#define backgroundtilesBank 0
 /* Start of tile array. */
-extern unsigned char TileLabels[];
+extern unsigned char backgroundtiles[];
 
-/* End of GBR_1.H */
+/* End of EXPORT.H */

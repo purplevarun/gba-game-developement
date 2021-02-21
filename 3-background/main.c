@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <gb/gb.h>
-#include "gbr_1.c"
-#include "map-1.c"
+#include "Export.c"
+#include "simplebackgroundmap.c"
 void main () {
-    set_bkg_data(0,7,TileLabels);
-    set_bkg_tiles(0,0,40,18,map1);
+    set_bkg_data(0,6,backgroundtiles);
+    set_bkg_tiles(0,0,40,18,backgroundmap);
     SHOW_BKG;
     DISPLAY_ON;
     while (1) {

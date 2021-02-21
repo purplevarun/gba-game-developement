@@ -10,9 +10,9 @@ Symbol Table
     _LCDC_REG                                                      ****** GX
     _SCX_REG                                                       ****** GX
   1 _TileLabels                                                    000000 GR
-  1 _bg1                                                           000080 GR
     _delay                                                         ****** GX
   0 _main                                                          000000 GR
+  1 _map1                                                          000080 GR
     _set_bkg_data                                                  ****** GX
     _set_bkg_tiles                                                 ****** GX
 
@@ -22,10 +22,10 @@ Hexadecimal [24-Bits]
 Area Table
 
    0 _CODE                                      size     3F   flags    0
-   1 _DATA                                      size    350   flags    0
+   1 _DATA                                      size    2D8   flags    0
    2 _DABS                                      size      0   flags    8
    3 _HOME                                      size      0   flags    0
-   4 _GSINIT                                    size   1090   flags    0
+   4 _GSINIT                                    size    E38   flags    0
    5 _GSFINAL                                   size      0   flags    0
    6 _CABS                                      size      0   flags    8
 
