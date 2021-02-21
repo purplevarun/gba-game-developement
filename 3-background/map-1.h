@@ -1,13 +1,13 @@
 /*
 
- NEW-BG.H
+ MAP-1.H
 
  Map Include File.
 
  Info:
    Section       : 
    Bank          : 0
-   Map size      : 40 x 18
+   Map size      : 30 x 20
    Tile set      : C:\Users\purpl\Desktop\gbtd22\background-1.gbr
    Plane count   : 1 plane (8 bits)
    Plane order   : Tiles are continues
@@ -18,10 +18,10 @@
 
 */
 
-#define bg1Width 40
-#define bg1Height 18
-#define bg1Bank 0
+#define map1Width 30
+#define map1Height 20
+#define map1Bank 0
 
-extern unsigned char bg1[];
+extern unsigned char map1[];
 
-/* End of NEW-BG.H */
+/* End of MAP-1.H */
