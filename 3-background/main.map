@@ -8,9 +8,11 @@ Area                       Addr        Size        Decimal Bytes (Attributes)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      00000000  .__.ABS.  |    00000000  l__CABS   |    00000000  l__CODE_0
-     00000000  l__DABS   |    00000000  l__HEADER |    00000000  l__HEAP  
-     00000000  l__HRAM   |    00000000  l__LIT    |    00000000  l__SFR   
-     00000000  s__CABS   |    00000000  s__DABS   |    00000000  s__HEADER
+     00000000  l__DABS   |    00000000  l__FONT_H |    00000000  l__HEADER
+     00000000  l__HEADER |    00000000  l__HEAP   |    00000000  l__HRAM  
+     00000000  l__LIT    |    00000000  l__SFR    |    00000000  s__CABS  
+     00000000  s__DABS   |    00000000  s__FONT_H |    00000000  s__FONT_H
+     00000000  s__HEADER |    00000000  s__HEADER |    00000000  s__HEADER
      00000000  s__HEADER |    00000000  s__HEADER |    00000000  s__HEADER
      00000000  s__HEADER |    00000000  s__HEADER |    00000000  s__HEADER
      00000000  s__HEADER |    00000000  s__HEADER |    00000000  s__HEADER
@@ -55,8 +57,6 @@ Area                       Addr        Size        Decimal Bytes (Attributes)
      00000001  l__SFR34  |    00000001  l__SFR35  |    00000001  l__SFR36 
      00000001  l__SFR4   |    00000001  l__SFR5   |    00000001  l__SFR6  
      00000001  l__SFR7   |    00000001  l__SFR8   |    00000001  l__SFR9  
-     00000001  l__SFRa   |    00000001  l__SFRb   |    00000001  l__SFRc  
-     00000001  l__SFRd   |    00000001  l__SFRe   |    00000001  l__SFRf  
 ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
 Hexadecimal  [32-Bits]
 
@@ -66,26 +66,30 @@ Area                       Addr        Size        Decimal Bytes (Attributes)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
+     00000001  l__SFRa   |    00000001  l__SFRb   |    00000001  l__SFRc  
+     00000001  l__SFRd   |    00000001  l__SFRe   |    00000001  l__SFRf  
      00000002  l__HEADER |    00000002  l__HEADER |    00000002  l__HRAM11
-     00000003  l__HEADER |    00000005  l__HEADER |    00000006  l__HEADER
-     00000007  l__HEADER |    00000008  l__HEADER |    00000018  l__BSS   
-     0000002C  l__HEADER |    00000033  l__HEADER |    0000005A  l__CODE  
-     0000006A  l__HOME   |    0000007E  l__HEADER |    000000F9  l__BASE  
-     00000200  s__CODE   |    0000025A  s__HOME   |    000002C4  s__BASE  
-     00000347  l__DATA   |    000003BD  s__CODE_0 |    000003BD  s__GSINIT
-     000003BD  s__LIT    |    00001063  l__GSINIT |    00001420  s__GSFINA
-     0000C000  _shadow_O |    0000C0A0  s__DATA   |    0000C3E7  s__BSS   
-     0000C3FF  s__HEAP   |    0000E000  .STACK    |    0000FF80  .refresh_
+     00000003  l__FONT_H |    00000003  l__HEADER |    00000003  l__HEADER
+     00000005  l__HEADER |    00000006  l__HEADER |    00000007  l__HEADER
+     00000008  l__HEADER |    0000002C  l__HEADER |    00000033  l__HEADER
+     00000043  l__BSS    |    0000006A  l__HOME   |    0000007E  l__HEADER
+     000000A8  l__CODE   |    00000200  s__CODE   |    000002A8  s__HOME  
+     00000312  s__BASE   |    00000347  l__DATA   |    00000983  l__BASE  
+     00000C95  s__CODE_0 |    00000C95  s__GSINIT |    00000C95  s__LIT   
+     00001077  l__GSINIT |    00001D0C  s__GSFINA |    0000C000  _shadow_O
+     0000C0A0  s__DATA   |    0000C3E7  s__BSS    |    0000C42A  s__HEAP  
+     0000E000  .STACK    |    0000FF80  .refresh_
 ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_CODE                  00000200    0000005A =          90. bytes (REL,CON)
+_CODE                  00000200    000000A8 =         168. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
-     00000200  _main    
+     00000200  _main     |    00000269  _putchar  |    00000272  _setchar 
+     0000027B  _gotoxy   |    00000286  _posx     |    00000297  _posy    
 ASxxxx Linker V03.00 + NoICE + sdld,  page 4.
 Hexadecimal  [32-Bits]
 
@@ -251,43 +255,52 @@ Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_HOME                  0000025A    0000006A =         106. bytes (REL,CON)
+_HOME                  000002A8    0000006A =         106. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
-     0000025A  .remove_V |    0000025D  .remove_i |    0000027A  .add_VBL 
-     0000027D  .add_int  |    00000288  .wait_vbl |    00000288  _wait_vbl
-     00000297  .display_ |    00000297  _display_ |    000002AE  _remove_V
-     000002B9  _add_VBL 
+     000002A8  .remove_V |    000002AB  .remove_i |    000002C8  .add_VBL 
+     000002CB  .add_int  |    000002D6  .wait_vbl |    000002D6  _wait_vbl
+     000002E5  .display_ |    000002E5  _display_ |    000002FC  _remove_V
+     00000307  _add_VBL 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 22.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_BASE                  000002C4    000000F9 =         249. bytes (REL,CON)
+_BASE                  00000312    00000983 =        2435. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
-     000002C4  _set_win_ |    000002D8  .delay    |    00000312  _delay   
-     0000031B  _set_bkg_ |    0000031B  _set_win_ |    00000323  _set_spri
-     00000353  _set_bkg_ |    00000367  .set_xy_w |    00000370  .set_xy_b
-     0000037F  .set_xy_t
+     00000312  _font_loa |    00000319  font_copy |    0000034F  font_copy
+     0000039E  font_load |    000003E6  font_copy |    0000042E  font_set 
+     0000043B  .put_char |    00000453  .out_char |    00000459  .del_char
+     000004AF  _font_loa |    000004BD  _font_set |    000004CC  _font_ini
+     000004EC  .cls      |    000004EC  _cls      |    0000051E  .cr_curs 
+     00000533  .adv_curs |    0000058F  .tmode    |    000005B8  .tmode_ou
+     000005C8  _set_win_ |    000005DC  _color    |    000005EB  .drawing_
+     000005F6  .drawing_ |    00000632  _add_LCD  |    0000063D  .add_LCD 
+     00000643  _remove_L |    0000064E  .remove_L |    00000654  _font_ibm
+     00000A06  .delay    |    00000A40  _delay    |    00000A49  _set_bkg_
+     00000A49  _set_win_ |    00000A51  _set_spri |    00000A81  _font_min
+     00000C2B  _set_bkg_ |    00000C3F  .set_xy_w |    00000C48  .set_xy_b
+     00000C57  .set_xy_t
 ASxxxx Linker V03.00 + NoICE + sdld,  page 23.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_GSINIT                000003BD    00001063 =        4195. bytes (REL,CON)
+_GSINIT                00000C95    00001077 =        4215. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
-     000003BD  gsinit   
+     00000C95  gsinit   
 ASxxxx Linker V03.00 + NoICE + sdld,  page 24.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_GSFINAL               00001420    00000001 =           1. bytes (REL,CON)
+_GSFINAL               00001D0C    00000001 =           1. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
@@ -306,22 +319,25 @@ Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_BSS                   0000C3E7    00000018 =          24. bytes (REL,CON)
+_BSS                   0000C3E7    00000043 =          67. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000C3E7  __cpu     |    0000C3E8  .mode     |    0000C3E9  .sys_time
-     0000C3E9  _sys_time |    0000C3EB  .int_0x40
+     0000C3E9  _sys_time |    0000C3EB  .int_0x40 |    0000C3FF  font_curr
+     0000C402  font_firs |    0000C403  font_tabl |    0000C415  .curx    
+     0000C416  .cury     |    0000C417  .fg_colou |    0000C418  .bg_colou
+     0000C419  .draw_mod |    0000C41A  .int_0x48
 ASxxxx Linker V03.00 + NoICE + sdld,  page 27.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_HEAP                  0000C3FF    00000000 =           0. bytes (REL,CON)
+_HEAP                  0000C42A    00000000 =           0. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
-     0000C3FF  _malloc_h
+     0000C42A  _malloc_h
 ASxxxx Linker V03.00 + NoICE + sdld,  page 28.
 Hexadecimal  [32-Bits]
 
@@ -337,12 +353,21 @@ Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
+_FONT_HEADER0          00000000    00000003 =           3. bytes (ABS,CON)
+
+        Value  Global            Value  Global            Value  Global    
+        -----  ------            -----  ------            -----  ------    
+ASxxxx Linker V03.00 + NoICE + sdld,  page 30.
+Hexadecimal  [32-Bits]
+
+Area                       Addr        Size        Decimal Bytes (Attributes)
+--------------------       ----        ----        ------- ----- ------------
 _SFR0                  00000000    00000001 =           1. bytes (ABS,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF00  _P1_REG  
-ASxxxx Linker V03.00 + NoICE + sdld,  page 30.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 31.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -352,7 +377,7 @@ _SFR1                  00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF01  _SB_REG  
-ASxxxx Linker V03.00 + NoICE + sdld,  page 31.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 32.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -362,7 +387,7 @@ _SFR2                  00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF02  _SC_REG  
-ASxxxx Linker V03.00 + NoICE + sdld,  page 32.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 33.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -372,7 +397,7 @@ _SFR3                  00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF04  _DIV_REG 
-ASxxxx Linker V03.00 + NoICE + sdld,  page 33.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 34.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -382,7 +407,7 @@ _SFR4                  00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF05  _TIMA_REG
-ASxxxx Linker V03.00 + NoICE + sdld,  page 34.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 35.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -392,7 +417,7 @@ _SFR5                  00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF06  _TMA_REG 
-ASxxxx Linker V03.00 + NoICE + sdld,  page 35.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 36.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -402,7 +427,7 @@ _SFR6                  00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF07  _TAC_REG 
-ASxxxx Linker V03.00 + NoICE + sdld,  page 36.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 37.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -412,7 +437,7 @@ _SFR7                  00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF0F  _IF_REG  
-ASxxxx Linker V03.00 + NoICE + sdld,  page 37.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 38.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -422,7 +447,7 @@ _SFR8                  00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF10  _NR10_REG
-ASxxxx Linker V03.00 + NoICE + sdld,  page 38.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 39.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -432,7 +457,7 @@ _SFR9                  00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF11  _NR11_REG
-ASxxxx Linker V03.00 + NoICE + sdld,  page 39.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 40.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -442,7 +467,7 @@ _SFRa                  00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF12  _NR12_REG
-ASxxxx Linker V03.00 + NoICE + sdld,  page 40.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 41.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -452,7 +477,7 @@ _SFRb                  00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF13  _NR13_REG
-ASxxxx Linker V03.00 + NoICE + sdld,  page 41.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 42.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -462,7 +487,7 @@ _SFRc                  00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF14  _NR14_REG
-ASxxxx Linker V03.00 + NoICE + sdld,  page 42.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 43.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -472,7 +497,7 @@ _SFRd                  00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF16  _NR21_REG
-ASxxxx Linker V03.00 + NoICE + sdld,  page 43.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 44.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -482,7 +507,7 @@ _SFRe                  00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF17  _NR22_REG
-ASxxxx Linker V03.00 + NoICE + sdld,  page 44.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 45.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -492,7 +517,7 @@ _SFRf                  00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF18  _NR23_REG
-ASxxxx Linker V03.00 + NoICE + sdld,  page 45.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 46.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -502,7 +527,7 @@ _SFR10                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF19  _NR24_REG
-ASxxxx Linker V03.00 + NoICE + sdld,  page 46.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 47.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -512,7 +537,7 @@ _SFR11                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF1A  _NR30_REG
-ASxxxx Linker V03.00 + NoICE + sdld,  page 47.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 48.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -522,7 +547,7 @@ _SFR12                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF1B  _NR31_REG
-ASxxxx Linker V03.00 + NoICE + sdld,  page 48.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 49.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -532,7 +557,7 @@ _SFR13                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF1C  _NR32_REG
-ASxxxx Linker V03.00 + NoICE + sdld,  page 49.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 50.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -542,7 +567,7 @@ _SFR14                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF1D  _NR33_REG
-ASxxxx Linker V03.00 + NoICE + sdld,  page 50.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 51.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -552,7 +577,7 @@ _SFR15                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF1E  _NR34_REG
-ASxxxx Linker V03.00 + NoICE + sdld,  page 51.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 52.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -562,7 +587,7 @@ _SFR16                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF20  _NR41_REG
-ASxxxx Linker V03.00 + NoICE + sdld,  page 52.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 53.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -572,7 +597,7 @@ _SFR17                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF21  _NR42_REG
-ASxxxx Linker V03.00 + NoICE + sdld,  page 53.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 54.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -582,7 +607,7 @@ _SFR18                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF22  _NR43_REG
-ASxxxx Linker V03.00 + NoICE + sdld,  page 54.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 55.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -592,7 +617,7 @@ _SFR19                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF23  _NR44_REG
-ASxxxx Linker V03.00 + NoICE + sdld,  page 55.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 56.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -602,7 +627,7 @@ _SFR1a                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF24  _NR50_REG
-ASxxxx Linker V03.00 + NoICE + sdld,  page 56.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 57.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -612,7 +637,7 @@ _SFR1b                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF25  _NR51_REG
-ASxxxx Linker V03.00 + NoICE + sdld,  page 57.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 58.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -622,7 +647,7 @@ _SFR1c                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF26  _NR52_REG
-ASxxxx Linker V03.00 + NoICE + sdld,  page 58.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 59.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -632,7 +657,7 @@ _SFR1d                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF40  _LCDC_REG
-ASxxxx Linker V03.00 + NoICE + sdld,  page 59.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 60.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -642,7 +667,7 @@ _SFR1e                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF41  _STAT_REG
-ASxxxx Linker V03.00 + NoICE + sdld,  page 60.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 61.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -652,7 +677,7 @@ _SFR1f                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF42  _SCY_REG 
-ASxxxx Linker V03.00 + NoICE + sdld,  page 61.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 62.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -662,7 +687,7 @@ _SFR20                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF43  _SCX_REG 
-ASxxxx Linker V03.00 + NoICE + sdld,  page 62.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 63.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -672,7 +697,7 @@ _SFR21                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF44  _LY_REG  
-ASxxxx Linker V03.00 + NoICE + sdld,  page 63.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 64.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -682,7 +707,7 @@ _SFR22                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF45  _LYC_REG 
-ASxxxx Linker V03.00 + NoICE + sdld,  page 64.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 65.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -692,7 +717,7 @@ _SFR23                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF46  _DMA_REG 
-ASxxxx Linker V03.00 + NoICE + sdld,  page 65.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 66.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -702,7 +727,7 @@ _SFR24                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF47  _BGP_REG 
-ASxxxx Linker V03.00 + NoICE + sdld,  page 66.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 67.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -712,7 +737,7 @@ _SFR25                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF48  _OBP0_REG
-ASxxxx Linker V03.00 + NoICE + sdld,  page 67.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 68.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -722,7 +747,7 @@ _SFR26                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF49  _OBP1_REG
-ASxxxx Linker V03.00 + NoICE + sdld,  page 68.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 69.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -732,7 +757,7 @@ _SFR27                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF4A  _WY_REG  
-ASxxxx Linker V03.00 + NoICE + sdld,  page 69.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 70.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -742,7 +767,7 @@ _SFR28                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF4B  _WX_REG  
-ASxxxx Linker V03.00 + NoICE + sdld,  page 70.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 71.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -752,7 +777,7 @@ _SFR29                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF4D  _KEY1_REG
-ASxxxx Linker V03.00 + NoICE + sdld,  page 71.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 72.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -762,7 +787,7 @@ _SFR2a                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF4F  _VBK_REG 
-ASxxxx Linker V03.00 + NoICE + sdld,  page 72.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 73.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -772,7 +797,7 @@ _SFR2b                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF51  _HDMA1_RE
-ASxxxx Linker V03.00 + NoICE + sdld,  page 73.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 74.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -782,7 +807,7 @@ _SFR2c                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF52  _HDMA2_RE
-ASxxxx Linker V03.00 + NoICE + sdld,  page 74.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 75.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -792,7 +817,7 @@ _SFR2d                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF53  _HDMA3_RE
-ASxxxx Linker V03.00 + NoICE + sdld,  page 75.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 76.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -802,7 +827,7 @@ _SFR2e                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF54  _HDMA4_RE
-ASxxxx Linker V03.00 + NoICE + sdld,  page 76.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 77.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -812,7 +837,7 @@ _SFR2f                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF55  _HDMA5_RE
-ASxxxx Linker V03.00 + NoICE + sdld,  page 77.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 78.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -822,7 +847,7 @@ _SFR30                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF56  _RP_REG  
-ASxxxx Linker V03.00 + NoICE + sdld,  page 78.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 79.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -832,7 +857,7 @@ _SFR31                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF68  _BCPS_REG
-ASxxxx Linker V03.00 + NoICE + sdld,  page 79.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 80.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -842,7 +867,7 @@ _SFR32                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF69  _BCPD_REG
-ASxxxx Linker V03.00 + NoICE + sdld,  page 80.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 81.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -852,7 +877,7 @@ _SFR33                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF6A  _OCPS_REG
-ASxxxx Linker V03.00 + NoICE + sdld,  page 81.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 82.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -862,7 +887,7 @@ _SFR34                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF6B  _OCPD_REG
-ASxxxx Linker V03.00 + NoICE + sdld,  page 82.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 83.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -872,7 +897,7 @@ _SFR35                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FF70  _SVBK_REG
-ASxxxx Linker V03.00 + NoICE + sdld,  page 83.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 84.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
@@ -882,7 +907,16 @@ _SFR36                 00000000    00000001 =           1. bytes (ABS,CON)
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      0000FFFF  _IE_REG  
-ASxxxx Linker V03.00 + NoICE + sdld,  page 84.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 85.
+Hexadecimal  [32-Bits]
+
+Area                       Addr        Size        Decimal Bytes (Attributes)
+--------------------       ----        ----        ------- ----- ------------
+_HEADER_LCD0           00000000    00000003 =           3. bytes (ABS,CON)
+
+        Value  Global            Value  Global            Value  Global    
+        -----  ------            -----  ------            -----  ------    
+ASxxxx Linker V03.00 + NoICE + sdld,  page 86.
 
 Files Linked                              [ module(s) ]
 
@@ -894,25 +928,37 @@ main.o                                    [ main ]
 Libraries Linked                          [ object file ]
 
 c:\users\purpl\desktop\gbdk\lib/small/asxxxx/gb/gb.lib
+                                          [ font.o ]
+c:\users\purpl\desktop\gbdk\lib/small/asxxxx/gb/gb.lib
                                           [ sfr.o ]
 c:\users\purpl\desktop\gbdk\lib/small/asxxxx/gb/gb.lib
                                           [ set_wi_t.o ]
+c:\users\purpl\desktop\gbdk\lib/small/asxxxx/gb/gb.lib
+                                          [ color.o ]
+c:\users\purpl\desktop\gbdk\lib/small/asxxxx/gb/gb.lib
+                                          [ drawing_isr.o ]
+c:\users\purpl\desktop\gbdk\lib/small/asxxxx/gb/gb.lib
+                                          [ lcd.o ]
+c:\users\purpl\desktop\gbdk\lib/small/asxxxx/gb/gb.lib
+                                          [ f_ibm_sh.o ]
 c:\users\purpl\desktop\gbdk\lib/small/asxxxx/gb/gb.lib
                                           [ delay.o ]
 c:\users\purpl\desktop\gbdk\lib/small/asxxxx/gb/gb.lib
                                           [ set_data.o ]
 c:\users\purpl\desktop\gbdk\lib/small/asxxxx/gb/gb.lib
+                                          [ f_min.o ]
+c:\users\purpl\desktop\gbdk\lib/small/asxxxx/gb/gb.lib
                                           [ set_bk_t.o ]
 c:\users\purpl\desktop\gbdk\lib/small/asxxxx/gb/gb.lib
                                           [ set_xy_t.o ]
 
-ASxxxx Linker V03.00 + NoICE + sdld,  page 85.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 87.
 
 User Base Address Definitions
 
 _DATA=0xc0a0
 _CODE=0x0200
-ASxxxx Linker V03.00 + NoICE + sdld,  page 86.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 88.
 
 User Global Definitions
 

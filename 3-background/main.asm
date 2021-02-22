@@ -9,6 +9,9 @@
 ; Public variables in this module
 ;--------------------------------------------------------
 	.globl _main
+	.globl _font_set
+	.globl _font_load
+	.globl _font_init
 	.globl _set_win_tiles
 	.globl _set_bkg_tiles
 	.globl _set_bkg_data
@@ -683,27 +686,27 @@ _windowmap::
 	ld	hl, #(_backgroundmap + 0x00cf)
 	ld	(hl), #0x00
 	ld	hl, #(_backgroundmap + 0x00d0)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x00d1)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x00d2)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x00d3)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x00d4)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x00d5)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x00d6)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x00d7)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x00d8)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x00d9)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x00da)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x00db)
 	ld	(hl), #0x00
 	ld	hl, #(_backgroundmap + 0x00dc)
@@ -719,13 +722,13 @@ _windowmap::
 	ld	hl, #(_backgroundmap + 0x00e1)
 	ld	(hl), #0x00
 	ld	hl, #(_backgroundmap + 0x00e2)
-	ld	(hl), #0x06
+	ld	(hl), #0x2b
 	ld	hl, #(_backgroundmap + 0x00e3)
-	ld	(hl), #0x06
+	ld	(hl), #0x2b
 	ld	hl, #(_backgroundmap + 0x00e4)
-	ld	(hl), #0x06
+	ld	(hl), #0x2b
 	ld	hl, #(_backgroundmap + 0x00e5)
-	ld	(hl), #0x06
+	ld	(hl), #0x2b
 	ld	hl, #(_backgroundmap + 0x00e6)
 	ld	(hl), #0x00
 	ld	hl, #(_backgroundmap + 0x00e7)
@@ -763,27 +766,27 @@ _windowmap::
 	ld	hl, #(_backgroundmap + 0x00f7)
 	ld	(hl), #0x00
 	ld	hl, #(_backgroundmap + 0x00f8)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x00f9)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x00fa)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x00fb)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x00fc)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x00fd)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x00fe)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x00ff)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x0100)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x0101)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x0102)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x0103)
 	ld	(hl), #0x00
 	ld	hl, #(_backgroundmap + 0x0104)
@@ -799,13 +802,13 @@ _windowmap::
 	ld	hl, #(_backgroundmap + 0x0109)
 	ld	(hl), #0x00
 	ld	hl, #(_backgroundmap + 0x010a)
-	ld	(hl), #0x06
+	ld	(hl), #0x2b
 	ld	hl, #(_backgroundmap + 0x010b)
-	ld	(hl), #0x06
+	ld	(hl), #0x2b
 	ld	hl, #(_backgroundmap + 0x010c)
-	ld	(hl), #0x06
+	ld	(hl), #0x2b
 	ld	hl, #(_backgroundmap + 0x010d)
-	ld	(hl), #0x06
+	ld	(hl), #0x2b
 	ld	hl, #(_backgroundmap + 0x010e)
 	ld	(hl), #0x00
 	ld	hl, #(_backgroundmap + 0x010f)
@@ -843,27 +846,27 @@ _windowmap::
 	ld	hl, #(_backgroundmap + 0x011f)
 	ld	(hl), #0x00
 	ld	hl, #(_backgroundmap + 0x0120)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x0121)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x0122)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x0123)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x0124)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x0125)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x0126)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x0127)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x0128)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x0129)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x012a)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x012b)
 	ld	(hl), #0x00
 	ld	hl, #(_backgroundmap + 0x012c)
@@ -879,13 +882,13 @@ _windowmap::
 	ld	hl, #(_backgroundmap + 0x0131)
 	ld	(hl), #0x00
 	ld	hl, #(_backgroundmap + 0x0132)
-	ld	(hl), #0x06
+	ld	(hl), #0x2b
 	ld	hl, #(_backgroundmap + 0x0133)
-	ld	(hl), #0x06
+	ld	(hl), #0x2b
 	ld	hl, #(_backgroundmap + 0x0134)
-	ld	(hl), #0x06
+	ld	(hl), #0x2b
 	ld	hl, #(_backgroundmap + 0x0135)
-	ld	(hl), #0x06
+	ld	(hl), #0x2b
 	ld	hl, #(_backgroundmap + 0x0136)
 	ld	(hl), #0x00
 	ld	hl, #(_backgroundmap + 0x0137)
@@ -923,27 +926,27 @@ _windowmap::
 	ld	hl, #(_backgroundmap + 0x0147)
 	ld	(hl), #0x00
 	ld	hl, #(_backgroundmap + 0x0148)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x0149)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x014a)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x014b)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x014c)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x014d)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x014e)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x014f)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x0150)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x0151)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x0152)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x0153)
 	ld	(hl), #0x00
 	ld	hl, #(_backgroundmap + 0x0154)
@@ -959,13 +962,13 @@ _windowmap::
 	ld	hl, #(_backgroundmap + 0x0159)
 	ld	(hl), #0x00
 	ld	hl, #(_backgroundmap + 0x015a)
-	ld	(hl), #0x06
+	ld	(hl), #0x2b
 	ld	hl, #(_backgroundmap + 0x015b)
-	ld	(hl), #0x06
+	ld	(hl), #0x2b
 	ld	hl, #(_backgroundmap + 0x015c)
-	ld	(hl), #0x06
+	ld	(hl), #0x2b
 	ld	hl, #(_backgroundmap + 0x015d)
-	ld	(hl), #0x06
+	ld	(hl), #0x2b
 	ld	hl, #(_backgroundmap + 0x015e)
 	ld	(hl), #0x00
 	ld	hl, #(_backgroundmap + 0x015f)
@@ -1003,27 +1006,27 @@ _windowmap::
 	ld	hl, #(_backgroundmap + 0x016f)
 	ld	(hl), #0x00
 	ld	hl, #(_backgroundmap + 0x0170)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x0171)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x0172)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x0173)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x0174)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x0175)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x0176)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x0177)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x0178)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x0179)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x017a)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x017b)
 	ld	(hl), #0x00
 	ld	hl, #(_backgroundmap + 0x017c)
@@ -1039,13 +1042,13 @@ _windowmap::
 	ld	hl, #(_backgroundmap + 0x0181)
 	ld	(hl), #0x00
 	ld	hl, #(_backgroundmap + 0x0182)
-	ld	(hl), #0x06
+	ld	(hl), #0x2b
 	ld	hl, #(_backgroundmap + 0x0183)
-	ld	(hl), #0x06
+	ld	(hl), #0x2b
 	ld	hl, #(_backgroundmap + 0x0184)
-	ld	(hl), #0x06
+	ld	(hl), #0x2b
 	ld	hl, #(_backgroundmap + 0x0185)
-	ld	(hl), #0x06
+	ld	(hl), #0x2b
 	ld	hl, #(_backgroundmap + 0x0186)
 	ld	(hl), #0x00
 	ld	hl, #(_backgroundmap + 0x0187)
@@ -1083,27 +1086,27 @@ _windowmap::
 	ld	hl, #(_backgroundmap + 0x0197)
 	ld	(hl), #0x00
 	ld	hl, #(_backgroundmap + 0x0198)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x0199)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x019a)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x019b)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x019c)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x019d)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x019e)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x019f)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x01a0)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x01a1)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x01a2)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x01a3)
 	ld	(hl), #0x00
 	ld	hl, #(_backgroundmap + 0x01a4)
@@ -1119,13 +1122,13 @@ _windowmap::
 	ld	hl, #(_backgroundmap + 0x01a9)
 	ld	(hl), #0x00
 	ld	hl, #(_backgroundmap + 0x01aa)
-	ld	(hl), #0x06
+	ld	(hl), #0x2b
 	ld	hl, #(_backgroundmap + 0x01ab)
-	ld	(hl), #0x06
+	ld	(hl), #0x2b
 	ld	hl, #(_backgroundmap + 0x01ac)
-	ld	(hl), #0x06
+	ld	(hl), #0x2b
 	ld	hl, #(_backgroundmap + 0x01ad)
-	ld	(hl), #0x06
+	ld	(hl), #0x2b
 	ld	hl, #(_backgroundmap + 0x01ae)
 	ld	(hl), #0x00
 	ld	hl, #(_backgroundmap + 0x01af)
@@ -1163,27 +1166,27 @@ _windowmap::
 	ld	hl, #(_backgroundmap + 0x01bf)
 	ld	(hl), #0x00
 	ld	hl, #(_backgroundmap + 0x01c0)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x01c1)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x01c2)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x01c3)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x01c4)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x01c5)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x01c6)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x01c7)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x01c8)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x01c9)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x01ca)
-	ld	(hl), #0x05
+	ld	(hl), #0x2a
 	ld	hl, #(_backgroundmap + 0x01cb)
 	ld	(hl), #0x00
 	ld	hl, #(_backgroundmap + 0x01cc)
@@ -1199,13 +1202,13 @@ _windowmap::
 	ld	hl, #(_backgroundmap + 0x01d1)
 	ld	(hl), #0x00
 	ld	hl, #(_backgroundmap + 0x01d2)
-	ld	(hl), #0x06
+	ld	(hl), #0x2b
 	ld	hl, #(_backgroundmap + 0x01d3)
-	ld	(hl), #0x06
+	ld	(hl), #0x2b
 	ld	hl, #(_backgroundmap + 0x01d4)
-	ld	(hl), #0x06
+	ld	(hl), #0x2b
 	ld	hl, #(_backgroundmap + 0x01d5)
-	ld	(hl), #0x06
+	ld	(hl), #0x2b
 	ld	hl, #(_backgroundmap + 0x01d6)
 	ld	(hl), #0x00
 	ld	hl, #(_backgroundmap + 0x01d7)
@@ -1227,485 +1230,485 @@ _windowmap::
 	ld	hl, #(_backgroundmap + 0x01df)
 	ld	(hl), #0x00
 	ld	hl, #(_backgroundmap + 0x01e0)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x01e1)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x01e2)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x01e3)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x01e4)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x01e5)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x01e6)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x01e7)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x01e8)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x01e9)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x01ea)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x01eb)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x01ec)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x01ed)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x01ee)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x01ef)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x01f0)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x01f1)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x01f2)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x01f3)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x01f4)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x01f5)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x01f6)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x01f7)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x01f8)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x01f9)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x01fa)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x01fb)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x01fc)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x01fd)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x01fe)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x01ff)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x0200)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x0201)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x0202)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x0203)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x0204)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x0205)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x0206)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x0207)
-	ld	(hl), #0x01
+	ld	(hl), #0x26
 	ld	hl, #(_backgroundmap + 0x0208)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0209)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x020a)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x020b)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x020c)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x020d)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x020e)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x020f)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0210)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0211)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0212)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0213)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0214)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0215)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0216)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0217)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0218)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0219)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x021a)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x021b)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x021c)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x021d)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x021e)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x021f)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0220)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0221)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0222)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0223)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0224)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0225)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0226)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0227)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0228)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0229)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x022a)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x022b)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x022c)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x022d)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x022e)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x022f)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0230)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0231)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0232)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0233)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0234)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0235)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0236)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0237)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0238)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0239)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x023a)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x023b)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x023c)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x023d)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x023e)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x023f)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0240)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0241)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0242)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0243)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0244)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0245)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0246)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0247)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0248)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0249)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x024a)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x024b)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x024c)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x024d)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x024e)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x024f)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0250)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0251)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0252)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0253)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0254)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0255)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0256)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0257)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0258)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0259)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x025a)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x025b)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x025c)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x025d)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x025e)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x025f)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0260)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0261)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0262)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0263)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0264)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0265)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0266)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0267)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0268)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0269)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x026a)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x026b)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x026c)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x026d)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x026e)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x026f)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0270)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0271)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0272)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0273)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0274)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0275)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0276)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0277)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0278)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0279)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x027a)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x027b)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x027c)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x027d)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x027e)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x027f)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0280)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0281)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0282)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0283)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0284)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0285)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0286)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0287)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0288)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0289)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x028a)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x028b)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x028c)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x028d)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x028e)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x028f)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0290)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0291)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0292)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0293)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0294)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0295)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0296)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0297)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0298)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x0299)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x029a)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x029b)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x029c)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x029d)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x029e)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x029f)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02a0)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02a1)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02a2)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02a3)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02a4)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02a5)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02a6)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02a7)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02a8)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02a9)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02aa)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02ab)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02ac)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02ad)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02ae)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02af)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02b0)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02b1)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02b2)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02b3)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02b4)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02b5)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02b6)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02b7)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02b8)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02b9)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02ba)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02bb)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02bc)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02bd)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02be)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02bf)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02c0)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02c1)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02c2)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02c3)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02c4)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02c5)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02c6)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02c7)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02c8)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02c9)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02ca)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02cb)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02cc)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02cd)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02ce)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 	ld	hl, #(_backgroundmap + 0x02cf)
-	ld	(hl), #0x02
+	ld	(hl), #0x27
 ;windowmap.c:1: unsigned char windowmap [] = {
 	ld	hl, #_windowmap
 	ld	(hl), #0x00
@@ -1735,18 +1738,25 @@ _windowmap::
 ; Function main
 ; ---------------------------------
 _main::
-;main.c:8: set_bkg_data(0,7,backgroundtiles);
+;main.c:9: font_init();
+	call	_font_init
+;main.c:10: min_font = font_load(font_min);
+	ld	hl, #_font_min
+	push	hl
+	call	_font_load
+	add	sp, #2
+;main.c:11: font_set(min_font);
+	push	de
+	call	_font_set
+	add	sp, #2
+;main.c:12: set_bkg_data(37,7,backgroundtiles);
 	ld	hl, #_backgroundtiles
 	push	hl
-	ld	a, #0x07
-	push	af
-	inc	sp
-	xor	a, a
-	push	af
-	inc	sp
+	ld	de, #0x0725
+	push	de
 	call	_set_bkg_data
 	add	sp, #4
-;main.c:9: set_bkg_tiles(0,0,40,18,backgroundmap);
+;main.c:13: set_bkg_tiles(0,0,40,18,backgroundmap);
 	ld	hl, #_backgroundmap
 	push	hl
 	ld	de, #0x1228
@@ -1759,7 +1769,7 @@ _main::
 	inc	sp
 	call	_set_bkg_tiles
 	add	sp, #6
-;main.c:14: set_win_tiles(0,0,5,1,windowmap);
+;main.c:15: set_win_tiles(0,0,5,1,windowmap);
 	ld	hl, #_windowmap
 	push	hl
 	ld	de, #0x0105
@@ -1777,26 +1787,26 @@ _main::
 	ldh	(_WX_REG+0),a
 	ld	a, #0x78
 	ldh	(_WY_REG+0),a
-;main.c:16: SHOW_BKG;
+;main.c:17: SHOW_BKG;
 	ldh	a, (_LCDC_REG+0)
 	or	a, #0x01
 	ldh	(_LCDC_REG+0),a
-;main.c:17: DISPLAY_ON;
+;main.c:18: DISPLAY_ON;
 	ldh	a, (_LCDC_REG+0)
 	or	a, #0x80
 	ldh	(_LCDC_REG+0),a
-;main.c:18: while (1) {
+;main.c:19: while (1) {
 00102$:
 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:775: SCX_REG+=x, SCY_REG+=y;
 	ldh	a, (_SCX_REG+0)
 	inc	a
 	ldh	(_SCX_REG+0),a
-;main.c:20: delay (100);
+;main.c:21: delay (100);
 	ld	hl, #0x0064
 	push	hl
 	call	_delay
 	add	sp, #2
-;main.c:22: }
+;main.c:23: }
 	jr	00102$
 	.area _CODE
 	.area _CABS (ABS)

@@ -14,6 +14,10 @@ Symbol Table
   1 _backgroundmap                                                 000070 GR
   1 _backgroundtiles                                               000000 GR
     _delay                                                         ****** GX
+    _font_init                                                     ****** GX
+    _font_load                                                     ****** GX
+    _font_min                                                      ****** GX
+    _font_set                                                      ****** GX
   0 _main                                                          000000 GR
     _set_bkg_data                                                  ****** GX
     _set_bkg_tiles                                                 ****** GX
@@ -26,7 +30,7 @@ Hexadecimal [24-Bits]
 
 Area Table
 
-   0 _CODE                                      size     5A   flags    0
+   0 _CODE                                      size     69   flags    0
    1 _DATA                                      size    347   flags    0
    2 _DABS                                      size      0   flags    8
    3 _HOME                                      size      0   flags    0
