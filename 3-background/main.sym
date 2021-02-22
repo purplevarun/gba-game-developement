@@ -30,11 +30,11 @@ Hexadecimal [24-Bits]
 
 Area Table
 
-   0 _CODE                                      size     69   flags    0
-   1 _DATA                                      size    347   flags    0
+   0 _CODE                                      size     6F   flags    0
+   1 _DATA                                      size    345   flags    0
    2 _DABS                                      size      0   flags    8
    3 _HOME                                      size      0   flags    0
-   4 _GSINIT                                    size   1063   flags    0
+   4 _GSINIT                                    size   1059   flags    0
    5 _GSFINAL                                   size      0   flags    0
    6 _CABS                                      size      0   flags    8
 

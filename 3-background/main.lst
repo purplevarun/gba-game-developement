@@ -31,7 +31,7 @@
       000070                         31 _backgroundmap::
       000070                         32 	.ds 720
       000340                         33 _windowmap::
-      000340                         34 	.ds 7
+      000340                         34 	.ds 5
                                      35 ;--------------------------------------------------------
                                      36 ; absolute external ram data
                                      37 ;--------------------------------------------------------
@@ -1711,102 +1711,102 @@
       00103E 36 27                 1711 	ld	(hl), #0x27
                                    1712 ;windowmap.c:1: unsigned char windowmap [] = {
       001040 21r40r03              1713 	ld	hl, #_windowmap
-      001043 36 00                 1714 	ld	(hl), #0x00
+      001043 36 12                 1714 	ld	(hl), #0x12
       001045 21r41r03              1715 	ld	hl, #(_windowmap + 0x0001)
-      001048 36 00                 1716 	ld	(hl), #0x00
+      001048 36 0F                 1716 	ld	(hl), #0x0f
       00104A 21r42r03              1717 	ld	hl, #(_windowmap + 0x0002)
-      00104D 36 00                 1718 	ld	(hl), #0x00
+      00104D 36 16                 1718 	ld	(hl), #0x16
       00104F 21r43r03              1719 	ld	hl, #(_windowmap + 0x0003)
-      001052 36 00                 1720 	ld	(hl), #0x00
+      001052 36 16                 1720 	ld	(hl), #0x16
       001054 21r44r03              1721 	ld	hl, #(_windowmap + 0x0004)
-      001057 36 00                 1722 	ld	(hl), #0x00
-      001059 21r45r03              1723 	ld	hl, #(_windowmap + 0x0005)
-      00105C 36 00                 1724 	ld	(hl), #0x00
-      00105E 21r46r03              1725 	ld	hl, #(_windowmap + 0x0006)
-      001061 36 00                 1726 	ld	(hl), #0x00
-                                   1727 ;--------------------------------------------------------
-                                   1728 ; Home
-                                   1729 ;--------------------------------------------------------
-                                   1730 	.area _HOME
-                                   1731 	.area _HOME
-                                   1732 ;--------------------------------------------------------
-                                   1733 ; code
-                                   1734 ;--------------------------------------------------------
-                                   1735 	.area _CODE
-                                   1736 ;main.c:7: void main () {
-                                   1737 ;	---------------------------------
-                                   1738 ; Function main
-                                   1739 ; ---------------------------------
-      000000                       1740 _main::
-                                   1741 ;main.c:9: font_init();
-      000000 CDr00r00              1742 	call	_font_init
-                                   1743 ;main.c:10: min_font = font_load(font_min);
-      000003 21r00r00              1744 	ld	hl, #_font_min
-      000006 E5                    1745 	push	hl
-      000007 CDr00r00              1746 	call	_font_load
-      00000A E8 02                 1747 	add	sp, #2
-                                   1748 ;main.c:11: font_set(min_font);
-      00000C D5                    1749 	push	de
-      00000D CDr00r00              1750 	call	_font_set
-      000010 E8 02                 1751 	add	sp, #2
-                                   1752 ;main.c:12: set_bkg_data(37,7,backgroundtiles);
-      000012 21r00r00              1753 	ld	hl, #_backgroundtiles
-      000015 E5                    1754 	push	hl
-      000016 11 25 07              1755 	ld	de, #0x0725
-      000019 D5                    1756 	push	de
-      00001A CDr00r00              1757 	call	_set_bkg_data
-      00001D E8 04                 1758 	add	sp, #4
-                                   1759 ;main.c:13: set_bkg_tiles(0,0,40,18,backgroundmap);
-      00001F 21r70r00              1760 	ld	hl, #_backgroundmap
-      000022 E5                    1761 	push	hl
-      000023 11 28 12              1762 	ld	de, #0x1228
-      000026 D5                    1763 	push	de
-      000027 AF                    1764 	xor	a, a
-      000028 F5                    1765 	push	af
-      000029 33                    1766 	inc	sp
-      00002A AF                    1767 	xor	a, a
-      00002B F5                    1768 	push	af
-      00002C 33                    1769 	inc	sp
-      00002D CDr00r00              1770 	call	_set_bkg_tiles
-      000030 E8 06                 1771 	add	sp, #6
-                                   1772 ;main.c:15: set_win_tiles(0,0,5,1,windowmap);
-      000032 21r40r03              1773 	ld	hl, #_windowmap
-      000035 E5                    1774 	push	hl
-      000036 11 05 01              1775 	ld	de, #0x0105
-      000039 D5                    1776 	push	de
-      00003A AF                    1777 	xor	a, a
-      00003B F5                    1778 	push	af
-      00003C 33                    1779 	inc	sp
-      00003D AF                    1780 	xor	a, a
-      00003E F5                    1781 	push	af
-      00003F 33                    1782 	inc	sp
-      000040 CDr00r00              1783 	call	_set_win_tiles
-      000043 E8 06                 1784 	add	sp, #6
-                                   1785 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:893: WX_REG=x, WY_REG=y;
-      000045 3E 07                 1786 	ld	a, #0x07
-      000047 E0r00                 1787 	ldh	(_WX_REG+0),a
-      000049 3E 78                 1788 	ld	a, #0x78
-      00004B E0r00                 1789 	ldh	(_WY_REG+0),a
-                                   1790 ;main.c:17: SHOW_BKG;
-      00004D F0r00                 1791 	ldh	a, (_LCDC_REG+0)
-      00004F F6 01                 1792 	or	a, #0x01
-      000051 E0r00                 1793 	ldh	(_LCDC_REG+0),a
-                                   1794 ;main.c:18: DISPLAY_ON;
-      000053 F0r00                 1795 	ldh	a, (_LCDC_REG+0)
-      000055 F6 80                 1796 	or	a, #0x80
-      000057 E0r00                 1797 	ldh	(_LCDC_REG+0),a
-                                   1798 ;main.c:19: while (1) {
-      000059                       1799 00102$:
+      001057 36 19                 1722 	ld	(hl), #0x19
+                                   1723 ;--------------------------------------------------------
+                                   1724 ; Home
+                                   1725 ;--------------------------------------------------------
+                                   1726 	.area _HOME
+                                   1727 	.area _HOME
+                                   1728 ;--------------------------------------------------------
+                                   1729 ; code
+                                   1730 ;--------------------------------------------------------
+                                   1731 	.area _CODE
+                                   1732 ;main.c:7: void main () {
+                                   1733 ;	---------------------------------
+                                   1734 ; Function main
+                                   1735 ; ---------------------------------
+      000000                       1736 _main::
+                                   1737 ;main.c:9: font_init();
+      000000 CDr00r00              1738 	call	_font_init
+                                   1739 ;main.c:10: min_font = font_load(font_min);
+      000003 21r00r00              1740 	ld	hl, #_font_min
+      000006 E5                    1741 	push	hl
+      000007 CDr00r00              1742 	call	_font_load
+      00000A E8 02                 1743 	add	sp, #2
+                                   1744 ;main.c:11: font_set(min_font);
+      00000C D5                    1745 	push	de
+      00000D CDr00r00              1746 	call	_font_set
+      000010 E8 02                 1747 	add	sp, #2
+                                   1748 ;main.c:12: set_bkg_data(37,7,backgroundtiles);
+      000012 21r00r00              1749 	ld	hl, #_backgroundtiles
+      000015 E5                    1750 	push	hl
+      000016 11 25 07              1751 	ld	de, #0x0725
+      000019 D5                    1752 	push	de
+      00001A CDr00r00              1753 	call	_set_bkg_data
+      00001D E8 04                 1754 	add	sp, #4
+                                   1755 ;main.c:13: set_bkg_tiles(0,0,40,18,backgroundmap);
+      00001F 21r70r00              1756 	ld	hl, #_backgroundmap
+      000022 E5                    1757 	push	hl
+      000023 11 28 12              1758 	ld	de, #0x1228
+      000026 D5                    1759 	push	de
+      000027 AF                    1760 	xor	a, a
+      000028 F5                    1761 	push	af
+      000029 33                    1762 	inc	sp
+      00002A AF                    1763 	xor	a, a
+      00002B F5                    1764 	push	af
+      00002C 33                    1765 	inc	sp
+      00002D CDr00r00              1766 	call	_set_bkg_tiles
+      000030 E8 06                 1767 	add	sp, #6
+                                   1768 ;main.c:15: set_win_tiles(0,0,5,1,windowmap);
+      000032 21r40r03              1769 	ld	hl, #_windowmap
+      000035 E5                    1770 	push	hl
+      000036 11 05 01              1771 	ld	de, #0x0105
+      000039 D5                    1772 	push	de
+      00003A AF                    1773 	xor	a, a
+      00003B F5                    1774 	push	af
+      00003C 33                    1775 	inc	sp
+      00003D AF                    1776 	xor	a, a
+      00003E F5                    1777 	push	af
+      00003F 33                    1778 	inc	sp
+      000040 CDr00r00              1779 	call	_set_win_tiles
+      000043 E8 06                 1780 	add	sp, #6
+                                   1781 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:893: WX_REG=x, WY_REG=y;
+      000045 3E 07                 1782 	ld	a, #0x07
+      000047 E0r00                 1783 	ldh	(_WX_REG+0),a
+      000049 3E 82                 1784 	ld	a, #0x82
+      00004B E0r00                 1785 	ldh	(_WY_REG+0),a
+                                   1786 ;main.c:17: SHOW_BKG;
+      00004D F0r00                 1787 	ldh	a, (_LCDC_REG+0)
+      00004F F6 01                 1788 	or	a, #0x01
+      000051 E0r00                 1789 	ldh	(_LCDC_REG+0),a
+                                   1790 ;main.c:18: SHOW_WIN;
+      000053 F0r00                 1791 	ldh	a, (_LCDC_REG+0)
+      000055 F6 20                 1792 	or	a, #0x20
+      000057 E0r00                 1793 	ldh	(_LCDC_REG+0),a
+                                   1794 ;main.c:19: DISPLAY_ON;
+      000059 F0r00                 1795 	ldh	a, (_LCDC_REG+0)
+      00005B F6 80                 1796 	or	a, #0x80
+      00005D E0r00                 1797 	ldh	(_LCDC_REG+0),a
+                                   1798 ;main.c:20: while (1) {
+      00005F                       1799 00102$:
                                    1800 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:775: SCX_REG+=x, SCY_REG+=y;
-      000059 F0r00                 1801 	ldh	a, (_SCX_REG+0)
-      00005B 3C                    1802 	inc	a
-      00005C E0r00                 1803 	ldh	(_SCX_REG+0),a
-                                   1804 ;main.c:21: delay (100);
-      00005E 21 64 00              1805 	ld	hl, #0x0064
-      000061 E5                    1806 	push	hl
-      000062 CDr00r00              1807 	call	_delay
-      000065 E8 02                 1808 	add	sp, #2
-                                   1809 ;main.c:23: }
-      000067 18 F0                 1810 	jr	00102$
+      00005F F0r00                 1801 	ldh	a, (_SCX_REG+0)
+      000061 3C                    1802 	inc	a
+      000062 E0r00                 1803 	ldh	(_SCX_REG+0),a
+                                   1804 ;main.c:22: delay (100);
+      000064 21 64 00              1805 	ld	hl, #0x0064
+      000067 E5                    1806 	push	hl
+      000068 CDr00r00              1807 	call	_delay
+      00006B E8 02                 1808 	add	sp, #2
+                                   1809 ;main.c:24: }
+      00006D 18 F0                 1810 	jr	00102$
                                    1811 	.area _CODE
                                    1812 	.area _CABS (ABS)

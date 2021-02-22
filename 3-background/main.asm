@@ -31,7 +31,7 @@ _backgroundtiles::
 _backgroundmap::
 	.ds 720
 _windowmap::
-	.ds 7
+	.ds 5
 ;--------------------------------------------------------
 ; absolute external ram data
 ;--------------------------------------------------------
@@ -1711,19 +1711,15 @@ _windowmap::
 	ld	(hl), #0x27
 ;windowmap.c:1: unsigned char windowmap [] = {
 	ld	hl, #_windowmap
-	ld	(hl), #0x00
+	ld	(hl), #0x12
 	ld	hl, #(_windowmap + 0x0001)
-	ld	(hl), #0x00
+	ld	(hl), #0x0f
 	ld	hl, #(_windowmap + 0x0002)
-	ld	(hl), #0x00
+	ld	(hl), #0x16
 	ld	hl, #(_windowmap + 0x0003)
-	ld	(hl), #0x00
+	ld	(hl), #0x16
 	ld	hl, #(_windowmap + 0x0004)
-	ld	(hl), #0x00
-	ld	hl, #(_windowmap + 0x0005)
-	ld	(hl), #0x00
-	ld	hl, #(_windowmap + 0x0006)
-	ld	(hl), #0x00
+	ld	(hl), #0x19
 ;--------------------------------------------------------
 ; Home
 ;--------------------------------------------------------
@@ -1785,28 +1781,32 @@ _main::
 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:893: WX_REG=x, WY_REG=y;
 	ld	a, #0x07
 	ldh	(_WX_REG+0),a
-	ld	a, #0x78
+	ld	a, #0x82
 	ldh	(_WY_REG+0),a
 ;main.c:17: SHOW_BKG;
 	ldh	a, (_LCDC_REG+0)
 	or	a, #0x01
 	ldh	(_LCDC_REG+0),a
-;main.c:18: DISPLAY_ON;
+;main.c:18: SHOW_WIN;
+	ldh	a, (_LCDC_REG+0)
+	or	a, #0x20
+	ldh	(_LCDC_REG+0),a
+;main.c:19: DISPLAY_ON;
 	ldh	a, (_LCDC_REG+0)
 	or	a, #0x80
 	ldh	(_LCDC_REG+0),a
-;main.c:19: while (1) {
+;main.c:20: while (1) {
 00102$:
 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:775: SCX_REG+=x, SCY_REG+=y;
 	ldh	a, (_SCX_REG+0)
 	inc	a
 	ldh	(_SCX_REG+0),a
-;main.c:21: delay (100);
+;main.c:22: delay (100);
 	ld	hl, #0x0064
 	push	hl
 	call	_delay
 	add	sp, #2
-;main.c:23: }
+;main.c:24: }
 	jr	00102$
 	.area _CODE
 	.area _CABS (ABS)
