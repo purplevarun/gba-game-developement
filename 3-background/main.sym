@@ -9,23 +9,28 @@ Symbol Table
     .__.H$L.                                                    =  000000 L
     _LCDC_REG                                                      ****** GX
     _SCX_REG                                                       ****** GX
+    _WX_REG                                                        ****** GX
+    _WY_REG                                                        ****** GX
   1 _backgroundmap                                                 000070 GR
   1 _backgroundtiles                                               000000 GR
     _delay                                                         ****** GX
   0 _main                                                          000000 GR
     _set_bkg_data                                                  ****** GX
     _set_bkg_tiles                                                 ****** GX
+    _set_win_tiles                                                 ****** GX
+  1 _windowmap                                                     000340 GR
+
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 2.
 Hexadecimal [24-Bits]
 
 Area Table
 
-   0 _CODE                                      size     3F   flags    0
-   1 _DATA                                      size    340   flags    0
+   0 _CODE                                      size     5A   flags    0
+   1 _DATA                                      size    347   flags    0
    2 _DABS                                      size      0   flags    8
    3 _HOME                                      size      0   flags    0
-   4 _GSINIT                                    size   1040   flags    0
+   4 _GSINIT                                    size   1063   flags    0
    5 _GSFINAL                                   size      0   flags    0
    6 _CABS                                      size      0   flags    8
 

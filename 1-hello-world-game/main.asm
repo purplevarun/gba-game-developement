@@ -80,14 +80,14 @@ _smileFace1::
 ; ---------------------------------
 _main::
 	add	sp, #-2
-;main.c:9: int i = start_X, j = start_Y;
+;main.c:10: int i = start_X, j = start_Y;
 	ld	bc, #0x0008
 	ldhl	sp,	#0
 	ld	(hl), #0x10
 	xor	a, a
 	inc	hl
 	ld	(hl), a
-;main.c:12: set_sprite_data (0,2,smileFace1);
+;main.c:11: set_sprite_data (0,2,smileFace1);
 	ld	hl, #_smileFace1
 	push	hl
 	ld	a, #0x02
@@ -107,13 +107,13 @@ _main::
 	ld	a, #0x10
 	ld	(hl+), a
 	ld	(hl), #0x08
-;main.c:15: SHOW_SPRITES;
+;main.c:14: SHOW_SPRITES;
 	ldh	a, (_LCDC_REG+0)
 	or	a, #0x02
 	ldh	(_LCDC_REG+0),a
-;main.c:16: while (1) {
+;main.c:15: while (1) {
 00105$:
-;main.c:17: if (i>end_X || j > end_Y){
+;main.c:16: if (i>end_X || j > end_Y){
 	ld	e, b
 	ld	d, #0x00
 	ld	a, #0xa0
@@ -153,16 +153,16 @@ _main::
 00125$:
 	jr	NC, 00102$
 00101$:
-;main.c:18: i = start_X;
+;main.c:17: i = start_X;
 	ld	bc, #0x0008
-;main.c:19: j = start_Y;
+;main.c:18: j = start_Y;
 	ldhl	sp,	#0
 	ld	(hl), #0x10
 	xor	a, a
 	inc	hl
 	ld	(hl), a
 00102$:
-;main.c:21: move_sprite (0, i,j);
+;main.c:20: move_sprite (0, i,j);
 	ldhl	sp,	#0
 	ld	d, (hl)
 	ld	e, c
@@ -172,12 +172,12 @@ _main::
 	ld	a, d
 	ld	(hl+), a
 	ld	(hl), e
-;main.c:22: i+=10;
+;main.c:21: i+=10;
 	ld	hl, #0x000a
 	add	hl, bc
 	ld	c, l
 	ld	b, h
-;main.c:23: j+=10;
+;main.c:22: j+=10;
 ;c
 	pop	de
 	push	de
@@ -186,7 +186,7 @@ _main::
 	inc	sp
 	inc	sp
 	push	hl
-;main.c:24: delay(500);
+;main.c:23: delay(500);
 	push	bc
 	ld	hl, #0x01f4
 	push	hl
@@ -194,7 +194,7 @@ _main::
 	add	sp, #2
 	pop	bc
 	jr	00105$
-;main.c:26: }
+;main.c:25: }
 	add	sp, #2
 	ret
 	.area _CODE

@@ -80,14 +80,14 @@
                                      80 ; ---------------------------------
       000000                         81 _main::
       000000 E8 FE                   82 	add	sp, #-2
-                                     83 ;main.c:9: int i = start_X, j = start_Y;
+                                     83 ;main.c:10: int i = start_X, j = start_Y;
       000002 01 08 00                84 	ld	bc, #0x0008
       000005 F8 00                   85 	ldhl	sp,	#0
       000007 36 10                   86 	ld	(hl), #0x10
       000009 AF                      87 	xor	a, a
       00000A 23                      88 	inc	hl
       00000B 77                      89 	ld	(hl), a
-                                     90 ;main.c:12: set_sprite_data (0,2,smileFace1);
+                                     90 ;main.c:11: set_sprite_data (0,2,smileFace1);
       00000C 21r00r00                91 	ld	hl, #_smileFace1
       00000F E5                      92 	push	hl
       000010 3E 02                   93 	ld	a, #0x02
@@ -107,13 +107,13 @@
       000024 3E 10                  107 	ld	a, #0x10
       000026 22                     108 	ld	(hl+), a
       000027 36 08                  109 	ld	(hl), #0x08
-                                    110 ;main.c:15: SHOW_SPRITES;
+                                    110 ;main.c:14: SHOW_SPRITES;
       000029 F0r00                  111 	ldh	a, (_LCDC_REG+0)
       00002B F6 02                  112 	or	a, #0x02
       00002D E0r00                  113 	ldh	(_LCDC_REG+0),a
-                                    114 ;main.c:16: while (1) {
+                                    114 ;main.c:15: while (1) {
       00002F                        115 00105$:
-                                    116 ;main.c:17: if (i>end_X || j > end_Y){
+                                    116 ;main.c:16: if (i>end_X || j > end_Y){
       00002F 58                     117 	ld	e, b
       000030 16 00                  118 	ld	d, #0x00
       000032 3E A0                  119 	ld	a, #0xa0
@@ -153,16 +153,16 @@
       000066                        153 00125$:
       000066 30 0A                  154 	jr	NC, 00102$
       000068                        155 00101$:
-                                    156 ;main.c:18: i = start_X;
+                                    156 ;main.c:17: i = start_X;
       000068 01 08 00               157 	ld	bc, #0x0008
-                                    158 ;main.c:19: j = start_Y;
+                                    158 ;main.c:18: j = start_Y;
       00006B F8 00                  159 	ldhl	sp,	#0
       00006D 36 10                  160 	ld	(hl), #0x10
       00006F AF                     161 	xor	a, a
       000070 23                     162 	inc	hl
       000071 77                     163 	ld	(hl), a
       000072                        164 00102$:
-                                    165 ;main.c:21: move_sprite (0, i,j);
+                                    165 ;main.c:20: move_sprite (0, i,j);
       000072 F8 00                  166 	ldhl	sp,	#0
       000074 56                     167 	ld	d, (hl)
       000075 59                     168 	ld	e, c
@@ -172,12 +172,12 @@
       000079 7A                     172 	ld	a, d
       00007A 22                     173 	ld	(hl+), a
       00007B 73                     174 	ld	(hl), e
-                                    175 ;main.c:22: i+=10;
+                                    175 ;main.c:21: i+=10;
       00007C 21 0A 00               176 	ld	hl, #0x000a
       00007F 09                     177 	add	hl, bc
       000080 4D                     178 	ld	c, l
       000081 44                     179 	ld	b, h
-                                    180 ;main.c:23: j+=10;
+                                    180 ;main.c:22: j+=10;
                                     181 ;c
       000082 D1                     182 	pop	de
       000083 D5                     183 	push	de
@@ -186,7 +186,7 @@
       000088 33                     186 	inc	sp
       000089 33                     187 	inc	sp
       00008A E5                     188 	push	hl
-                                    189 ;main.c:24: delay(500);
+                                    189 ;main.c:23: delay(500);
       00008B C5                     190 	push	bc
       00008C 21 F4 01               191 	ld	hl, #0x01f4
       00008F E5                     192 	push	hl
@@ -194,7 +194,7 @@
       000093 E8 02                  194 	add	sp, #2
       000095 C1                     195 	pop	bc
       000096 18 97                  196 	jr	00105$
-                                    197 ;main.c:26: }
+                                    197 ;main.c:25: }
       000098 E8 02                  198 	add	sp, #2
       00009A C9                     199 	ret
                                     200 	.area _CODE

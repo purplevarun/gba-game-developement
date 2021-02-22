@@ -9,9 +9,11 @@
 ; Public variables in this module
 ;--------------------------------------------------------
 	.globl _main
+	.globl _set_win_tiles
 	.globl _set_bkg_tiles
 	.globl _set_bkg_data
 	.globl _delay
+	.globl _windowmap
 	.globl _backgroundmap
 	.globl _backgroundtiles
 ;--------------------------------------------------------
@@ -25,6 +27,8 @@ _backgroundtiles::
 	.ds 112
 _backgroundmap::
 	.ds 720
+_windowmap::
+	.ds 7
 ;--------------------------------------------------------
 ; absolute external ram data
 ;--------------------------------------------------------
@@ -1702,6 +1706,21 @@ _backgroundmap::
 	ld	(hl), #0x02
 	ld	hl, #(_backgroundmap + 0x02cf)
 	ld	(hl), #0x02
+;windowmap.c:1: unsigned char windowmap [] = {
+	ld	hl, #_windowmap
+	ld	(hl), #0x00
+	ld	hl, #(_windowmap + 0x0001)
+	ld	(hl), #0x00
+	ld	hl, #(_windowmap + 0x0002)
+	ld	(hl), #0x00
+	ld	hl, #(_windowmap + 0x0003)
+	ld	(hl), #0x00
+	ld	hl, #(_windowmap + 0x0004)
+	ld	(hl), #0x00
+	ld	hl, #(_windowmap + 0x0005)
+	ld	(hl), #0x00
+	ld	hl, #(_windowmap + 0x0006)
+	ld	(hl), #0x00
 ;--------------------------------------------------------
 ; Home
 ;--------------------------------------------------------
@@ -1711,12 +1730,12 @@ _backgroundmap::
 ; code
 ;--------------------------------------------------------
 	.area _CODE
-;main.c:5: void main () {
+;main.c:7: void main () {
 ;	---------------------------------
 ; Function main
 ; ---------------------------------
 _main::
-;main.c:6: set_bkg_data(0,7,backgroundtiles);
+;main.c:8: set_bkg_data(0,7,backgroundtiles);
 	ld	hl, #_backgroundtiles
 	push	hl
 	ld	a, #0x07
@@ -1727,7 +1746,7 @@ _main::
 	inc	sp
 	call	_set_bkg_data
 	add	sp, #4
-;main.c:7: set_bkg_tiles(0,0,40,18,backgroundmap);
+;main.c:9: set_bkg_tiles(0,0,40,18,backgroundmap);
 	ld	hl, #_backgroundmap
 	push	hl
 	ld	de, #0x1228
@@ -1740,26 +1759,44 @@ _main::
 	inc	sp
 	call	_set_bkg_tiles
 	add	sp, #6
-;main.c:8: SHOW_BKG;
+;main.c:14: set_win_tiles(0,0,5,1,windowmap);
+	ld	hl, #_windowmap
+	push	hl
+	ld	de, #0x0105
+	push	de
+	xor	a, a
+	push	af
+	inc	sp
+	xor	a, a
+	push	af
+	inc	sp
+	call	_set_win_tiles
+	add	sp, #6
+;c:/users/purpl/desktop/gbdk/include/gb/gb.h:893: WX_REG=x, WY_REG=y;
+	ld	a, #0x07
+	ldh	(_WX_REG+0),a
+	ld	a, #0x78
+	ldh	(_WY_REG+0),a
+;main.c:16: SHOW_BKG;
 	ldh	a, (_LCDC_REG+0)
 	or	a, #0x01
 	ldh	(_LCDC_REG+0),a
-;main.c:9: DISPLAY_ON;
+;main.c:17: DISPLAY_ON;
 	ldh	a, (_LCDC_REG+0)
 	or	a, #0x80
 	ldh	(_LCDC_REG+0),a
-;main.c:10: while (1) {
+;main.c:18: while (1) {
 00102$:
 ;c:/users/purpl/desktop/gbdk/include/gb/gb.h:775: SCX_REG+=x, SCY_REG+=y;
 	ldh	a, (_SCX_REG+0)
 	inc	a
 	ldh	(_SCX_REG+0),a
-;main.c:12: delay (100);
+;main.c:20: delay (100);
 	ld	hl, #0x0064
 	push	hl
 	call	_delay
 	add	sp, #2
-;main.c:14: }
+;main.c:22: }
 	jr	00102$
 	.area _CODE
 	.area _CABS (ABS)

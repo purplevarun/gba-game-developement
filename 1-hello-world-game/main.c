@@ -6,6 +6,7 @@
 #define end_X 160
 #define end_Y 152
 void main () {
+    // printf ("hello world");    
     int i = start_X, j = start_Y;
     set_sprite_data (0,2,smileFace1);
     set_sprite_tile (0,0);
